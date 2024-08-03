@@ -3,6 +3,9 @@ import { RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+//
+import { ClassThumbnail } from './components/class/classComponent/ClassThumbnail';
+//
 
 const queryClient = new QueryClient();
 
@@ -17,6 +20,8 @@ function App() {
         <div>
           <GlobalStyle />
           <h2>앱입니다.</h2>
+          {/* test */}
+          <ClassThumbnail />
         </div>
       </RecoilRoot>
     </QueryClientProvider>

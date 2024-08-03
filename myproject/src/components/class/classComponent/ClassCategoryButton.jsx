@@ -1,4 +1,5 @@
-import { createGlobalStyle, styled } from "styled-components";
+// import { createGlobalStyle, styled } from "styled-components";
+import { styled } from 'styled-components';
 
 const CategoryButton = styled.button`
   margin: 0;

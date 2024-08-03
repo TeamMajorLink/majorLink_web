@@ -1,5 +1,6 @@
-import { createGlobalStyle, styled } from "styled-components";
-import InterestIcon from "../img/class_icon_interest_35x35.png";
+// import { createGlobalStyle, styled } from "styled-components";
+import { styled } from 'styled-components';
+import InterestIcon from '../../../assets/class/class_icon_interest_35x35.png';
 
 const IconButton = styled.button`
   margin: 2.5px;

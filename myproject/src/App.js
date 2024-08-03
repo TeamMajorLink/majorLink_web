@@ -1,10 +1,6 @@
 import React from 'react';
-import { RecoilRoot } from 'recoil';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-
-const queryClient = new QueryClient();
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -12,14 +8,10 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
-        <div>
-          <GlobalStyle />
-          <h2>앱입니다.</h2>
-        </div>
-      </RecoilRoot>
-    </QueryClientProvider>
+    <div>
+      <GlobalStyle />
+      <h2>앱입니다.</h2>
+    </div>
   );
 }
 

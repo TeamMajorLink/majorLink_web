@@ -1,7 +1,8 @@
 // import { createGlobalStyle } from "styled-components";
 import { styled } from 'styled-components';
-import HeadcountIcon17 from '../../../assets/class/class_icon_headcount_17x17.png';
-import font from '../../../styles/font';
+import HeadcountIcon17 from '../../../../assets/class/class_icon_headcount_17x17.png';
+import color from '../../../../styles/color';
+import font from '../../../../styles/font';
 
 const HeadcountContainer = styled.div`
   margin: 0;
@@ -22,7 +23,7 @@ const IconContainer = styled.div`
 
   border: none;
 `;
-const IcomImg = styled.img`
+const IconImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -31,6 +32,7 @@ const Headcount = styled.p`
   margin: 0;
   width: 36px;
 
+  color: ${() => color.grayscale_30};
   ${() => font.regular_16};
 `;
 
@@ -38,9 +40,9 @@ export function ClassHeadcount() {
   return (
     <HeadcountContainer>
       <IconContainer>
-        <IcomImg src={HeadcountIcon17} alt="img" />
+        <IconImg src={HeadcountIcon17} alt="img" />
       </IconContainer>
-      <Headcount>1.2</Headcount>
+      <Headcount>2/6</Headcount>
     </HeadcountContainer>
   );
 }

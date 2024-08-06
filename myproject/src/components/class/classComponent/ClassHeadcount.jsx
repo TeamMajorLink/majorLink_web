@@ -1,24 +1,24 @@
-// import { createGlobalStyle, styled } from "styled-components";
+// import { createGlobalStyle } from "styled-components";
 import { styled } from 'styled-components';
-import StarIcon15 from '../../../assets/class/class_icon_star_15x15.png';
+import HeadcountIcon17 from '../../../assets/class/class_icon_headcount_17x17.png';
 import font from '../../../styles/font';
 
-const StarRatingContainer = styled.div`
+const HeadcountContainer = styled.div`
   margin: 0;
   padding: 0;
 
-  width: 61px;
+  width: 55px;
 
   display: flex;
   justify-content: flex-end;
   align-items: center;
 `;
 const IconContainer = styled.div`
-  margin: 0 10px 1px 0;
+  margin: 0 8px 1px 0;
   padding: 0;
 
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
 
   border: none;
 `;
@@ -27,20 +27,20 @@ const IcomImg = styled.img`
   height: 100%;
   object-fit: cover;
 `;
-const StarRating = styled.p`
+const Headcount = styled.p`
   margin: 0;
   width: 36px;
 
   ${() => font.regular_16};
 `;
 
-export function ClassStarRating() {
+export function ClassHeadcount() {
   return (
-    <StarRatingContainer>
+    <HeadcountContainer>
       <IconContainer>
-        <IcomImg src={StarIcon15} alt="img" />
+        <IcomImg src={HeadcountIcon17} alt="img" />
       </IconContainer>
-      <StarRating>4.8</StarRating>
-    </StarRatingContainer>
+      <Headcount>1.2</Headcount>
+    </HeadcountContainer>
   );
 }

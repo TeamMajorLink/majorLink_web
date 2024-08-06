@@ -4,6 +4,7 @@ import React from 'react';
 // 삭제
 import { ClassThumbnail } from './components/class/classComponent/ClassThumbnail';
 import { ClassStarRating } from './components/class/classComponent/ClassStarRating';
+import { ClassHeadcount } from './components/class/classComponent/ClassHeadcount';
 //
 
 // const GlobalStyle = createGlobalStyle`
@@ -17,6 +18,7 @@ function App() {
       {/* 삭제 */}
       <ClassThumbnail />
       <ClassStarRating />
+      <ClassHeadcount />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-// import { createGlobalStyle, styled } from "styled-components";
+// import { createGlobalStyle } from "styled-components";
 import { styled } from 'styled-components';
 import StarIcon15 from '../../../assets/class/class_icon_star_15x15.png';
 import font from '../../../styles/font';

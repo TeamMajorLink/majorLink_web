@@ -1,5 +1,7 @@
 // import { createGlobalStyle, styled } from "styled-components";
 import { styled } from 'styled-components';
+import font from '../../../styles/font';
+import color from '../../../styles/color';
 
 const CategoryButton = styled.button`
   margin: 0;
@@ -11,10 +13,8 @@ const CategoryButton = styled.button`
   border-radius: 8px;
   background-color: black;
 
-  /* font-family: ; */
-  font-weight: 500;
-  font-size: 16px;
-  color: white;
+  ${() => font.medium_16};
+  color: ${() => color.white};
 `;
 
 export function ClassCategoryButton() {

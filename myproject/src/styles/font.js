@@ -12,9 +12,11 @@ const font = {
   //   title: FONT({ weight: 300, size: 1.7 }),
   //   regular_10: FONT({ weight: 400, size: 1.0 }),
   //   base_16: FONT({ weight: 600, size: 1.6 }),
+  test_100: FONT({ weight: 900, size: 10.0 }), // 삭제
+
   regular_16: FONT({ weight: 400, size: 1.6 }),
+  medium_16: FONT({ weight: 500, size: 1.6 }),
   semibold_20: FONT({ weight: 600, size: 2.0 }),
-  test_100: FONT({ weight: 900, size: 10.0 }),
 };
 
 export default font;

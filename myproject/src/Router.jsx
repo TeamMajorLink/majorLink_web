@@ -1,5 +1,13 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import App from './App';
 
 export default function Router() {
-  return <div>차후 BrowserRouter 세팅 및 추가</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<App/>}/>
+      </Routes>
+    </BrowserRouter>
+  );
 }

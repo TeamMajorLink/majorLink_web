@@ -3,7 +3,7 @@ import React from 'react';
 // import reset from 'styled-reset';
 // 삭제
 import { ClassList } from './components/class/classComponent/ClassList';
-import { SearchBackground } from './components/class/search/SearchBackground';
+import { SearchSection } from './components/class/search/SearchSection';
 //
 
 // const GlobalStyle = createGlobalStyle`
@@ -15,7 +15,7 @@ function App() {
     <div>
       <h2>앱입니다.</h2>
       {/* 삭제 */}
-      <SearchBackground />
+      <SearchSection />
       <ClassList />
     </div>
   );

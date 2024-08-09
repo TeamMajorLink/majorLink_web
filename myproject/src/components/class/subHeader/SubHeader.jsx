@@ -2,7 +2,6 @@
 import { styled, css } from 'styled-components';
 import color from '../../../styles/color';
 import font from '../../../styles/font';
-import { SearchBar } from './SearchBar';
 import BackgroundLeftPng from '../../../assets/class/class_background_planet_68x316.png';
 import BackgroundRightPng from '../../../assets/class/class_background_plane_600x316.png';
 import CharacterPng from '../../../assets/class/class_character_176x202.png';
@@ -11,13 +10,13 @@ const SearchContainer = styled.div`
   margin: 0;
 `;
 const SearchBackground = styled.div`
-  height: 316px;
+  height: 246px;
   background: ${() => color.gradation_primary_class};
 `;
 const BackgroundContainer = css`
-  margin: -316px 0 0 0;
+  margin: -246px 0 0 0;
   padding: 0;
-  height: 316px;
+  height: 246px;
 
   display: flex;
   justify-content: center;
@@ -46,10 +45,10 @@ const CharacterImg = styled.img`
   object-fit: cover;
 `;
 const ContentContainer = styled.div`
-  margin: -316px 0 0 0;
+  margin: -246px 0 0 0;
   padding: 0 calc(78vw - 648px) 0 calc(22vw - 184px);
   width: 831px;
-  height: 316px;
+  height: 246px;
 
   display: flex;
   flex-direction: column;
@@ -62,7 +61,7 @@ const PageSubName = styled.h2`
   ${() => font.semibold_40};
 `;
 
-export function SearchSection() {
+export function SubHeader() {
   return (
     <SearchContainer>
       <SearchBackground />
@@ -76,9 +75,7 @@ export function SearchSection() {
         <CharacterImg src={CharacterPng} alt="img" />
       </BackgroundContainerCharacter>
       <ContentContainer>
-        <PageSubName>클래스 찾기</PageSubName>
-        {/* 검색바 */}
-        <SearchBar />
+        <PageSubName>클래스 신청</PageSubName>
       </ContentContainer>
     </SearchContainer>
   );

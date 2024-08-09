@@ -4,6 +4,7 @@ import React from 'react';
 // 삭제
 import { ClassList } from './components/class/classComponent/ClassList';
 import { SearchSection } from './components/class/search/SearchSection';
+import { SubHeader } from './components/class/subHeader/SubHeader';
 //
 
 // const GlobalStyle = createGlobalStyle`
@@ -17,6 +18,7 @@ function App() {
       {/* 삭제 */}
       <SearchSection />
       <ClassList />
+      <SubHeader />
     </div>
   );
 }

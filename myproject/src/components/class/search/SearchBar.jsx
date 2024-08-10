@@ -40,6 +40,7 @@ const SubmitButton = styled.button`
 
   border: none;
   border-radius: 50%;
+  cursor: pointer;
 `;
 const IconImg = styled.img`
   width: 28px;

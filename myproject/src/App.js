@@ -4,7 +4,8 @@ import React from 'react';
 // 삭제
 import { ClassList } from './components/class/classComponent/ClassList';
 import { SearchSection } from './components/class/search/SearchSection';
-import { SubHeader } from './components/class/subHeader/SubHeader';
+// import { SubHeader } from './components/class/subHeader/SubHeader';
+import { Pagination } from './components/class/pageNation/Pagination';
 //
 
 // const GlobalStyle = createGlobalStyle`
@@ -18,7 +19,8 @@ function App() {
       {/* 삭제 */}
       <SearchSection />
       <ClassList />
-      <SubHeader />
+      <Pagination />
+      {/* <SubHeader /> */}
     </div>
   );
 }

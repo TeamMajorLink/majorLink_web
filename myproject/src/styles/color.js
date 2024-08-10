@@ -2,7 +2,7 @@ const color = {
   white: '#FFFFFF',
   black: '#000000',
   primary_normal: '#36D9D4',
-  primary_dark: '#49BBBD',
+  primary_dark: '#4ABECB',
   secondary_normal: '#5A6DF9',
   gradation_primary_class:
     'linear-gradient(90deg, #B4F9F5 0%, #D0FFFC 0%, #8EF0EB 53.23%, #80F4F1 100%)',

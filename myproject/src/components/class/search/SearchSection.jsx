@@ -9,6 +9,8 @@ import CharacterPng from '../../../assets/class/class_character_176x202.png';
 
 const SearchContainer = styled.div`
   margin: 0;
+  /* 수정 필요 */
+  margin-bottom: 60px;
 `;
 const SearchBackground = styled.div`
   height: 316px;

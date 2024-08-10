@@ -4,8 +4,8 @@ import color from '../../../styles/color';
 import font from '../../../styles/font';
 import ArrowLeftPng from '../../../assets/class/class_icon_arrow_left_20x20.png';
 import ArrowRightPng from '../../../assets/class/class_icon_arrow_right_20x20.png';
-import ArrowLeftWhitePng from '../../../assets/class/class_icon_arrow_left_white_20x20.png';
-import ArrowRightWhitePng from '../../../assets/class/class_icon_arrow_right_white_20x20.png';
+// import ArrowLeftWhitePng from '../../../assets/class/class_icon_arrow_left_white_20x20.png';
+// import ArrowRightWhitePng from '../../../assets/class/class_icon_arrow_right_white_20x20.png';
 
 const ButtonListContainer = styled.div`
   margin: 0;
@@ -17,6 +17,9 @@ const ButtonListContainer = styled.div`
   button:hover p {
     color: ${() => color.white};
   }
+
+  /* 수정 필요 */
+  margin-bottom: 60px;
 `;
 const PaginationButton = styled.button`
   margin: 6px;
@@ -64,8 +67,6 @@ export function Pagination() {
       </PaginationButton>
       <PaginationButton>
         <ArrowIconImg src={ArrowRightPng} alt="img" />
-        <ArrowIconImg src={ArrowLeftWhitePng} alt="img" />
-        <ArrowIconImg src={ArrowRightWhitePng} alt="img" />
       </PaginationButton>
     </ButtonListContainer>
   );

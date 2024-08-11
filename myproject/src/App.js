@@ -1,4 +1,6 @@
 import React from 'react';
+import Login from './pages/Login';
+import HomePage from './pages/HomePage';
 // import { createGlobalStyle } from 'styled-components';
 // import reset from 'styled-reset';
 
@@ -9,7 +11,9 @@ import React from 'react';
 function App() {
   return (
     <div>
-      <h2>앱입니다.</h2>
+      <HomePage/>
+      
+      <Login />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from './pages/Login';
 import HomePage from './pages/HomePage';
+import Footer from './components/footer';
 // import { createGlobalStyle } from 'styled-components';
 // import reset from 'styled-reset';
 
@@ -10,10 +10,12 @@ import HomePage from './pages/HomePage';
 
 function App() {
   return (
-    <div>
+    <div className = 'wrapper'>
+      <div className='contentWrapper'>
       <HomePage/>
       
-      <Login />
+      </div>
+        <Footer/>
     </div>
   );
 }

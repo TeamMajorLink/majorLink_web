@@ -12,7 +12,6 @@ const font = {
   //   title: FONT({ weight: 300, size: 1.7 }),
   //   regular_10: FONT({ weight: 400, size: 1.0 }),
   //   base_16: FONT({ weight: 600, size: 1.6 }),
-  test_100: FONT({ weight: 900, size: 10.0 }), // 삭제
 
   regular_16: FONT({ weight: 400, size: 1.6 }),
   regular_18: FONT({ weight: 400, size: 1.8 }),
@@ -24,6 +23,7 @@ const font = {
   semibold_22: FONT({ weight: 600, size: 2.2 }),
   semibold_28: FONT({ weight: 600, size: 2.8 }),
   semibold_40: FONT({ weight: 600, size: 4.0 }),
+  bold_20: FONT({ weight: 700, size: 2.0 }),
 };
 
 export default font;

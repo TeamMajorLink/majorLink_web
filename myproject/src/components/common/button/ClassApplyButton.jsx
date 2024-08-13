@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
-import color from '../../styles/color';
-import font from '../../styles/font';
+import color from '../../../styles/color';
+import font from '../../../styles/font';
 
 const ButtonComponent = styled.button`
   margin: 0;

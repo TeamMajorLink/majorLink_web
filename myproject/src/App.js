@@ -1,6 +1,5 @@
 import React from 'react';
-import HomePage from './pages/HomePage';
-import Footer from './components/footer';
+import Router from './Router';
 // import { createGlobalStyle } from 'styled-components';
 // import reset from 'styled-reset';
 
@@ -9,15 +8,7 @@ import Footer from './components/footer';
 // `;
 
 function App() {
-  return (
-    <div className = 'wrapper'>
-      <div className='contentWrapper'>
-      <HomePage/>
-      
-      </div>
-        <Footer/>
-    </div>
-  );
+  return <Router />;
 }
 
 export default App;

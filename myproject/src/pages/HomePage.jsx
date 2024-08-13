@@ -1,5 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import viewAll from './Login';
 import background from '../assets/class/HomePage_sliding.png';
 import examplepng from '../assets/class/HomePage_example.jpg';
 import category1 from '../assets/class/category1.png';
@@ -10,51 +14,39 @@ import category5 from '../assets/class/category5.png';
 import category6 from '../assets/class/category6.png';
 import category7 from '../assets/class/category7.png';
 import category8 from '../assets/class/category8.png';
-
+import searchIcon from '../assets/class/searchIcon.png';
+import ad1 from '../assets/class/ad1.png';
+import ad2 from '../assets/class/ad2.png';
 
 const Container = styled.div`
   width: 100%;
   padding: 20px;
-  background-color: #f0f4ff;
+  background-color: white;
 `;
-
-const Header = styled.header`
-  background-color: #0A033C;
-  color: white;
-  padding: 90px;
-  text-align: left;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const HeaderImage = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
 const SearchSection = styled.section`
-  background-color: linear-gradient(to top, #D9ECFF, #F0F3FF);
+  background-color: white;
   padding: 30px 0;
   text-align: center;
 `;
 const SearchHeader = styled.h1`
-  font-size: 2rem;
+  font-size: 40px;
+  line-height: 34px;
+  letter-spacing: -0.5px;
   font-family: Rubik;
-  font-weight: bolder;
+  font-weight: 600;
   margin-bottom: 8px;
   margin-top: 5px;
   padding-left: 20px;
 `;
 
 const SearchText = styled.h3`
-  font-size: 1rem;
+  font-size: 24px;
   font-family: Rubik;
-  font-weight: 10px;
-  margin-top: 2px;
+  font-weight: 400;
+  margin-top: px;
+  line-height: 50px;
   margin-bottom: 30px;
-  padding-left: 20px;
+  padding-left: 20px; 
 `;
 
 const SearchInputWrapper = styled.div`
@@ -66,8 +58,8 @@ const SearchInputWrapper = styled.div`
 const SearchInput = styled.input`
   width: 100%;
   padding: 10px 50px 10px 10px; 
-  border-radius: 20px;
-  border: 1px solid #e5e5e5;
+  border-radius: 50px;
+  border: 2px solid #49BBBD;
 `;
 
 const SearchButton = styled.button`
@@ -76,13 +68,29 @@ const SearchButton = styled.button`
   top: 0;
   height: 100%;
   padding: 0 15px;
-  background-color:#49BBBD;
-  ;
-  color: white;
+  background-color: #49BBBD; 
+  border-radius: 100px;
   border: none;
-  border-radius: 0 15px 15px 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 20px; 
+    height: 20px;
+  }
 `;
+
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+};
 
 
 const CategoryWrapper = styled.div`
@@ -95,27 +103,48 @@ const CategoryWrapper = styled.div`
 const CategoryButton = styled.button`
   background-color: #49BBBD;
   color: white;
-  border: none;
+  border: 2px solid #E5E5E5;
   border-radius: 10px;
-  padding: 35px 40px;
+  padding: 13px 14px;
+  margin-top: 100px;
   margin: 5px;
   cursor: pointer;
 `;
 
 const CategoryImg = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
 `;
 
 const CategoryText = styled.h3`
-  font-size: 1em;
-  font-style: white;
+  font-size: 0.5em;
+  font-style: #49bbbd;
   margin-top: 10px;
 `;
 
 const ClassSection = styled.section`
   padding: 80px 0;
   background-color: white;
+`;
+
+const ClassHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+const ViewAllButton = styled.button`
+  background: none;
+  border: none;
+  color: #49BBBD;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 50px;
+
+  &:hover {
+    color: #007B7F;
+  }
 `;
 
 const ClassTitle = styled.h2`
@@ -143,7 +172,7 @@ const ClassImage = styled.img`
   width: 100%;
   height: 150px;
   object-fit: cover;
-  background-color: white;
+  background-color: #49BBBD;
 `;
 
 const ClassContent = styled.div`
@@ -172,16 +201,22 @@ const ClassPeopleListening = styled.div`
 
 function HomePage() {
   return <Container>
-    <Header>
-      <HeaderImage src={background} alt="Marketing Image" />
-    </Header>
-
+        <Slider {...sliderSettings}>
+          <div>
+            <img src={background} alt="Slide 1" style={{ width: '100%', height: 'auto' }} />
+          </div>
+          <div>
+            <img src={background} alt="Slide 2" style={{ width: '100%', height: 'auto' }} />
+          </div>
+        </Slider>
     <SearchSection>
       <SearchHeader>클래스 조회</SearchHeader>
       <SearchText>들고 싶은 클래스를 검색해보세요.</SearchText>
       <SearchInputWrapper>
         <SearchInput type="text" placeholder="들고 싶은 클래스를 검색해보세요." />
-        <SearchButton>검색</SearchButton>
+        <SearchButton>
+          <img src={searchIcon} alt="icon" />
+        </SearchButton>
       </SearchInputWrapper>
       <CategoryWrapper>
         <CategoryButton>
@@ -220,7 +255,10 @@ function HomePage() {
     </SearchSection>
 
     <ClassSection>
-      <ClassTitle>⭐지금 인기 있는 클래스</ClassTitle>
+      <ClassHeader>
+        <ClassTitle>⭐지금 인기 있는 클래스</ClassTitle>
+        <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+      </ClassHeader>
       <ClassGrid>
         <ClassCard>
           <ClassImage src={examplepng} alt="Marketing Image" />
@@ -261,8 +299,20 @@ function HomePage() {
       </ClassGrid>
     </ClassSection>
 
+        <Slider {...sliderSettings}>
+          <div>
+            <img src={ad1} alt="Slide 1" style={{ width: '100%', height: 'auto' }} />
+          </div>
+          <div>
+            <img src={ad2} alt="Slide 2" style={{ width: '100%', height: 'auto' }} />
+          </div>
+        </Slider>
+
     <ClassSection>
-      <ClassTitle>🔎새로 등록된 클래스</ClassTitle>
+      <ClassHeader>
+        <ClassTitle>🔎새로 등록된 클래스</ClassTitle>
+        <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+      </ClassHeader>
       <ClassGrid>
         <ClassCard>
           <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
@@ -304,7 +354,10 @@ function HomePage() {
     </ClassSection>
 
     <ClassSection>
-      <ClassTitle>🔥모집 인원 마감 임박 클래스</ClassTitle>
+    <ClassHeader>
+        <ClassTitle>🔥모집 인원 마감 임박 클래스</ClassTitle>
+        <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+      </ClassHeader>
       <ClassGrid>
         <ClassCard>
           <ClassImage src={examplepng} alt="비즈니스 영어 회화" />

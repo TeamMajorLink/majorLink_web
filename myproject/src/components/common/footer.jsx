@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import insta from '../assets/class/footer_icon_insta.png';
-import blog from '../assets/class/footer_icon_blog.png';
+import insta from '../../assets/class/footer_icon_insta.png';
+import blog from '../../assets/class/footer_icon_blog.png';
 
 const FooterContainer = styled.div`
   background-color: #f8f9fa;
@@ -68,7 +68,7 @@ function Footer() {
   return (
     <FooterContainer>
       <Header>전공을 잇다, 메이저링크</Header>
-      
+
       <FooterSections>
         <FooterSection>
           <SectionHeader>메이저링크</SectionHeader>
@@ -95,17 +95,18 @@ function Footer() {
           </SectionText>
         </FooterSection>
       </FooterSections>
-      
+
       <FooterText>
-      (주)메이저링크 | 대표자명: 링키 | 개인정보책임관리자: 링키 | 주소: 서울시 어쩌구 저쩌로123, 4층 | 사업자등록번호: 123-45-67890 | 통신판매업 신고번호: 2024-서울어쩌-12345
-      고객센터: 1234-5678 | 이메일: support@majorlink.co.kr
+        (주)메이저링크 | 대표자명: 링키 | 개인정보책임관리자: 링키 | 주소:
+        서울시 어쩌구 저쩌로123, 4층 | 사업자등록번호: 123-45-67890 | 통신판매업
+        신고번호: 2024-서울어쩌-12345 고객센터: 1234-5678 | 이메일:
+        support@majorlink.co.kr
       </FooterText>
       <FooterText>
-      (주)메이저링크는 통신판매중개자로서 거래 당사자가 아니므로, 튜터가 등록한 상품정보 및 거래 등에 관한 의무와 책임을 지지 않습니다.
+        (주)메이저링크는 통신판매중개자로서 거래 당사자가 아니므로, 튜터가
+        등록한 상품정보 및 거래 등에 관한 의무와 책임을 지지 않습니다.
       </FooterText>
-      <FooterText>
-      CopyrightⒸ 2024 majorLink. All rights reserved.
-      </FooterText>
+      <FooterText>CopyrightⒸ 2024 majorLink. All rights reserved.</FooterText>
 
       <FooterIcons>
         <FooterIcon src={insta} alt="Instagram" />

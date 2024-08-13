@@ -14,6 +14,7 @@ const font = {
   //   base_16: FONT({ weight: 600, size: 1.6 }),
   regular_16: FONT({ weight: 400, size: 1.6 }),
   semibold_20: FONT({ weight: 600, size: 2.0 }),
+  bold_20: FONT({ weight: 700, size: 2.0 }),
   test_100: FONT({ weight: 900, size: 10.0 }),
 };
 

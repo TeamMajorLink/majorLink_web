@@ -2,7 +2,7 @@
 import { styled } from 'styled-components';
 import { ClassCategoryButton } from './ClassCategoryButton';
 import { ClassInterestIcon } from './ClassInterestIcon';
-import ThumbnailPng from '../../../assets/class/back_class_thumbnail_480x292.png';
+import ThumbnailPng from '../../../../assets/class/back_class_thumbnail_480x292.png';
 
 const ThumbnailImgContainer = styled.div`
   margin: 0;

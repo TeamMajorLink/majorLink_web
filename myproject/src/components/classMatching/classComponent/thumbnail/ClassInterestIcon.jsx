@@ -1,6 +1,6 @@
 // import { createGlobalStyle, styled } from "styled-components";
 import { styled } from 'styled-components';
-import InterestIcon from '../../../assets/class/class_icon_interest_35x35.png';
+import InterestIcon from '../../../../assets/class/class_icon_interest_35x35.png';
 
 const IconButton = styled.button`
   margin: 2.5px;
@@ -11,6 +11,7 @@ const IconButton = styled.button`
 
   border: none;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 const IconImg = styled.img`

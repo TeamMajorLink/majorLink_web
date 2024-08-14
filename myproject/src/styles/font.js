@@ -24,6 +24,7 @@ const font = {
   semibold_22: FONT({ weight: 600, size: 2.2 }),
   semibold_28: FONT({ weight: 600, size: 2.8 }),
   semibold_40: FONT({ weight: 600, size: 4.0 }),
+  semibold_48: FONT({ weight: 600, size: 4.8 }),
   bold_20: FONT({ weight: 700, size: 2.0 }),
 };
 

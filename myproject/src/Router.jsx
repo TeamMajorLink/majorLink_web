@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';
 import { ClassMatchingPage } from './pages/ClassMatchingPage';
+import { ClassDetailPage } from './pages/ClassDetailPage';
 
 export default function Router() {
   return (
@@ -12,6 +13,7 @@ export default function Router() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/class-matching" element={<ClassMatchingPage />} />
+        <Route path="/class-detail" element={<ClassDetailPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -6,7 +6,7 @@ import ThumbnailPng from '../../assets/backEnd/back_class_thumbnail_922x522.png'
 const ComponentContainer = styled.div`
   margin: 0;
   padding: 0;
-  width: 100vw;
+  width: 100%;
   height: 68rem;
 
   display: flex;

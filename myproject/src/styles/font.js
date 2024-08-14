@@ -17,8 +17,10 @@ const font = {
   regular_18: FONT({ weight: 400, size: 1.8 }),
   regular_20: FONT({ weight: 400, size: 2.0 }),
   regular_22: FONT({ weight: 400, size: 2.2 }),
+  medium_14: FONT({ weight: 500, size: 1.4 }),
   medium_16: FONT({ weight: 500, size: 1.6 }),
   medium_18: FONT({ weight: 500, size: 1.8 }),
+  semibold_16: FONT({ weight: 600, size: 1.6 }),
   semibold_18: FONT({ weight: 600, size: 1.8 }),
   semibold_20: FONT({ weight: 600, size: 2.0 }),
   semibold_22: FONT({ weight: 600, size: 2.2 }),
@@ -26,6 +28,7 @@ const font = {
   semibold_40: FONT({ weight: 600, size: 4.0 }),
   semibold_48: FONT({ weight: 600, size: 4.8 }),
   bold_20: FONT({ weight: 700, size: 2.0 }),
+  bold_24: FONT({ weight: 700, size: 2.4 }),
 };
 
 export default font;

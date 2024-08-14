@@ -2,10 +2,11 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { HeaderComponent } from '../components/common/header/HeaderComponent';
 import { ClassDetailTitle } from '../components/classDetail/ClassDetailTitle';
+import { ClassAsideSection } from '../components/classDetail/ClassAsideSection';
 
 const PageContainer = styled.div`
   margin: 0;
-  width: 100vw;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -20,6 +21,7 @@ export function ClassDetailPage() {
       <PageContainer>
         <ClassDetailTitle />
       </PageContainer>
+      <ClassAsideSection />
     </div>
   );
 }

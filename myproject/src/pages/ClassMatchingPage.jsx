@@ -4,8 +4,7 @@ import { SearchSection } from '../components/classMatching/search/SearchSection'
 import { FilterArray } from '../components/classMatching/filterArray/FilterArray';
 import { ClassList } from '../components/classMatching/classComponent/ClassList';
 import { Pagination } from '../components/classMatching/pagination/Pagination';
-import { HeaderBeforeLogin } from '../components/common/header/HeaderBeforeLogin';
-// import { HeaderAfterLogin } from '../components/common/header/HeaderAfterLogin';
+import { HeaderComponent } from '../components/common/header/HeaderComponent';
 
 const PageContainer = styled.div`
   margin: 0;
@@ -20,7 +19,7 @@ const PageContainer = styled.div`
 export function ClassMatchingPage() {
   return (
     <div>
-      <HeaderBeforeLogin />
+      <HeaderComponent />
       <PageContainer>
         <SearchSection />
         <FilterArray />

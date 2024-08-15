@@ -25,6 +25,9 @@ const font = {
   semibold_28: FONT({ weight: 600, size: 2.8 }),
   semibold_40: FONT({ weight: 600, size: 4.0 }),
   bold_20: FONT({ weight: 700, size: 2.0 }),
+  test_100: FONT({ weight: 900, size: 10.0 }),
+  mypage: FONT({weight: 500, size: 1.8}),
+  title: FONT({ weight: 600, size: 3.0 })
 };
 
 export default font;

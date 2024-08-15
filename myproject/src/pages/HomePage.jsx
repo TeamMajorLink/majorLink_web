@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
 import viewAll from './Login';
 import background from '../assets/class/HomePage_sliding.png';
 import examplepng from '../assets/class/HomePage_example.jpg';
@@ -46,7 +46,7 @@ const SearchText = styled.h3`
   margin-top: px;
   line-height: 50px;
   margin-bottom: 30px;
-  padding-left: 20px; 
+  padding-left: 20px;
 `;
 
 const SearchInputWrapper = styled.div`
@@ -57,9 +57,9 @@ const SearchInputWrapper = styled.div`
 
 const SearchInput = styled.input`
   width: 100%;
-  padding: 10px 50px 10px 10px; 
+  padding: 10px 50px 10px 10px;
   border-radius: 50px;
-  border: 2px solid #49BBBD;
+  border: 2px solid #49bbbd;
 `;
 
 const SearchButton = styled.button`
@@ -68,7 +68,7 @@ const SearchButton = styled.button`
   top: 0;
   height: 100%;
   padding: 0 15px;
-  background-color: #49BBBD; 
+  background-color: #49bbbd;
   border-radius: 100px;
   border: none;
   cursor: pointer;
@@ -77,7 +77,7 @@ const SearchButton = styled.button`
   justify-content: center;
 
   img {
-    width: 20px; 
+    width: 20px;
     height: 20px;
   }
 `;
@@ -92,7 +92,6 @@ const sliderSettings = {
   autoplaySpeed: 3000,
 };
 
-
 const CategoryWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -101,9 +100,9 @@ const CategoryWrapper = styled.div`
 `;
 
 const CategoryButton = styled.button`
-  background-color: #49BBBD;
+  background-color: #49bbbd;
   color: white;
-  border: 2px solid #E5E5E5;
+  border: 2px solid #e5e5e5;
   border-radius: 10px;
   padding: 13px 14px;
   margin-top: 100px;
@@ -137,13 +136,13 @@ const ClassHeader = styled.div`
 const ViewAllButton = styled.button`
   background: none;
   border: none;
-  color: #49BBBD;
+  color: #49bbbd;
   font-size: 16px;
   cursor: pointer;
   margin-right: 50px;
 
   &:hover {
-    color: #007B7F;
+    color: #007b7f;
   }
 `;
 
@@ -172,7 +171,7 @@ const ClassImage = styled.img`
   width: 100%;
   height: 150px;
   object-fit: cover;
-  background-color: #49BBBD;
+  background-color: #49bbbd;
 `;
 
 const ClassContent = styled.div`
@@ -183,7 +182,7 @@ const ClassTitleText = styled.h3`
   font-size: 2rem;
 `;
 
-const ClassInstruction= styled.div`
+const ClassInstruction = styled.div`
   font-size: 1rem;
   color: #9d9b9b;
 `;
@@ -195,210 +194,229 @@ const ClassRating = styled.div`
 
 const ClassPeopleListening = styled.div`
   font-size: 1rem;
-  color: black
+  color: black;
 `;
 
-
 function HomePage() {
-  return <Container>
-        <Slider {...sliderSettings}>
-          <div>
-            <img src={background} alt="Slide 1" style={{ width: '100%', height: 'auto' }} />
-          </div>
-          <div>
-            <img src={background} alt="Slide 2" style={{ width: '100%', height: 'auto' }} />
-          </div>
-        </Slider>
-    <SearchSection>
-      <SearchHeader>클래스 조회</SearchHeader>
-      <SearchText>들고 싶은 클래스를 검색해보세요.</SearchText>
-      <SearchInputWrapper>
-        <SearchInput type="text" placeholder="들고 싶은 클래스를 검색해보세요." />
-        <SearchButton>
-          <img src={searchIcon} alt="icon" />
-        </SearchButton>
-      </SearchInputWrapper>
-      <CategoryWrapper>
-        <CategoryButton>
-          <CategoryImg src = {category1} alt="img" />
-          <CategoryText>인문과학</CategoryText>
-        </CategoryButton>
-        <CategoryButton>
-          <CategoryImg src = {category2} alt="img" />
-          <CategoryText>사회과학</CategoryText>
-        </CategoryButton>
-        <CategoryButton>
-          <CategoryImg src = {category3} alt="img" />
-          <CategoryText>공학</CategoryText>
-        </CategoryButton>
-        <CategoryButton>
-          <CategoryImg src = {category4} alt="img" />
-          <CategoryText>자연과학</CategoryText>
-        </CategoryButton>
-        <CategoryButton>
-          <CategoryImg src = {category5} alt="img" />
-          <CategoryText>교육학</CategoryText>
-        </CategoryButton>
-        <CategoryButton>
-          <CategoryImg src = {category6} alt="img" />
-          <CategoryText>의약학</CategoryText>
-        </CategoryButton>
-        <CategoryButton>
-          <CategoryImg src = {category7} alt="img" />
-          <CategoryText>예체능</CategoryText>
-        </CategoryButton>
-        <CategoryButton>
-          <CategoryImg src = {category8} alt="img" />
-          <CategoryText>기타</CategoryText>
-        </CategoryButton>
-      </CategoryWrapper>
-    </SearchSection>
+  return (
+    <Container>
+      <Slider {...sliderSettings}>
+        <div>
+          <img
+            src={background}
+            alt="Slide 1"
+            style={{ width: '100%', height: 'auto' }}
+          />
+        </div>
+        <div>
+          <img
+            src={background}
+            alt="Slide 2"
+            style={{ width: '100%', height: 'auto' }}
+          />
+        </div>
+      </Slider>
+      <SearchSection>
+        <SearchHeader>클래스 조회</SearchHeader>
+        <SearchText>들고 싶은 클래스를 검색해보세요.</SearchText>
+        <SearchInputWrapper>
+          <SearchInput
+            type="text"
+            placeholder="들고 싶은 클래스를 검색해보세요."
+          />
+          <SearchButton>
+            <img src={searchIcon} alt="icon" />
+          </SearchButton>
+        </SearchInputWrapper>
+        <CategoryWrapper>
+          <CategoryButton>
+            <CategoryImg src={category1} alt="img" />
+            <CategoryText>인문과학</CategoryText>
+          </CategoryButton>
+          <CategoryButton>
+            <CategoryImg src={category2} alt="img" />
+            <CategoryText>사회과학</CategoryText>
+          </CategoryButton>
+          <CategoryButton>
+            <CategoryImg src={category3} alt="img" />
+            <CategoryText>공학</CategoryText>
+          </CategoryButton>
+          <CategoryButton>
+            <CategoryImg src={category4} alt="img" />
+            <CategoryText>자연과학</CategoryText>
+          </CategoryButton>
+          <CategoryButton>
+            <CategoryImg src={category5} alt="img" />
+            <CategoryText>교육학</CategoryText>
+          </CategoryButton>
+          <CategoryButton>
+            <CategoryImg src={category6} alt="img" />
+            <CategoryText>의약학</CategoryText>
+          </CategoryButton>
+          <CategoryButton>
+            <CategoryImg src={category7} alt="img" />
+            <CategoryText>예체능</CategoryText>
+          </CategoryButton>
+          <CategoryButton>
+            <CategoryImg src={category8} alt="img" />
+            <CategoryText>기타</CategoryText>
+          </CategoryButton>
+        </CategoryWrapper>
+      </SearchSection>
 
-    <ClassSection>
-      <ClassHeader>
-        <ClassTitle>⭐지금 인기 있는 클래스</ClassTitle>
-        <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
-      </ClassHeader>
-      <ClassGrid>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="Marketing Image" />
-          <ClassContent>
-            <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="Marketing Image" />
-          <ClassContent>
-            <ClassTitleText>C 프로그래밍</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="기계요소 설계" />
-          <ClassContent>
-            <ClassTitleText>기계요소 설계</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="디지털 마케팅" />
-          <ClassContent>
-            <ClassTitleText>디지털 마케팅</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-      </ClassGrid>
-    </ClassSection>
+      <ClassSection>
+        <ClassHeader>
+          <ClassTitle>⭐지금 인기 있는 클래스</ClassTitle>
+          <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+        </ClassHeader>
+        <ClassGrid>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="Marketing Image" />
+            <ClassContent>
+              <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="Marketing Image" />
+            <ClassContent>
+              <ClassTitleText>C 프로그래밍</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="기계요소 설계" />
+            <ClassContent>
+              <ClassTitleText>기계요소 설계</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="디지털 마케팅" />
+            <ClassContent>
+              <ClassTitleText>디지털 마케팅</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+        </ClassGrid>
+      </ClassSection>
 
-        <Slider {...sliderSettings}>
-          <div>
-            <img src={ad1} alt="Slide 1" style={{ width: '100%', height: 'auto' }} />
-          </div>
-          <div>
-            <img src={ad2} alt="Slide 2" style={{ width: '100%', height: 'auto' }} />
-          </div>
-        </Slider>
+      <Slider {...sliderSettings}>
+        <div>
+          <img
+            src={ad1}
+            alt="Slide 1"
+            style={{ width: '100%', height: 'auto' }}
+          />
+        </div>
+        <div>
+          <img
+            src={ad2}
+            alt="Slide 2"
+            style={{ width: '100%', height: 'auto' }}
+          />
+        </div>
+      </Slider>
 
-    <ClassSection>
-      <ClassHeader>
-        <ClassTitle>🔎새로 등록된 클래스</ClassTitle>
-        <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
-      </ClassHeader>
-      <ClassGrid>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
-          <ClassContent>
-            <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="C 프로그래밍" />
-          <ClassContent>
-            <ClassTitleText>C 프로그래밍</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="기계요소 설계" />
-          <ClassContent>
-            <ClassTitleText>기계요소 설계</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="디지털 마케팅" />
-          <ClassContent>
-            <ClassTitleText>디지털 마케팅</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-      </ClassGrid>
-    </ClassSection>
+      <ClassSection>
+        <ClassHeader>
+          <ClassTitle>🔎새로 등록된 클래스</ClassTitle>
+          <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+        </ClassHeader>
+        <ClassGrid>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
+            <ClassContent>
+              <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="C 프로그래밍" />
+            <ClassContent>
+              <ClassTitleText>C 프로그래밍</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="기계요소 설계" />
+            <ClassContent>
+              <ClassTitleText>기계요소 설계</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="디지털 마케팅" />
+            <ClassContent>
+              <ClassTitleText>디지털 마케팅</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+        </ClassGrid>
+      </ClassSection>
 
-    <ClassSection>
-    <ClassHeader>
-        <ClassTitle>🔥모집 인원 마감 임박 클래스</ClassTitle>
-        <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
-      </ClassHeader>
-      <ClassGrid>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
-          <ClassContent>
-            <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="C 프로그래밍" />
-          <ClassContent>
-            <ClassTitleText>C 프로그래밍</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="기계요소 설계" />
-          <ClassContent>
-            <ClassTitleText>기계요소 설계</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-        <ClassCard>
-          <ClassImage src={examplepng} alt="디지털 마케팅" />
-          <ClassContent>
-            <ClassTitleText>디지털 마케팅</ClassTitleText>
-            <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-            <ClassRating>⭐ 4.2</ClassRating>
-            <ClassPeopleListening>👥2/5</ClassPeopleListening>
-          </ClassContent>
-        </ClassCard>
-      </ClassGrid>
-    </ClassSection>
-    
-  </Container>
+      <ClassSection>
+        <ClassHeader>
+          <ClassTitle>🔥모집 인원 마감 임박 클래스</ClassTitle>
+          <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+        </ClassHeader>
+        <ClassGrid>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
+            <ClassContent>
+              <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="C 프로그래밍" />
+            <ClassContent>
+              <ClassTitleText>C 프로그래밍</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="기계요소 설계" />
+            <ClassContent>
+              <ClassTitleText>기계요소 설계</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+          <ClassCard>
+            <ClassImage src={examplepng} alt="디지털 마케팅" />
+            <ClassContent>
+              <ClassTitleText>디지털 마케팅</ClassTitleText>
+              <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
+              <ClassRating>⭐ 4.2</ClassRating>
+              <ClassPeopleListening>👥2/5</ClassPeopleListening>
+            </ClassContent>
+          </ClassCard>
+        </ClassGrid>
+      </ClassSection>
+    </Container>
+  );
 }
 
 export default HomePage;

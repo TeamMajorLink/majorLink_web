@@ -24,6 +24,7 @@ const Wrapper = styled.div`
     margin-top: 5px;
     color: ${() => color.primary_dark};
   }
+}
 `;
 
 const Container = styled.div`

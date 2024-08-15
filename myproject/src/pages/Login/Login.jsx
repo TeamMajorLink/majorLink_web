@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
-import kakaoIcon from "../assets/class/kakao_icon.png";
-import naverIcon from "../assets/class/naver_icon.png";
+import kakaoIcon from "../../assets/class/kakao_icon.png";
+import naverIcon from "../../assets/class/naver_icon.png";
+
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -253,7 +254,7 @@ function Login() {
         </LoginInput>
         <Button onClick={handleLogin}>이메일 로그인</Button>
         <LinksWrapper>
-          <span>이메일 찾기</span>
+          <Link to= "/login-findemail">이메일 찾기</Link>
           <span>|</span>
           <span>비밀번호 찾기</span>
           <span>|</span>

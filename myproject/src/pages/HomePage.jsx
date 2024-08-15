@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import viewAll from './Login';
+import viewAll from './Login/Login';
 import background from '../assets/class/HomePage_sliding.png';
 import examplepng from '../assets/class/HomePage_example.jpg';
 import category1 from '../assets/class/category1.png';

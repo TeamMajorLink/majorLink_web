@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';
 import { ClassMatchingPage } from './pages/ClassMatchingPage';
+import { ClassDetailPage } from './pages/ClassDetailPage';
 import MyPage from './pages/MyPage/MyPage';
 import EditProfile from './pages/MyPage/EditProfile';
 import RechargePoints from './pages/MyPage/RechargePoints';
@@ -19,14 +20,16 @@ export default function Router() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/class-matching" element={<ClassMatchingPage />} />
-        <Route path='/mypage' element={<MyPage/>}/>
-        <Route path='/editprofile' element={<EditProfile />}/>
-        <Route path='/rechargepoints' element={<RechargePoints/>}/>
-        <Route path='/posts' element={<Posts/>}/>
-        <Route path='/invitation' element={<Invitation/>}/>
-        <Route path='/notice' element={<Notice/>}/>
-        <Route path='/event' element={<Event/>}/>
-        <Route path='/inquiry' element={<Inquiry/>}/>
+        <Route path="/class-detail" element={<ClassDetailPage />} />
+        {/* mypage */}
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/editprofile" element={<EditProfile />} />
+        <Route path="/rechargepoints" element={<RechargePoints />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/invitation" element={<Invitation />} />
+        <Route path="/notice" element={<Notice />} />
+        <Route path="/event" element={<Event />} />
+        <Route path="/inquiry" element={<Inquiry />} />
       </Routes>
     </BrowserRouter>
   );

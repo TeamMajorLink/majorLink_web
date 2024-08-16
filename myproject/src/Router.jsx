@@ -13,7 +13,12 @@ import Notice from './pages/MyPage/Notice';
 import Event from './pages/MyPage/Event';
 import Inquiry from './pages/MyPage/Inquiry';
 
-import ProfileCardMake from './pages/ProfileCardMake';
+import ProfileCard from './pages/users/ProfileCard';
+import ProfileCardMake from './pages/users/ProfileCardMake';
+import OfferClass from './pages/users/OfferClass';
+import OfferedClassList from './pages/users/OfferedClassList';
+import OfferedClassModify from './pages/users/OfferedClassModify';
+
 
 export default function Router() {
   return (
@@ -34,7 +39,13 @@ export default function Router() {
         <Route path="/event" element={<Event />} />
         <Route path="/inquiry" element={<Inquiry />} />
 
-        <Route path="/make-class/profilecardmake" element={<ProfileCardMake />} />
+        {/* 수업 개설하기 수정 예정 */}
+        <Route path="/users/profile-card" element={<ProfileCardMake />} />
+        <Route path="/users/profile-card/:nickname" element={<ProfileCard />} />
+        
+        <Route path="/offerclass" element={<OfferClass />} />
+        <Route path="/offeredclasslist" element={<OfferedClassList />} />
+        <Route path="/offeredclassmodify/:class" element={<OfferedClassModify />} />
       </Routes>
     </BrowserRouter>
   );

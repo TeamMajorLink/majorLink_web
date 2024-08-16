@@ -105,7 +105,7 @@ const IconImg = styled.img`
   height: 2rem;
 `;
 
-export function ClassAsideSection() {
+export function ClassAsideSection({ openModal }) {
   return (
     <ComponentContainer>
       <ClassTitleText>백엔드 웹 개발 기초</ClassTitleText>
@@ -133,7 +133,9 @@ export function ClassAsideSection() {
         </ClassSubInfoContainer>
       </ClassInfoBox>
 
-      <ClassApplicationButton>수업 신청하기</ClassApplicationButton>
+      <ClassApplicationButton onClick={openModal}>
+        수업 신청하기
+      </ClassApplicationButton>
       <ClassFlex>
         <ClassSubButton>
           <IconImg src={BookmarkPng} alt="bookmark" />

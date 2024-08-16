@@ -12,8 +12,10 @@ const color = {
 
   grayscale_fa: '#F3FAFF',
   grayscale_f5: '#F5F5F5',
-  grayscale_ea: '#EAEAEA',
+  grayscale_f0: '#F0F0F0',
+  grayscale_ea: '#EAEAEA', //
   grayscale_df: '#DFDFDF',
+  grayscale_d9: '#D9D9D9',
   grayscale_c4: '#C4C4C4',
   grayscale_b4: '#B4B4B4',
   grayscale_a3: '#A3A3A3',
@@ -22,7 +24,8 @@ const color = {
   grayscale_84: '#7E848E',
   grayscale_55: '#555555',
   grayscale_30: '#303030',
-  grayscale_d9: '#D9D9D9',
+
+  grayscale_45percent: '#00000073',
 };
 
 export default color;

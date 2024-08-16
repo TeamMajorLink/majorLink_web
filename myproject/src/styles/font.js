@@ -18,6 +18,7 @@ const font = {
   regular_18: FONT({ weight: 400, size: 1.8 }),
   regular_20: FONT({ weight: 400, size: 2.0 }),
   regular_22: FONT({ weight: 400, size: 2.2 }),
+  regular_32: FONT({ weight: 400, size: 3.2 }),
   medium_14: FONT({ weight: 500, size: 1.4 }),
   medium_16: FONT({ weight: 500, size: 1.6 }),
   medium_18: FONT({ weight: 500, size: 1.8 }),

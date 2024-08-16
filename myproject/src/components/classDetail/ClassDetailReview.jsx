@@ -79,6 +79,19 @@ export function ClassDetailReview() {
           받아주시고 개념에 대해 자세히 알려주셔서 좋았습니다.
         </ReviewContentText>
       </ReviewContainer>
+
+      <ReviewContainer>
+        <ReviewUserContainer>
+          <ReviewUserText>노브</ReviewUserText>
+          <ReviewDateText>2024-07-31</ReviewDateText>
+        </ReviewUserContainer>
+        <ReviewStarRatingText>⭐⭐⭐⭐⭐ 5.0</ReviewStarRatingText>
+        <ReviewContentText>
+          질문을 잘 받아주시고 개념에 대해 자세히 알려주셔서 좋았습니다. 질문을
+          잘 받아주시고 개념에 대해 자세히 알려주셔서 좋았습니다. 질문을 잘
+          받아주시고 개념에 대해 자세히 알려주셔서 좋았습니다.
+        </ReviewContentText>
+      </ReviewContainer>
     </ComponentContainer>
   );
 }

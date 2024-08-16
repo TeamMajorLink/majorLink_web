@@ -81,7 +81,7 @@ const SectionTitleText = styled.p`
   ${() => font.semibold_36};
 `;
 
-export function ClassDetailNavigation() {
+export function ClassDetailNavigation({ openModal }) {
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
@@ -141,7 +141,7 @@ export function ClassDetailNavigation() {
         </SectionListContainer>
 
         <AsideContainer>
-          <ClassAsideSection />
+          <ClassAsideSection openModal={openModal} />
         </AsideContainer>
       </SectionFlex>
     </ComponentContainer>

@@ -5,6 +5,7 @@ import font from '../../../styles/font';
 export const HeaderContainer = styled.div`
   margin: 0;
   height: 12.8rem;
+  width: 100%;
 
   display: flex;
   justify-content: space-between;

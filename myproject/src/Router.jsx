@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';
-import { ClassMatchingPage } from './pages/ClassMatchingPage';
-import { ClassDetailPage } from './pages/ClassDetailPage';
+import { ClassMatchingPage } from './pages/class/ClassMatchingPage';
+import { ClassDetailPage } from './pages/class/ClassDetailPage';
 import MyPage from './pages/MyPage/MyPage';
 import EditProfile from './pages/MyPage/EditProfile';
 import RechargePoints from './pages/MyPage/RechargePoints';
@@ -18,6 +18,7 @@ import ProfileCardMake from './pages/users/ProfileCardMake';
 import OfferClass from './pages/users/OfferClass';
 import OfferedClassList from './pages/users/OfferedClassList';
 import OfferedClassModify from './pages/users/OfferedClassModify';
+import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
 
 export default function Router() {
   return (
@@ -27,8 +28,12 @@ export default function Router() {
         <Route path="/login" element={<Login />} />
 
         {/* class - 강승현 */}
-        <Route path="/class-matching" element={<ClassMatchingPage />} />
-        <Route path="/class-detail" element={<ClassDetailPage />} />
+        <Route path="/class/matching" element={<ClassMatchingPage />} />
+        <Route path="/class/detail" element={<ClassDetailPage />} />
+        <Route
+          path="/class/application-completed"
+          element={<ClassApplicationCompletedPage />}
+        />
 
         {/* mypage */}
         <Route path="/mypage" element={<MyPage />} />

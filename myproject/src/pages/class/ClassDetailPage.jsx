@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
-import { HeaderComponent } from '../components/common/header/HeaderComponent';
-import { ClassDetailTitle } from '../components/classDetail/ClassDetailTitle';
-import { ClassDetailNavigation } from '../components/classDetail/ClassDetailNavigation';
-import { ClassApplicationModal } from '../components/classDetail/ClassApplicationModal';
+import { HeaderComponent } from '../../components/common/header/HeaderComponent';
+import { ClassDetailTitle } from '../../components/classDetail/ClassDetailTitle';
+import { ClassDetailNavigation } from '../../components/classDetail/ClassDetailNavigation';
+import { ClassApplicationModal } from '../../components/classDetail/ClassApplicationModal';
 
 const PageContainer = styled.div`
   margin: 0;

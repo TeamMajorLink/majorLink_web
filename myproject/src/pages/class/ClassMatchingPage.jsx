@@ -1,10 +1,10 @@
 import React from 'react';
 import { styled } from 'styled-components';
-import { SearchSection } from '../components/classMatching/search/SearchSection';
-import { FilterArray } from '../components/classMatching/filterArray/FilterArray';
-import { ClassList } from '../components/classMatching/classComponent/ClassList';
-import { Pagination } from '../components/classMatching/pagination/Pagination';
-import { HeaderComponent } from '../components/common/header/HeaderComponent';
+import { SearchSection } from '../../components/classMatching/search/SearchSection';
+import { FilterArray } from '../../components/classMatching/filterArray/FilterArray';
+import { ClassList } from '../../components/classMatching/classComponent/ClassList';
+import { Pagination } from '../../components/classMatching/pagination/Pagination';
+import { HeaderComponent } from '../../components/common/header/HeaderComponent';
 
 const PageContainer = styled.div`
   margin: 0;

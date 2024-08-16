@@ -42,13 +42,13 @@ const ModalContainer = styled.div`
   align-items: center;
 `;
 const ModalTitleText = styled.p`
-  margin: 0 0 4.8rem 0;
+  margin: 0 0 4.4rem 0;
 
   color: ${() => color.primary_dark};
   ${() => font.semibold_48};
 `;
 const ModalContent = styled.p`
-  margin: 0 0 6.8rem 0;
+  margin: 0 0 7.6rem 0;
 
   line-height: 4.8rem;
   text-align: center;
@@ -65,7 +65,7 @@ const ButtonContainer = styled.div`
 const ButtonStyle = css`
   margin: 0 2.4rem;
   padding: 0 5.2rem;
-  height: 10.8rem;
+  height: 9.8rem;
 
   display: flex;
   justify-content: center;

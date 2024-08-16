@@ -19,16 +19,17 @@ import OfferClass from './pages/users/OfferClass';
 import OfferedClassList from './pages/users/OfferedClassList';
 import OfferedClassModify from './pages/users/OfferedClassModify';
 
-
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/class-matching" element={<ClassMatchingPage />} />
 
+        {/* class - 강승현 */}
+        <Route path="/class-matching" element={<ClassMatchingPage />} />
         <Route path="/class-detail" element={<ClassDetailPage />} />
+
         {/* mypage */}
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/editprofile" element={<EditProfile />} />
@@ -42,10 +43,13 @@ export default function Router() {
         {/* 수업 개설하기 수정 예정 */}
         <Route path="/users/profile-card" element={<ProfileCardMake />} />
         <Route path="/users/profile-card/:nickname" element={<ProfileCard />} />
-        
+
         <Route path="/offerclass" element={<OfferClass />} />
         <Route path="/offeredclasslist" element={<OfferedClassList />} />
-        <Route path="/offeredclassmodify/:class" element={<OfferedClassModify />} />
+        <Route
+          path="/offeredclassmodify/:class"
+          element={<OfferedClassModify />}
+        />
       </Routes>
     </BrowserRouter>
   );

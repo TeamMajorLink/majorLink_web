@@ -1,7 +1,8 @@
 import { styled } from 'styled-components';
 import color from '../../styles/color';
 import font from '../../styles/font';
-// import ThumbnailPng from '../../assets/backEnd/back_class_thumbnail_922x522.png';
+import BookmarkPng from '../../assets/classDetail/class_icon_bookmark_20x20.png';
+import ChattingPng from '../../assets/classDetail/class_icon_chatting_20x20.png';
 
 const ComponentContainer = styled.div`
   margin: 0;
@@ -91,22 +92,18 @@ const ClassSubButton = styled.button`
   border-radius: 0.6rem;
   background-color: ${() => color.grayscale_f5};
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   cursor: pointer;
 `;
-// const ClassHashTag = styled.p`
-//   margin: 3.8rem 2.4rem 0 0;
-//   padding: 1rem 2rem;
-
-//   color: ${() => color.grayscale_b4};
-//   ${() => font.regular_16};
-
-//   border: 0.1rem solid ${() => color.grayscale_b4};
-//   border-radius: 20rem;
-
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
+const IconImg = styled.img`
+  margin: 0 1.6rem 0 0;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+`;
 
 export function ClassAsideSection() {
   return (
@@ -138,8 +135,14 @@ export function ClassAsideSection() {
 
       <ClassApplicationButton>수업 신청하기</ClassApplicationButton>
       <ClassFlex>
-        <ClassSubButton>저장</ClassSubButton>
-        <ClassSubButton>채팅</ClassSubButton>
+        <ClassSubButton>
+          <IconImg src={BookmarkPng} alt="bookmark" />
+          저장
+        </ClassSubButton>
+        <ClassSubButton>
+          <IconImg src={ChattingPng} alt="chatting" />
+          채팅
+        </ClassSubButton>
       </ClassFlex>
     </ComponentContainer>
   );

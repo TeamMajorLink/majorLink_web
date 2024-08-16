@@ -9,6 +9,13 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  background-color: ${() => color.white};
+
+  z-index: 99;
+  /* position: sticky;
+  top: 0; */
+  /* align-self: flex-start; */
 `;
 export const Container = css`
   display: flex;

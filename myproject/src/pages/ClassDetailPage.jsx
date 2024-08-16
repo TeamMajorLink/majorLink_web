@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { HeaderComponent } from '../components/common/header/HeaderComponent';
 import { ClassDetailTitle } from '../components/classDetail/ClassDetailTitle';
-import { ClassAsideSection } from '../components/classDetail/ClassAsideSection';
+import { ClassDetailNavigation } from '../components/classDetail/ClassDetailNavigation';
 
 const PageContainer = styled.div`
   margin: 0;
@@ -21,7 +21,7 @@ export function ClassDetailPage() {
       <PageContainer>
         <ClassDetailTitle />
       </PageContainer>
-      <ClassAsideSection />
+      <ClassDetailNavigation />
     </div>
   );
 }

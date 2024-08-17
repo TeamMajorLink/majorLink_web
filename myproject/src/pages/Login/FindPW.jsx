@@ -1,8 +1,7 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate 추가
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoArrowBack } from 'react-icons/io5';
-
 
 const Wrapper = styled.div`
   display: flex;
@@ -41,7 +40,7 @@ const Title = styled.h1`
 
 const Box = styled.div`
   width: 499px;
-  height: 336px;
+  height: 266px;
   padding: 20px;
   border-radius: 15px;
   background-color: #FFFFFF;
@@ -59,60 +58,34 @@ const Label = styled.label`
   text-align: left;
   margin-bottom: 5px;
   margin-top: 10px;
-  margin-left: 30px;
+  margin-left: 26px;
   display: block;
   color: black;
 `;
 
-const ShowBox = styled.div`
-  width: 390px;
-  height: 117px;
-  top: 499px;
-  left: 756px;
-  gap: 0px;
-  margin-left: 30px;
-  margin-bottom: 5px;
-  margin-top: 15px;
-  border-radius: 15px 15px 15px 15px;
-  opacity: 0px;
-  background: #D9D9D9;
-  text-align: center;
-
+const Input = styled.input`
+  width: 410px;
+  height: 60px;
+  margin-top: 10px;
+  margin-left: 23px;
+  padding: 0 100px 0 10px; 
+  margin-bottom: 10px;
+  border-radius: 11.3px;
+  border: 0.94px solid #DDDDDD;
+  font-family: Commissioner, sans-serif;
+  font-size: 15px;
 `;
 
-const Showtext = styled.h3`
-  font-family: Commissioner;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 18.84px;
-  text-align: center;
-  color: #555555;
-  margin-top: 15px;
-
-`;
-
-const EmailText = styled.h1`
+const PWtext = styled.h2`
   font-family: Inter;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 22.61px;
-  text-align: center;
-  margin-top: 15px;
-
-`;
-
-const FindPW = styled.h2`
-  font-family: Commissioner;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
-  line-height: 18.84px;
+  line-height: 15px;
   text-align: left;
-  margin-top: 20px;
+  margin-top: 5px;
   margin-left: 30px;
   margin-bottom: 20px;
-  text-decoration: underline;
-  color:#666666;
-
+  color: #A3A3A3;
 `;
 
 const ConfirmButton = styled.button`
@@ -128,14 +101,14 @@ const ConfirmButton = styled.button`
   cursor: pointer;
 `;
 
-function FindEmail() {
-    const navigate = useNavigate();
-    const handleConfirm = () => {
-        navigate('/login'); 
-      };
-      const handleConfirmPW = () => {
-        navigate('/login-findpw'); 
-      };
+function FindPW() {
+  const [email, setEmail] = useState('');
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    navigate('/login-findpw_number', { state: { email } });
+  };
+
   return (
     <Wrapper>
       <Header>
@@ -143,22 +116,24 @@ function FindEmail() {
           <IoArrowBack />
         </BackButton>
       </Header>
-      <Title>이메일 찾기</Title>
+      <Title>비밀번호 찾기</Title>
       <Box>
-        <Label>가입된 이메일을 알려드려요</Label>
-        <ShowBox>
-            <Showtext>
-                아래 이메일로 가입하셨습니다
-            </Showtext>
-            <EmailText>
-                example@email.com
-            </EmailText>
-        </ShowBox>
-        <FindPW onClick={handleConfirmPW}>비밀번호 찾기</FindPW>
-        <ConfirmButton onClick={handleConfirm}>로그인하기</ConfirmButton>
+        <Label>가입된 이메일 주소를 입력해주세요</Label>
+        <Input 
+          type="email" 
+          placeholder="example@email.com" 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <PWtext>
+          가입하신 이메일 주소를 입력해주시면<br/>
+          비밀번호 재설정을 위한 이메일 인증번호를 보내드립니다.
+        </PWtext>
+        <ConfirmButton onClick={handleNext}>이메일 전송하기</ConfirmButton>
       </Box>
     </Wrapper>
   );
 }
 
-export default FindEmail;
+export default FindPW;
+

@@ -256,7 +256,7 @@ function Login() {
         <LinksWrapper>
           <Link to= "/login-findemail">이메일 찾기</Link>
           <span>|</span>
-          <span>비밀번호 찾기</span>
+          <Link to= "/login-findpw">비밀번호 찾기</Link>
           <span>|</span>
           <span>회원가입</span>
         </LinksWrapper>

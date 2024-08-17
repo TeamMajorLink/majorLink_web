@@ -13,7 +13,11 @@ import Notice from './pages/MyPage/Notice';
 import Event from './pages/MyPage/Event';
 import Inquiry from './pages/MyPage/Inquiry';
 import FindEmail from './pages/Login/FindEmail_number';
-
+import FindPWNumber from './pages/Login/FindPW_number';
+import ChangePW from './pages/Login/ChangePW';
+import ChangePWCompleted from './pages/Login/ChangePWCompleted';
+import ShowEmail from './pages/Login/ShowEmail';
+import FindPW from './pages/Login/FindPW';
 import ProfileCard from './pages/users/ProfileCard';
 import ProfileCardMake from './pages/users/ProfileCardMake';
 import OfferClass from './pages/users/OfferClass';
@@ -27,11 +31,14 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
-<<<<<<< HEAD
         <Route path="/login-findemail" element={<FindEmail />} />
+        <Route path="/login-showemail" element={<ShowEmail />} />
+        <Route path="/login-findpw" element={<FindPW />} />
+        <Route path="/login-findpw_number" element={<FindPWNumber />} />
+        <Route path="/login-changepw" element={<ChangePW/>} />
+        <Route path="/login-changepwcompleted" element={<ChangePWCompleted/>} />
         <Route path="/class-matching" element={<ClassMatchingPage />} />
         <Route path="/class-detail" element={<ClassDetailPage />} />
-=======
 
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />
@@ -40,8 +47,6 @@ export default function Router() {
           path="/class/application-completed"
           element={<ClassApplicationCompletedPage />}
         />
-
->>>>>>> 7b714f8dbcc2f9417e4b1a3ea42af807eb957dd4
         {/* mypage */}
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/editprofile" element={<EditProfile />} />

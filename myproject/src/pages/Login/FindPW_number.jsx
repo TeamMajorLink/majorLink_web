@@ -3,8 +3,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoArrowBack } from 'react-icons/io5';
 
-
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,7 +40,7 @@ const Title = styled.h1`
 
 const Box = styled.div`
   width: 499px;
-  height: 404px;
+  height: 399px;
   padding: 20px;
   border-radius: 15px;
   background-color: #FFFFFF;
@@ -59,10 +57,14 @@ const Label = styled.label`
   line-height: 18.84px;
   text-align: left;
   margin-bottom: 5px;
-  margin-top: 10px;
+  margin-top: 40px;
   margin-left: 30px;
   display: block;
   color: black;
+`;
+
+const HighlightedEmail = styled.span`
+  color: #49BBBD;
 `;
 
 const InputWrapper = styled.div`
@@ -77,7 +79,7 @@ const Input = styled.input`
   margin-top: 10px;
   margin-left: 23px;
   padding: 0 100px 0 10px; 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 11.3px;
   border: 0.94px solid #DDDDDD;
   font-family: Commissioner, sans-serif;
@@ -90,29 +92,24 @@ const ButtonInsideInput = styled.button`
   top: 19px;
   width: 85px;
   height: 40px;
-
   background-color:#49BBBD;
   color: white;
   font-size: 16px;
   font-weight: 600;
   border: none;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 10px;
   cursor: pointer;
 `;
 
 const StatusMessage = styled.p`
- font-family: Inter;
-font-size: 11px;
-font-weight: 400;
-line-height: 18.84px;
-text-align: left;
+  font-family: Inter;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 18.84px;
+  text-align: left;
   color: ${props => (props.isValid ? 'blue' : 'red')};
   margin-bottom: 20px;
   margin-left: 27px;
-`;
-
-const HighlightedEmail = styled.span`
-  color: #49BBBD;
 `;
 
 const ConfirmButton = styled.button`
@@ -128,12 +125,12 @@ const ConfirmButton = styled.button`
   cursor: pointer;
 `;
 
-function FindEmail() {
+function FindPWNumber() {
   const [verificationCode, setVerificationCode] = useState("");
   const [isCodeValid, setIsCodeValid] = useState(null); 
   const navigate = useNavigate();
-  const location = useLocation(); 
-  const email = location.state?.email || "example@email.com"; 
+  const location = useLocation();
+  const email = location.state?.email || "example@email.com"; // 전달된 이메일이 없을 경우 기본값
 
   const handleVerifyCode = () => {
     if (verificationCode === "123456") {
@@ -184,4 +181,4 @@ function FindEmail() {
   );
 }
 
-export default FindEmail;
+export default FindPWNumber;

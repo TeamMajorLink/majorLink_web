@@ -4,7 +4,7 @@ import color from '../../../styles/color';
 import font from '../../../styles/font';
 
 const ComponentContainer = styled.form`
-  margin: 0;
+  margin: 16.4rem 0 0 0;
   padding: 0;
 
   display: flex;
@@ -35,15 +35,18 @@ const FlexEnd = styled.div`
   justify-content: flex-end;
 `;
 const IsEssential = styled.div`
-  margin: 0 0 5.6rem 0;
+  margin: 0 0 4.8rem 0;
   padding: 0;
   width: 10.8rem;
   height: 5.4rem;
 
+  border: 0.1rem solid ${() => color.primary_normal};
   border-radius: 1rem;
-  background-color: ${() => color.primary_dark};
+  /* background-color: ${() => color.primary_dark}; */
+  background-color: ${() => color.white};
 
-  color: ${() => color.white};
+  /* color: ${() => color.white}; */
+  color: ${() => color.primary_dark};
   ${() => font.semibold_24};
 
   display: flex;
@@ -55,19 +58,23 @@ const QuestionContainerUl = styled.ul`
   padding: 0;
 `;
 const QuestionTextLi = styled.li`
+  margin: 0 0 2rem 0;
   ${() => font.semibold_24};
 `;
 const InputTextBoxBig = styled.input`
-  margin: 0;
+  margin: 0 0 5.6rem 0;
   padding: 2.4rem 3.2rem;
   width: 86.4rem;
   height: 19.6rem;
 
   border: 0.1rem solid ${() => color.grayscale_9d};
   border-radius: 1.4rem;
+
+  color: ${() => color.grayscale_84};
+  ${() => font.regular_20};
 `;
 const SubmitButton = styled.button`
-  margin: 0;
+  margin: 0 0 12rem 0;
   padding: 0;
   width: 24.8rem;
   height: 8.4rem;
@@ -101,9 +108,7 @@ export function ClassApplicationComponent() {
             <QuestionTextLi>
               클래스를 통해 배우고 싶거나 기대하는 것은 무엇인가요?
             </QuestionTextLi>
-            <QuestionTextLi>
-              클래스를 통해 배우고 싶거나 기대하는 것은 무엇인가요?
-            </QuestionTextLi>
+            <InputTextBoxBig />
           </QuestionContainerUl>
         </FlexStart>
         <FlexStart>
@@ -112,6 +117,7 @@ export function ClassApplicationComponent() {
             <QuestionTextLi>
               클래스를 통해 배우고 싶거나 기대하는 것은 무엇인가요?
             </QuestionTextLi>
+            <InputTextBoxBig />
           </QuestionContainerUl>
         </FlexStart>
         <FlexEnd>

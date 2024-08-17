@@ -16,7 +16,7 @@ export function HeaderNavigationBar() {
     navigate(`/`);
   };
   const handleClassPage = () => {
-    navigate(`/class-matching`);
+    navigate(`/class/matching`);
     setIsClassPageSelected(true);
   };
   const handleRegistrationPage = () => {

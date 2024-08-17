@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import styled from 'styled-components';
 import { IoArrowBack } from 'react-icons/io5';
+import ShowEmail from "./ShowEmail";
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -142,7 +144,7 @@ function FindEmail() {
 
   const handleConfirm = () => {
     if (isCodeValid) {
-      navigate('/email-display');
+      navigate(ShowEmail);
     } else {
       alert("인증을 완료해주세요.");
     }

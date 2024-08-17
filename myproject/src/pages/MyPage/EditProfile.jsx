@@ -159,7 +159,7 @@ const SubmitButton = styled.button`
 function EditProfile() {
   const { register, handleSubmit, watch } = useForm();
 
-  // const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => console.log(data);
 
   // 회원 정보 데이터
   // const [user, setUser] = useState({

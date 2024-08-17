@@ -9,6 +9,8 @@ const color = {
   yellow_star: '#F8BC24',
   gradation_primary_class:
     'linear-gradient(90deg, #B4F9F5 0%, #D0FFFC 0%, #8EF0EB 53.23%, #80F4F1 100%)',
+  gradation_rectangle:
+    'linear-gradient(90deg, #27F9F2 0%, #9FB4FF 100%)',
 
   grayscale_fa: '#F3FAFF',
   grayscale_f5: '#F5F5F5',

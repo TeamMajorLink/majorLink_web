@@ -18,18 +18,27 @@ import ProfileCardMake from './pages/users/ProfileCardMake';
 import OfferClass from './pages/users/OfferClass';
 import OfferedClassList from './pages/users/OfferedClassList';
 import OfferedClassModify from './pages/users/OfferedClassModify';
+import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
+import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
+import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* api 연동 테스트 - 삭제 예정!! */}
+        <Route path="/api-test/Create" element={<ApiTestCreatePage />} />
+        <Route path="/api-test/Read" element={<ApiTestReadPage />} />
+
+        {/* home, sign-in, sign-up */}
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
 
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />
         <Route path="/class/detail" element={<ClassDetailPage />} />
+        <Route path="/class/application" element={<ClassApplicationPage />} />
         <Route
           path="/class/application-completed"
           element={<ClassApplicationCompletedPage />}

@@ -2,14 +2,15 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoArrowBack } from 'react-icons/io5';
-
+import { HeaderComponent } from "../../components/common/header/HeaderComponent";
+import Footer from "../../components/common/footer";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  height: 100vh;
+  height: 73vh;
   background-color: #EDEDED;
 `;
 
@@ -100,7 +101,9 @@ function FindEmail() {
         navigate("/login"); 
       };
   return (
-    <Wrapper>
+    <div>
+      <HeaderComponent />
+      <Wrapper>
       <Header>
         <BackButton onClick={() => navigate(-1)}>
           <IoArrowBack />
@@ -112,7 +115,10 @@ function FindEmail() {
         <Text>변경된 비밀번호로 로그인 해주세요.</Text>
         <ConfirmButton onClick={handleConfirm}>로그인 하기</ConfirmButton>
       </Box>
-    </Wrapper>
+      </Wrapper>
+      <Footer/>
+    </div>
+
   );
 }
 

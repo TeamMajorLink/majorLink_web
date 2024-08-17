@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoArrowBack } from 'react-icons/io5';
+import { HeaderComponent } from "../../components/common/header/HeaderComponent";
+import Footer from "../../components/common/footer";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  height: 100vh;
+  height: 73vh;
   background-color: #EDEDED;
 `;
 
@@ -116,36 +118,40 @@ function ChangePW() {
   };
 
   return (
-    <Wrapper>
-      <Header>
-        <BackButton onClick={() => navigate(-1)}>
-          <IoArrowBack />
-        </BackButton>
-      </Header>
-      <Title>비밀번호 찾기</Title>
-      <Box>
-        <Label>새로운 비밀번호</Label>
-        <Input
-          type="password"
-          placeholder="비밀번호를 입력해주세요"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-        />
-        <Changetext>
-            영문, 숫자, 특수문자 조합 8자 이상 입력해주세요
-        </Changetext>
-        <Label>새로운 비밀번호 확인</Label>
-        <Input
-          type="password"
-          placeholder="비밀번호를 한 번 더 입력해주세요"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <ConfirmButton onClick={handleResetPassword}>
-          비밀번호 재설정 완료
-        </ConfirmButton>
-      </Box>
-    </Wrapper>
+    <div>
+      <HeaderComponent />
+      <Wrapper>
+        <Header>
+          <BackButton onClick={() => navigate(-1)}>
+            <IoArrowBack />
+          </BackButton>
+        </Header>
+        <Title>비밀번호 찾기</Title>
+        <Box>
+          <Label>새로운 비밀번호</Label>
+          <Input
+            type="password"
+            placeholder="비밀번호를 입력해주세요"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+          <Changetext>
+              영문, 숫자, 특수문자 조합 8자 이상 입력해주세요
+          </Changetext>
+          <Label>새로운 비밀번호 확인</Label>
+          <Input
+            type="password"
+            placeholder="비밀번호를 한 번 더 입력해주세요"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <ConfirmButton onClick={handleResetPassword}>
+            비밀번호 재설정 완료
+          </ConfirmButton>
+        </Box>
+      </Wrapper>
+      <Footer/>
+    </div>
   );
 }
 

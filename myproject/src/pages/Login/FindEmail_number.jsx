@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; 
 import styled from 'styled-components';
 import { IoArrowBack } from 'react-icons/io5';
-
+import { HeaderComponent } from "../../components/common/header/HeaderComponent";
+import Footer from "../../components/common/footer";
 
 
 const Wrapper = styled.div`
@@ -10,7 +11,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  height: 100vh;
+  height: 73vh;
   background-color: #EDEDED;
 `;
 
@@ -69,6 +70,7 @@ const InputWrapper = styled.div`
   position: relative;
   width: 100%;
   margin-bottom: 10px;
+
 `;
 
 const Input = styled.input`
@@ -76,6 +78,7 @@ const Input = styled.input`
   height: 60px;
   margin-top: 10px;
   margin-left: 23px;
+
   padding: 0 100px 0 10px; 
   margin-bottom: 20px;
   border-radius: 11.3px;
@@ -106,13 +109,9 @@ font-size: 11px;
 font-weight: 400;
 line-height: 18.84px;
 text-align: left;
-  color: ${props => (props.isValid ? 'blue' : 'red')};
-  margin-bottom: 20px;
-  margin-left: 27px;
-`;
-
-const HighlightedEmail = styled.span`
-  color: #49BBBD;
+color: ${props => (props.isValid ? '#49BBBD' : 'red')};
+margin-bottom: 20px;
+margin-left: 27px;
 `;
 
 const ConfirmButton = styled.button`
@@ -129,12 +128,13 @@ const ConfirmButton = styled.button`
 `;
 
 function FindEmail() {
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const [isCodeValid, setIsCodeValid] = useState(null); 
   const navigate = useNavigate();
-  const location = useLocation(); 
-  const email = location.state?.email || "example@email.com"; 
-
+  const handleSendCode = () => {
+    alert("인증번호가 발송되었습니다.");
+  };
   const handleVerifyCode = () => {
     if (verificationCode === "123456") {
       setIsCodeValid(true);
@@ -152,35 +152,47 @@ function FindEmail() {
   };
 
   return (
-    <Wrapper>
-      <Header>
-        <BackButton onClick={() => navigate(-1)}>
-          <IoArrowBack />
-        </BackButton>
-      </Header>
-      <Title>비밀번호 찾기</Title>
-      <Box>
-        <Label>
-          <HighlightedEmail>{email}</HighlightedEmail> 으로 인증번호를 전송했습니다.
-        </Label>
-        <Label>이메일 인증번호를 입력해주세요</Label>
-        <InputWrapper>
-          <Input 
-            type="text" 
-            placeholder="이메일 인증번호를 입력해주세요" 
-            value={verificationCode}
-            onChange={(e) => setVerificationCode(e.target.value)}
-          />
-          <ButtonInsideInput onClick={handleVerifyCode}>인증하기</ButtonInsideInput>
-        </InputWrapper>
-        {isCodeValid !== null && (
-          <StatusMessage isValid={isCodeValid}>
-            {isCodeValid ? "인증번호가 일치합니다." : "인증번호가 일치하지 않습니다."}
-          </StatusMessage>
-        )}
-        <ConfirmButton onClick={handleConfirm}>확인</ConfirmButton>
-      </Box>
-    </Wrapper>
+    <div>
+      <HeaderComponent />
+      <Wrapper>
+        <Header>
+          <BackButton onClick={() => navigate(-1)}>
+            <IoArrowBack />
+          </BackButton>
+        </Header>
+        <Title>이메일 찾기</Title>
+        <Box>
+          <Label>휴대전화 번호</Label>
+          <InputWrapper>
+            <Input 
+              type="text" 
+              placeholder="예) 010-1234-1234" 
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+            <ButtonInsideInput onClick={handleSendCode}>전송</ButtonInsideInput>
+          </InputWrapper>
+          <Label>인증번호</Label>
+          <InputWrapper>
+            <Input 
+              type="text" 
+              placeholder="SMS 인증번호를 입력해주세요" 
+              value={verificationCode}
+              onChange={(e) => setVerificationCode(e.target.value)}
+            />
+            <ButtonInsideInput onClick={handleVerifyCode}>인증하기</ButtonInsideInput>
+          </InputWrapper>
+          {isCodeValid !== null && (
+            <StatusMessage isValid={isCodeValid}>
+              {isCodeValid ? "인증번호가 일치합니다." : "인증번호가 일치하지 않습니다."}
+            </StatusMessage>
+          )}
+          <ConfirmButton onClick={handleConfirm}>확인</ConfirmButton>
+        </Box>
+      </Wrapper>
+      <Footer/>
+    </div>
+
   );
 }
 

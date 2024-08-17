@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom'; 
 import styled from 'styled-components';
 import { IoArrowBack } from 'react-icons/io5';
+import { HeaderComponent } from "../../components/common/header/HeaderComponent";
+import Footer from "../../components/common/footer";
+
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  height: 100vh;
+  height: 73vh;
   background-color: #EDEDED;
 `;
 
@@ -142,42 +145,46 @@ function FindPWNumber() {
 
   const handleConfirm = () => {
     if (isCodeValid) {
-      navigate('/login-showemail');
+      navigate("/login-changepw");
     } else {
       alert("인증을 완료해주세요.");
     }
   };
 
   return (
-    <Wrapper>
-      <Header>
-        <BackButton onClick={() => navigate(-1)}>
-          <IoArrowBack />
-        </BackButton>
-      </Header>
-      <Title>비밀번호 찾기</Title>
-      <Box>
-        <Label>
-          <HighlightedEmail>{email}</HighlightedEmail> 으로 인증번호를 전송했습니다.
-        </Label>
-        <Label>이메일 인증번호를 입력해주세요</Label>
-        <InputWrapper>
-          <Input 
-            type="text" 
-            placeholder="이메일 인증번호를 입력해주세요" 
-            value={verificationCode}
-            onChange={(e) => setVerificationCode(e.target.value)}
-          />
-          <ButtonInsideInput onClick={handleVerifyCode}>인증하기</ButtonInsideInput>
-        </InputWrapper>
-        {isCodeValid !== null && (
-          <StatusMessage isValid={isCodeValid}>
-            {isCodeValid ? "인증번호가 일치합니다." : "인증번호가 일치하지 않습니다."}
-          </StatusMessage>
-        )}
-        <ConfirmButton onClick={handleConfirm}>확인</ConfirmButton>
-      </Box>
-    </Wrapper>
+    <div>
+      <HeaderComponent />
+      <Wrapper>
+        <Header>
+          <BackButton onClick={() => navigate(-1)}>
+            <IoArrowBack />
+          </BackButton>
+        </Header>
+        <Title>비밀번호 찾기</Title>
+        <Box>
+          <Label>
+            <HighlightedEmail>{email}</HighlightedEmail> 으로 인증번호를 전송했습니다.
+          </Label>
+          <Label>이메일 인증번호를 입력해주세요</Label>
+          <InputWrapper>
+            <Input 
+              type="text" 
+              placeholder="이메일 인증번호를 입력해주세요" 
+              value={verificationCode}
+              onChange={(e) => setVerificationCode(e.target.value)}
+            />
+            <ButtonInsideInput onClick={handleVerifyCode}>인증하기</ButtonInsideInput>
+          </InputWrapper>
+          {isCodeValid !== null && (
+            <StatusMessage isValid={isCodeValid}>
+              {isCodeValid ? "인증번호가 일치합니다." : "인증번호가 일치하지 않습니다."}
+            </StatusMessage>
+          )}
+          <ConfirmButton onClick={handleConfirm}>확인</ConfirmButton>
+        </Box>
+      </Wrapper>
+      <Footer/>
+    </div>
   );
 }
 

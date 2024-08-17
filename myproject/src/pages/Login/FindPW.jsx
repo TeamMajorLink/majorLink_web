@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoArrowBack } from 'react-icons/io5';
+import { HeaderComponent } from "../../components/common/header/HeaderComponent";
+import Footer from "../../components/common/footer";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  height: 100vh;
+  height: 73vh;
   background-color: #EDEDED;
 `;
 
@@ -110,28 +112,33 @@ function FindPW() {
   };
 
   return (
-    <Wrapper>
-      <Header>
-        <BackButton onClick={() => navigate(-1)}>
-          <IoArrowBack />
-        </BackButton>
-      </Header>
-      <Title>비밀번호 찾기</Title>
-      <Box>
-        <Label>가입된 이메일 주소를 입력해주세요</Label>
-        <Input 
-          type="email" 
-          placeholder="example@email.com" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <PWtext>
-          가입하신 이메일 주소를 입력해주시면<br/>
-          비밀번호 재설정을 위한 이메일 인증번호를 보내드립니다.
-        </PWtext>
-        <ConfirmButton onClick={handleNext}>이메일 전송하기</ConfirmButton>
-      </Box>
-    </Wrapper>
+    <div>
+      <HeaderComponent />
+      <Wrapper>
+        <Header>
+          <BackButton onClick={() => navigate(-1)}>
+            <IoArrowBack />
+          </BackButton>
+        </Header>
+        <Title>비밀번호 찾기</Title>
+        <Box>
+          <Label>가입된 이메일 주소를 입력해주세요</Label>
+          <Input 
+            type="email" 
+            placeholder="example@email.com" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <PWtext>
+            가입하신 이메일 주소를 입력해주시면<br/>
+            비밀번호 재설정을 위한 이메일 인증번호를 보내드립니다.
+          </PWtext>
+          <ConfirmButton onClick={handleNext}>이메일 전송하기</ConfirmButton>
+        </Box>
+      </Wrapper>
+      <Footer/>
+    </div>
+
   );
 }
 

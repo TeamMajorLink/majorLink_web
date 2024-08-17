@@ -4,14 +4,15 @@ import styled from 'styled-components';
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import kakaoIcon from "../../assets/class/kakao_icon.png";
 import naverIcon from "../../assets/class/naver_icon.png";
-
+import { HeaderComponent } from "../../components/common/header/HeaderComponent";
+import Footer from "../../components/common/footer";
 
 const LoginWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 867px;
+  height: 73vh;
   width: 100%;
   background-color: #EDEDED;
 `;
@@ -229,7 +230,9 @@ function Login() {
   };
 
   return (
-    <LoginWrapper>
+    <div>
+      <HeaderComponent />
+      <LoginWrapper>
       <Header>로그인</Header>
       <LoginBox>
         <LoginInput>
@@ -283,7 +286,9 @@ function Login() {
           </ModalContent>
         </ModalOverlay>
       )}
-    </LoginWrapper>
+      </LoginWrapper>
+      <Footer/>
+    </div>
   );
 }
 

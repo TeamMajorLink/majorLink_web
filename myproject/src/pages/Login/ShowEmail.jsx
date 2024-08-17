@@ -1,15 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate 추가
+import { useNavigate } from 'react-router-dom'; 
 import styled from 'styled-components';
 import { IoArrowBack } from 'react-icons/io5';
-
+import { HeaderComponent } from "../../components/common/header/HeaderComponent";
+import Footer from "../../components/common/footer";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  height: 100vh;
+  height: 73vh;
   background-color: #EDEDED;
 `;
 
@@ -130,34 +131,40 @@ const ConfirmButton = styled.button`
 
 function FindEmail() {
     const navigate = useNavigate();
+
     const handleConfirm = () => {
         navigate('/login'); 
       };
+
       const handleConfirmPW = () => {
         navigate('/login-findpw'); 
       };
   return (
-    <Wrapper>
-      <Header>
-        <BackButton onClick={() => navigate(-1)}>
-          <IoArrowBack />
-        </BackButton>
-      </Header>
-      <Title>이메일 찾기</Title>
-      <Box>
-        <Label>가입된 이메일을 알려드려요</Label>
-        <ShowBox>
-            <Showtext>
-                아래 이메일로 가입하셨습니다
-            </Showtext>
-            <EmailText>
-                example@email.com
-            </EmailText>
-        </ShowBox>
-        <FindPW onClick={handleConfirmPW}>비밀번호 찾기</FindPW>
-        <ConfirmButton onClick={handleConfirm}>로그인하기</ConfirmButton>
-      </Box>
-    </Wrapper>
+    <div>
+      <HeaderComponent />
+      <Wrapper>
+        <Header>
+          <BackButton onClick={() => navigate(-1)}>
+            <IoArrowBack />
+          </BackButton>
+        </Header>
+        <Title>이메일 찾기</Title>
+        <Box>
+          <Label>가입된 이메일을 알려드려요</Label>
+          <ShowBox>
+              <Showtext>
+                  아래 이메일로 가입하셨습니다
+              </Showtext>
+              <EmailText>
+                  example@email.com
+              </EmailText>
+          </ShowBox>
+          <FindPW onClick={handleConfirmPW}>비밀번호 찾기</FindPW>
+          <ConfirmButton onClick={handleConfirm}>로그인하기</ConfirmButton>
+        </Box>
+      </Wrapper>
+    <Footer/>
+    </div>
   );
 }
 

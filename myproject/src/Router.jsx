@@ -43,10 +43,11 @@ export default function Router() {
         <Route path="/login-showemail" element={<ShowEmail />} />
         <Route path="/login-findpw" element={<FindPW />} />
         <Route path="/login-findpw_number" element={<FindPWNumber />} />
-        <Route path="/login-changepw" element={<ChangePW/>} />
-        <Route path="/login-changepwcompleted" element={<ChangePWCompleted/>} />
-        <Route path="/class-matching" element={<ClassMatchingPage />} />
-        <Route path="/class-detail" element={<ClassDetailPage />} />
+        <Route path="/login-changepw" element={<ChangePW />} />
+        <Route
+          path="/login-changepwcompleted"
+          element={<ChangePWCompleted />}
+        />
 
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />

@@ -10,8 +10,8 @@ const RectPro = styled.div`
   position: relative;
   width: 1208px;
   height: 256px; 
-  background: ${() => color.gradation_rectangle}
-  border-top-radius: 40px;
+  background: ${() => color.gradation_rectangle};
+  border-radius: 40px 40px 0px 0px;
   padding: 20px;
   display: flex;
   align-items: center;

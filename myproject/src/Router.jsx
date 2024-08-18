@@ -57,6 +57,8 @@ export default function Router() {
           path="/login-changepwcompleted"
           element={<ChangePWCompleted />}
         />
+        <Route path="/class-matching" element={<ClassMatchingPage />} />
+        <Route path="/class-detail" element={<ClassDetailPage />} />
 
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />

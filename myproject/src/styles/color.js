@@ -7,6 +7,7 @@ const color = {
   secondary_normal: '#5A6DF9',
   secondary_dark: '#0E1C4E',
   yellow_star: '#F8BC24',
+  line: '#2EE8E8',
   gradation_primary_class:
     'linear-gradient(90deg, #B4F9F5 0%, #D0FFFC 0%, #8EF0EB 53.23%, #80F4F1 100%)',
   gradation_rectangle:

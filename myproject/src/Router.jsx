@@ -27,14 +27,21 @@ import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
 import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
 import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
+import { ApiTestLoginPage } from './pages/apiTest/ApiTestLoginPage';
+import { ApiTestProgilePage } from './pages/apiTest/ApiTestProfilePage';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
         {/* api 연동 테스트 - 삭제 예정!! */}
-        <Route path="/api-test/Create" element={<ApiTestCreatePage />} />
-        <Route path="/api-test/Read" element={<ApiTestReadPage />} />
+        <Route path="/api-test/create" element={<ApiTestCreatePage />} />
+        <Route path="/api-test/read" element={<ApiTestReadPage />} />
+        <Route path="/api-test/login" element={<ApiTestLoginPage />} />
+        <Route
+          path="/api-test/login-profile"
+          element={<ApiTestProgilePage />}
+        />
 
         {/* home, sign-in, sign-up */}
         <Route path="/" element={<HomePage />} />

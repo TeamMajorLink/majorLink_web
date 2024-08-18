@@ -130,7 +130,7 @@ const Table = styled.table`
   text-align: center;
   width: 900px;
   th{
-    border-bottom: 4px solid ${() => color.info_text_color};
+    border-bottom: 4px solid ${() => color.grayscale_80};
     ${() => font.semibold_20};
     padding: 20px;
   }
@@ -141,6 +141,35 @@ const Table = styled.table`
   }
     th:first-child, td:first-child {
     border-left: none;
+  }
+`;
+
+const GetPointContainer = styled.div`
+  margin-top: 70px;
+  width: 90%;
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+`;
+
+const CardList = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid ${() => color.grayscale_9d};
+  border-radius: 15px;
+  ${() => font.semibold_20};
+  width: 20%;
+  height: 180px;
+  padding: 30px;
+  position: relative;
+
+  span {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
   }
 `;
 
@@ -302,6 +331,27 @@ function RechargePoints(){
                 <div>사용/소멸 내용</div>}
             </div>
           </RechargeContainer>
+          <GetPointContainer>
+            <Title>이런 활동들로 포인트를 받을 수 있어요</Title>
+            <CardContainer>
+              <CardList>
+                <p>친구 초대하고 포인트 받기</p>
+                <span>🙌</span>
+              </CardList>
+              <CardList>
+                <p>회원가입하고 포인트 받기</p>
+                <span>🙌</span>
+              </CardList>
+              <CardList>
+                <p>첫 강의계획서 등록하고 포인트 받기</p>
+                <span>🙌</span>
+              </CardList>
+              <CardList>
+                <p>첫 수업 시작하고 포인트 받기</p>
+                <span>🙌</span>
+              </CardList>
+            </CardContainer>
+          </GetPointContainer>
         </Container>
       </Wrapper>
     </div>

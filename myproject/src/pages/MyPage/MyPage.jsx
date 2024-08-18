@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
+// import axios from "axios";
 import font from "../../styles/font";
 import color from "../../styles/color";
 import ProfileImg from "../../assets/pages/page_profile_sample.png"
@@ -179,6 +180,10 @@ function Modal( {setModal} ) {
 }
 
 function MyPage() {
+  // const API = axios.create({
+  //   baseURL: 'https://dev.majorlink.store/',
+  // })
+
   const navigate = useNavigate();
 
   function handleMoveToEdit() {
@@ -201,6 +206,11 @@ function MyPage() {
           <Profile>
             <Title>마이페이지</Title>
             <ProfileContainer>
+              {/* <div>
+              {datas.map(data => (
+                <img id={data.id} src={data.profileImg} alt="프사" />
+              ))}
+              </div> */}
               <img src={ProfileImg} alt="프로필 이미지" />
               <Profileinfo>
                 <p className="nickname">링키</p>

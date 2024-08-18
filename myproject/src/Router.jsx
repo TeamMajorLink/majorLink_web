@@ -27,6 +27,7 @@ import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
 import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
 import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
+import RecruitClass from './pages/myClass/RecruitClass';
 
 export default function Router() {
   return (
@@ -77,6 +78,9 @@ export default function Router() {
           path="/offeredclassmodify/:class"
           element={<OfferedClassModify />}
         />
+
+        {/* 내 강의실 수정 예정 */}
+        <Route path='/recruitclass' element={<RecruitClass/>} />
       </Routes>
     </BrowserRouter>
   );

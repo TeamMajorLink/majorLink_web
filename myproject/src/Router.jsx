@@ -24,6 +24,11 @@ import OfferClass from './pages/users/OfferClass';
 import OfferedClassList from './pages/users/OfferedClassList';
 import OfferedClassModify from './pages/users/OfferedClassModify';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
+import Coupon from './pages/CreateAccount/Coupon';
+import EnterBasicInfo from './pages/CreateAccount/EnterBasicInfo';
+import EnterRequiredInfo from './pages/CreateAccount/EnterRequiredInfo';
+import FieldSelect from './pages/CreateAccount/FieldSelect';
+
 
 export default function Router() {
   return (
@@ -37,6 +42,12 @@ export default function Router() {
         <Route path="/login-findpw_number" element={<FindPWNumber />} />
         <Route path="/login-changepw" element={<ChangePW/>} />
         <Route path="/login-changepwcompleted" element={<ChangePWCompleted/>} />
+
+        <Route path="/createacc-coupon" element={<Coupon/>} />
+        <Route path="/createacc-enterbasicinfo" element={<EnterBasicInfo/>} />
+        <Route path="/createacc-enterrequiredinfo" element={<EnterRequiredInfo/>} />
+        <Route path="/createacc-findselect" element={<FieldSelect/>} />
+
         <Route path="/class-matching" element={<ClassMatchingPage />} />
         <Route path="/class-detail" element={<ClassDetailPage />} />
 

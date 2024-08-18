@@ -1,50 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
-// import font from "../../styles/font";
-// import color from "../../styles/color";
+import font from '../../styles/font';
+import color from '../../styles/color';
 // import HeaderComponent from '../../components/common/header/HeaderComponent';
 import Footer from '../../components/common/footer';
 import RectangleProfile from '../../components/users/RectangleProfile';
+import ProfileStatus from '../../components/users/ProfileStatus';
 
-
-
-
-const ProfileStatus = styled.div`
-
-`;
-
-const ProfileStatusBar = styled.div`
-// 몰라 피그마에서 div래
-// #A3A3A3, 네 모서리 둥글게
-`;
 
 const ProfileWriteBtn = styled.button`
+
 `;
 
 const Line = styled.hr`
-// 따로 만들어야 할 듯 근데 이게맞나?...
-// 7px #2EE8E8
+  display: flex;
+  width: 1208px;
+  border: 7px solid ${() => color.line};
+`;
+
+const Title = styled.p`
+  font: ${() => font.semibold_28};
+  color: ${() => color.primary_dark};
+  text-align: start;
+  margin-bottom: 8px;
 `;
 
 function ProfileCard() {
     return (
         <>
             {/* <HeaderComponent /> */}
+
             {/* 사이드바 */}
+
             <RectangleProfile />
 
-
-
-
-            <ProfileStatus>
-                h2 프로필 완성도 / 작게 프로필 100% 완성 시 포인트를 지급해드립니다.
-                <ProfileStatusBar />
-                <ProfileStatusBar />
-                <ProfileStatusBar />
-                <ProfileStatusBar />
-                <ProfileStatusBar />
-                20%
-            </ProfileStatus>
+            <ProfileStatus />
 
 
 
@@ -53,23 +43,23 @@ function ProfileCard() {
 
 
             <Line />
-            {/* 제목 */}
+            <Title>자기소개</Title>
             {/* 내용 - 없으면 공란 */}
 
             <Line />
-            {/* 제목 */}
+            <Title>학력 및 교육</Title>
             {/* 내용 - 없으면 공란 */}
 
             <Line />
-            {/* 제목 */}
+            <Title>활동 프로젝트</Title>
             {/* 내용 - 없으면 공란 */}
 
             <Line />
-            {/* 제목 */}
+            <Title>보유 기술</Title>
             {/* 내용 - 없으면 공란 */}
 
             <Line />
-            {/* 제목 */}
+            <Title>포트폴리오</Title>
             {/* 내용 - 없으면 공란 */}
 
             <Footer />

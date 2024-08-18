@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 // import font from "../../styles/font";
 // import color from "../../styles/color";
-// import HeaderComponent from '../components/common/header/HeaderComponent';
+// import HeaderComponent from '../../components/common/header/HeaderComponent';
+import Footer from '../../components/common/footer';
+import RectangleProfile from '../../components/users/RectangleProfile';
 
 
 
@@ -21,6 +23,7 @@ const ProfileWriteBtn = styled.button`
 
 const Line = styled.hr`
 // 따로 만들어야 할 듯 근데 이게맞나?...
+// 7px #2EE8E8
 `;
 
 function ProfileCard() {
@@ -28,7 +31,7 @@ function ProfileCard() {
         <>
             {/* <HeaderComponent /> */}
             {/* 사이드바 */}
-            {/* <RectangleProfile /> */}
+            <RectangleProfile />
 
 
 
@@ -68,6 +71,8 @@ function ProfileCard() {
             <Line />
             {/* 제목 */}
             {/* 내용 - 없으면 공란 */}
+
+            <Footer />
             
         </>
     );

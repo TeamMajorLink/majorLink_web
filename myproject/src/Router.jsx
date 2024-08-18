@@ -42,6 +42,8 @@ export default function Router() {
           path="/api-test/login-profile"
           element={<ApiTestProgilePage />}
         />
+        <Route path="/naver" element={<FindEmail />} />
+        <Route path="/signup" element={<FindEmail />} />
 
         {/* home, sign-in, sign-up */}
         <Route path="/" element={<HomePage />} />

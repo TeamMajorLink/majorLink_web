@@ -3,6 +3,7 @@ import React from 'react';
 export function ApiTestLoginNaverButton() {
   const handleLogin = () => {
     const clientId = 'aIu1qi2IPHa8Tjg7z0AO'; // 네이버에서 제공하는 Client ID
+    // const redirectUri = 'http://localhost:3000/naver'; // Spring 서버의 소셜 로그인 엔드포인트
     const redirectUri = 'https://dev.majorlink.store/oauth/authorize/naver'; // Spring 서버의 소셜 로그인 엔드포인트
 
     const state = Math.random().toString(36).substring(2); // CSRF 방지를 위한 상태 값

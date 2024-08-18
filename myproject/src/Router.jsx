@@ -23,17 +23,15 @@ import ProfileCardMake from './pages/users/ProfileCardMake';
 import OfferClass from './pages/users/OfferClass';
 import OfferedClassList from './pages/users/OfferedClassList';
 import OfferedClassModify from './pages/users/OfferedClassModify';
+import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
-import Coupon from './pages/CreateAccount/Coupon';
-import EnterBasicInfo from './pages/CreateAccount/EnterBasicInfo';
-import EnterRequiredInfo from './pages/CreateAccount/EnterRequiredInfo';
-import FieldSelect from './pages/CreateAccount/FieldSelect';
-
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* home, sign-in, sign-up */}
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/login-findemail" element={<FindEmail />} />
@@ -42,18 +40,13 @@ export default function Router() {
         <Route path="/login-findpw_number" element={<FindPWNumber />} />
         <Route path="/login-changepw" element={<ChangePW/>} />
         <Route path="/login-changepwcompleted" element={<ChangePWCompleted/>} />
-
-        <Route path="/createacc-coupon" element={<Coupon/>} />
-        <Route path="/createacc-enterbasicinfo" element={<EnterBasicInfo/>} />
-        <Route path="/createacc-enterrequiredinfo" element={<EnterRequiredInfo/>} />
-        <Route path="/createacc-findselect" element={<FieldSelect/>} />
-
         <Route path="/class-matching" element={<ClassMatchingPage />} />
         <Route path="/class-detail" element={<ClassDetailPage />} />
 
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />
         <Route path="/class/detail" element={<ClassDetailPage />} />
+        <Route path="/class/application" element={<ClassApplicationPage />} />
         <Route
           path="/class/application-completed"
           element={<ClassApplicationCompletedPage />}
@@ -70,7 +63,7 @@ export default function Router() {
 
         {/* 수업 개설하기 수정 예정 */}
         <Route path="/users/profile-card" element={<ProfileCardMake />} />
-        <Route path="/users/profile-card/:nickname" element={<ProfileCard />} />
+        <Route path="/users/profile-card/nickname" element={<ProfileCard />} />
 
         <Route path="/offerclass" element={<OfferClass />} />
         <Route path="/offeredclasslist" element={<OfferedClassList />} />
@@ -78,6 +71,7 @@ export default function Router() {
           path="/offeredclassmodify/:class"
           element={<OfferedClassModify />}
         />
+
       </Routes>
     </BrowserRouter>
   );

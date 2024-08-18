@@ -2,15 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import font from '../../styles/font';
 import color from '../../styles/color';
-// import HeaderComponent from '../../components/common/header/HeaderComponent';
+import { HeaderComponent } from '../../components/common/header/HeaderComponent';
 import Footer from '../../components/common/footer';
 import RectangleProfile from '../../components/users/RectangleProfile';
 import ProfileStatus from '../../components/users/ProfileStatus';
 
-
-const ProfileWriteBtn = styled.button`
-
-`;
+const ProfileWriteBtn = styled.button``;
 
 const Line = styled.hr`
   display: flex;
@@ -26,46 +23,41 @@ const Title = styled.p`
 `;
 
 function ProfileCard() {
-    return (
-        <>
-            {/* <HeaderComponent /> */}
+  return (
+    <>
+      <HeaderComponent />
 
-            {/* 사이드바 */}
+      {/* 사이드바 */}
 
-            <RectangleProfile />
+      <RectangleProfile />
 
-            <ProfileStatus />
+      <ProfileStatus />
 
+      <ProfileWriteBtn />
 
+      <Line />
+      <Title>자기소개</Title>
+      {/* 내용 - 없으면 공란 */}
 
-            <ProfileWriteBtn />
+      <Line />
+      <Title>학력 및 교육</Title>
+      {/* 내용 - 없으면 공란 */}
 
+      <Line />
+      <Title>활동 프로젝트</Title>
+      {/* 내용 - 없으면 공란 */}
 
+      <Line />
+      <Title>보유 기술</Title>
+      {/* 내용 - 없으면 공란 */}
 
-            <Line />
-            <Title>자기소개</Title>
-            {/* 내용 - 없으면 공란 */}
+      <Line />
+      <Title>포트폴리오</Title>
+      {/* 내용 - 없으면 공란 */}
 
-            <Line />
-            <Title>학력 및 교육</Title>
-            {/* 내용 - 없으면 공란 */}
-
-            <Line />
-            <Title>활동 프로젝트</Title>
-            {/* 내용 - 없으면 공란 */}
-
-            <Line />
-            <Title>보유 기술</Title>
-            {/* 내용 - 없으면 공란 */}
-
-            <Line />
-            <Title>포트폴리오</Title>
-            {/* 내용 - 없으면 공란 */}
-
-            <Footer />
-            
-        </>
-    );
+      <Footer />
+    </>
+  );
 }
 
-export default ProfileCard
+export default ProfileCard;

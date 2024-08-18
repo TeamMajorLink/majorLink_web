@@ -25,16 +25,11 @@ import OfferedClassList from './pages/users/OfferedClassList';
 import OfferedClassModify from './pages/users/OfferedClassModify';
 import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
-import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
-import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* api 연동 테스트 - 삭제 예정!! */}
-        <Route path="/api-test/Create" element={<ApiTestCreatePage />} />
-        <Route path="/api-test/Read" element={<ApiTestReadPage />} />
 
         {/* home, sign-in, sign-up */}
         <Route path="/" element={<HomePage />} />
@@ -43,11 +38,10 @@ export default function Router() {
         <Route path="/login-showemail" element={<ShowEmail />} />
         <Route path="/login-findpw" element={<FindPW />} />
         <Route path="/login-findpw_number" element={<FindPWNumber />} />
-        <Route path="/login-changepw" element={<ChangePW />} />
-        <Route
-          path="/login-changepwcompleted"
-          element={<ChangePWCompleted />}
-        />
+        <Route path="/login-changepw" element={<ChangePW/>} />
+        <Route path="/login-changepwcompleted" element={<ChangePWCompleted/>} />
+        <Route path="/class-matching" element={<ClassMatchingPage />} />
+        <Route path="/class-detail" element={<ClassDetailPage />} />
 
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />
@@ -77,6 +71,7 @@ export default function Router() {
           path="/offeredclassmodify/:class"
           element={<OfferedClassModify />}
         />
+
       </Routes>
     </BrowserRouter>
   );

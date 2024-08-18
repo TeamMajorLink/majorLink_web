@@ -2,15 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import font from '../../styles/font';
 import color from '../../styles/color';
-// import HeaderComponent from '../../components/common/header/HeaderComponent';
+import { HeaderComponent } from '../../components/common/header/HeaderComponent';
 import Footer from '../../components/common/footer';
 import RectangleProfile from '../../components/users/RectangleProfile';
 import ProfileStatus from '../../components/users/ProfileStatus';
-
-
-const ProfileWriteBtn = styled.button`
-
-`;
+// import ProfileWriteButton from '../../components/users/ProfileWriteButton';
 
 const Line = styled.hr`
   display: flex;
@@ -28,7 +24,7 @@ const Title = styled.p`
 function ProfileCard() {
     return (
         <>
-            {/* <HeaderComponent /> */}
+            <HeaderComponent />
 
             {/* 사이드바 */}
 
@@ -38,7 +34,7 @@ function ProfileCard() {
 
 
 
-            <ProfileWriteBtn />
+            {/* <ProfileWriteButton /> */}
 
 
 

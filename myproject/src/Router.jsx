@@ -27,8 +27,7 @@ import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
 import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
 import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
-import { ApiTestLoginPage } from './pages/apiTest/ApiTestLoginPage';
-import { ApiTestProgilePage } from './pages/apiTest/ApiTestProfilePage';
+// import { ApiTestProgilePage } from './pages/apiTest/ApiTestProfilePage';
 
 export default function Router() {
   return (
@@ -37,13 +36,14 @@ export default function Router() {
         {/* api 연동 테스트 - 삭제 예정!! */}
         <Route path="/api-test/create" element={<ApiTestCreatePage />} />
         <Route path="/api-test/read" element={<ApiTestReadPage />} />
-        <Route path="/api-test/login" element={<ApiTestLoginPage />} />
-        <Route
+        {/* <Route
           path="/api-test/login-profile"
           element={<ApiTestProgilePage />}
-        />
+        /> */}
         <Route path="/naver" element={<FindEmail />} />
         <Route path="/signup" element={<FindEmail />} />
+        {/* 여기 회원가입 페이지 */}
+        <Route path="/new-user" element={<FindEmail />} />
 
         {/* home, sign-in, sign-up */}
         <Route path="/" element={<HomePage />} />
@@ -57,8 +57,6 @@ export default function Router() {
           path="/login-changepwcompleted"
           element={<ChangePWCompleted />}
         />
-        <Route path="/class-matching" element={<ClassMatchingPage />} />
-        <Route path="/class-detail" element={<ClassDetailPage />} />
 
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />

@@ -30,7 +30,6 @@ import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
 import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
 import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
-// import { ApiTestProgilePage } from './pages/apiTest/ApiTestProfilePage';
 
 export default function Router() {
   return (
@@ -39,17 +38,13 @@ export default function Router() {
         {/* api 연동 테스트 - 삭제 예정!! */}
         <Route path="/api-test/create" element={<ApiTestCreatePage />} />
         <Route path="/api-test/read" element={<ApiTestReadPage />} />
-        {/* <Route
-          path="/api-test/login-profile"
-          element={<ApiTestProgilePage />}
-        /> */}
-        <Route path="/naver" element={<FindEmail />} />
-        <Route path="/signup" element={<FindEmail />} />
-        {/* 여기 회원가입 페이지 */}
-        <Route path="/new-user" element={<FindEmail />} />
+        {/* 소셜로그인 연동 */}
+        <Route path="/new-user" element={<EnterBasicInfo />} />
+        <Route path="/member" element={<HomePage />} />
 
-        {/* home, sign-in, sign-up */}
+        {/* 홈 */}
         <Route path="/" element={<HomePage />} />
+        {/* 로그인 */}
         <Route path="/login" element={<Login />} />
         <Route path="/login-findemail" element={<FindEmail />} />
         <Route path="/login-showemail" element={<ShowEmail />} />
@@ -60,11 +55,17 @@ export default function Router() {
           path="/login-changepwcompleted"
           element={<ChangePWCompleted />}
         />
-
+        {/* 회원가입 */}
+        <Route
+          path="/createaccount-enterbasicinfo"
+          element={<EnterBasicInfo />}
+        />
+        <Route
+          path="/createaccount-enterrequiredinfo"
+          element={<EnterRequiredInfo />}
+        />
         <Route path="/createaccount-coupon" element={<Coupon />} />
-        <Route path="/createaccount-enterbasicinfo" element={<EnterBasicInfo />} />
-        <Route path="/createaccount-enterrequiredinfo" element={<EnterRequiredInfo />} />
-        
+
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />
         <Route path="/class/detail" element={<ClassDetailPage />} />

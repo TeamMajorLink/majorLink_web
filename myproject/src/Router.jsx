@@ -18,6 +18,9 @@ import ChangePW from './pages/Login/ChangePW';
 import ChangePWCompleted from './pages/Login/ChangePWCompleted';
 import ShowEmail from './pages/Login/ShowEmail';
 import FindPW from './pages/Login/FindPW';
+import Coupon from './pages/CreateAccount/Coupon';
+import EnterBasicInfo from './pages/CreateAccount/EnterBasicInfo';
+import EnterRequiredInfo from './pages/CreateAccount/EnterRequiredInfo';
 import ProfileCard from './pages/users/ProfileCard';
 import ProfileCardMake from './pages/users/ProfileCardMake';
 import OfferClass from './pages/users/OfferClass';
@@ -58,6 +61,10 @@ export default function Router() {
           element={<ChangePWCompleted />}
         />
 
+        <Route path="/createaccount-coupon" element={<Coupon />} />
+        <Route path="/createaccount-enterbasicinfo" element={<EnterBasicInfo />} />
+        <Route path="/createaccount-enterrequiredinfo" element={<EnterRequiredInfo />} />
+        
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />
         <Route path="/class/detail" element={<ClassDetailPage />} />

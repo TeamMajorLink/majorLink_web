@@ -53,7 +53,7 @@ const Progress = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 75%;
+    width: 66%;
     height: 100%;
     background-color: #49BBBD;
   }
@@ -157,7 +157,7 @@ const ConfirmButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 5 3rem;  /* Add horizontal margin for spacing */
+  margin: 5 3rem; 
   margin-top: 1.5rem;
   margin-left: 9vh;
 `;
@@ -229,7 +229,7 @@ function SignupPage() {
         <Box>
           <ProgressContainer>
             <Progress />
-            <Percentage>75%</Percentage>
+            <Percentage>66%</Percentage>
           </ProgressContainer>
           <InputWrapper1>
             <Title>필수 정보를 입력해주세요</Title>

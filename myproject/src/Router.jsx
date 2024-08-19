@@ -38,8 +38,9 @@ export default function Router() {
         {/* api 연동 테스트 - 삭제 예정!! */}
         <Route path="/api-test/create" element={<ApiTestCreatePage />} />
         <Route path="/api-test/read" element={<ApiTestReadPage />} />
-        {/* 소셜로그인 연동 - 회원가입 페이지 */}
+        {/* 소셜로그인 연동 */}
         <Route path="/new-user" element={<EnterBasicInfo />} />
+        <Route path="/member" element={<HomePage />} />
 
         {/* 홈 */}
         <Route path="/" element={<HomePage />} />

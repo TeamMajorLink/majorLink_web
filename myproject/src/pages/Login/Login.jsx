@@ -268,6 +268,7 @@ function Login() {
           <Divider>
             <DividerText>다른 방법으로 로그인하기</DividerText>
           </Divider>
+          {/* 연동 여기 */}
           <SocialButton2 onClick={webSocialLoginNaver}>
             <SocialIcon src={naverIcon} alt="naver_Icon" />
             네이버로 로그인

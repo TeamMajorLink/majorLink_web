@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { HeaderComponent } from '../../components/common/header/HeaderComponent';
 import Footer from '../../components/common/footer';
 import font from '../../styles/font';
+import { postLinkSocialAccount } from '../../apis/postSignIn';
 
 const Wrapper = styled.div`
   display: flex;
@@ -288,11 +289,13 @@ function SignupPage() {
 
       if (response.status === 201 || response.status === 200) {
         localStorage.removeItem('signUpData'); // 데이터 전송 후 localStorage에서 삭제
+        postLinkSocialAccount();
 
-        navigate('/login'); // 회원가입 후 로그인 페이지로 이동
+        // navigate('/login'); // 회원가입 후 로그인 페이지로 이동
       }
     } catch (error) {
       console.error('회원가입 중 오류 발생:', error);
+      console.log('에러에러에러~~~');
     }
   };
 

@@ -36,13 +36,13 @@ const StarRating = styled.p`
   ${() => font.regular_16};
 `;
 
-export function ClassStarRating() {
+export function ClassStarRating({ starRating }) {
   return (
     <StarRatingContainer>
       <IconContainer>
         <IconImg src={StarIcon15} alt="img" />
       </IconContainer>
-      <StarRating>4.8</StarRating>
+      <StarRating>{starRating}</StarRating>
     </StarRatingContainer>
   );
 }

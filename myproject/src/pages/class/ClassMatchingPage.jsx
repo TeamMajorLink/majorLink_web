@@ -20,9 +20,11 @@ export function ClassMatchingPage() {
   return (
     <div>
       <HeaderComponent />
+
       <PageContainer>
         <SearchSection />
         <FilterArray />
+        {/* 클래스 컴포넌트 */}
         <ClassList />
         <Pagination />
       </PageContainer>

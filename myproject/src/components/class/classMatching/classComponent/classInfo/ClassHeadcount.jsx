@@ -36,13 +36,13 @@ const Headcount = styled.p`
   ${() => font.regular_16};
 `;
 
-export function ClassHeadcount() {
+export function ClassHeadcount({ headCount }) {
   return (
     <HeadcountContainer>
       <IconContainer>
         <IconImg src={HeadcountIcon17} alt="img" />
       </IconContainer>
-      <Headcount>2/6</Headcount>
+      <Headcount>{headCount}</Headcount>
     </HeadcountContainer>
   );
 }

@@ -132,7 +132,7 @@ function RecruitClass() {
                         let content;
 
                         if (key === 'state') {
-                          content = <button type="button">{item[key]}</button>;
+                          content = <Link to='/myclass/movetoonlineclass'><button type="button">{item[key]}</button></Link>;
                         } else if (key === 'img') {
                           content = <img src={ThumbImg} alt="썸네일" />;
                         } else if (key === 'class') {

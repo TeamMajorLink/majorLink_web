@@ -14,6 +14,9 @@ export function HeaderAfterLogin() {
   const handleMoveToHome = () => {
     navigate(`/login`);
   };
+  const handleMoveToMyPage = () => {
+    navigate(`/mypage`);
+  };
 
   return (
     <A.HeaderContainer>
@@ -29,7 +32,7 @@ export function HeaderAfterLogin() {
           <A.IconImg src={AlarmIconPng} alt="img" />
         </A.IconContainer>
         {/* 프로필 이미지 수정 예정 */}
-        <A.ProfileContainer onClick={handleMoveToHome}>
+        <A.ProfileContainer onClick={handleMoveToMyPage}>
           <A.ProfileImg src={ProgilePng} alt="img" />
         </A.ProfileContainer>
       </A.ContainerRight>

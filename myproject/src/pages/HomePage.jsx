@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -18,9 +18,8 @@ import category8 from '../assets/class/category8.png';
 import searchIcon from '../assets/class/searchIcon.png';
 import ad1 from '../assets/class/ad1.png';
 import ad2 from '../assets/class/ad2.png';
-import { HeaderComponent } from "../components/common/header/HeaderComponent";
-import Footer from "../components/common/footer";
-
+import { HeaderComponent } from '../components/common/header/HeaderComponent';
+import Footer from '../components/common/footer';
 
 const Container = styled.div`
   width: 100%;
@@ -202,6 +201,16 @@ const ClassPeopleListening = styled.div`
 `;
 
 function HomePage() {
+  // 연동_24.08.20추가
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const authToken = urlParams.get('X-Auth-Token');
+
+    if (authToken) {
+      localStorage.setItem('authToken', authToken);
+    }
+  }, []);
+
   return (
     <div>
       <HeaderComponent />
@@ -422,7 +431,7 @@ function HomePage() {
           </ClassGrid>
         </ClassSection>
       </Container>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

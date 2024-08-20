@@ -14,11 +14,15 @@ const font = {
   //   base_16: FONT({ weight: 600, size: 1.6 }),
 
   light_20: FONT({ weight: 300, size: 2.0 }),
+  
+  regular_12: FONT({ weight: 400, size: 1.2 }),
   regular_14: FONT({ weight: 400, size: 1.4 }),
+  regular_15: FONT({ weight: 400, size: 1.5 }),
   regular_16: FONT({ weight: 400, size: 1.6 }),
   regular_18: FONT({ weight: 400, size: 1.8 }),
   regular_20: FONT({ weight: 400, size: 2.0 }),
   regular_22: FONT({ weight: 400, size: 2.2 }),
+  regular_24: FONT({ weight: 400, size: 2.4 }),
   regular_28: FONT({ weight: 400, size: 2.8 }),
   regular_32: FONT({ weight: 400, size: 3.2 }),
   medium_14: FONT({ weight: 500, size: 1.4 }),
@@ -43,6 +47,8 @@ const font = {
   test_100: FONT({ weight: 900, size: 10.0 }),
   mypage: FONT({ weight: 500, size: 1.8 }),
   title: FONT({ weight: 600, size: 3.0 }),
+
+  profilecard: FONT({ weight: 700, size: 1.323}),
 };
 
 export default font;

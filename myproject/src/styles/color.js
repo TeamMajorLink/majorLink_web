@@ -2,6 +2,7 @@ const color = {
   white: '#FFFFFF',
   black: '#000000',
   primary_light: '#DBFFF9',
+  primary_semilight: '#2DE3E3',
   primary_normal: '#36D9D4',
   primary_dark: '#4ABECB',
   secondary_normal: '#5A6DF9',

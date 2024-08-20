@@ -17,6 +17,7 @@ const font = {
   
   regular_12: FONT({ weight: 400, size: 1.2 }),
   regular_14: FONT({ weight: 400, size: 1.4 }),
+  regular_15: FONT({ weight: 400, size: 1.5 }),
   regular_16: FONT({ weight: 400, size: 1.6 }),
   regular_18: FONT({ weight: 400, size: 1.8 }),
   regular_20: FONT({ weight: 400, size: 2.0 }),
@@ -44,7 +45,7 @@ const font = {
   mypage: FONT({ weight: 500, size: 1.8 }),
   title: FONT({ weight: 600, size: 3.0 }),
 
-  percent: FONT({ weight: 700, size: 1.323}),
+  profilecard: FONT({ weight: 700, size: 1.323}),
 };
 
 export default font;

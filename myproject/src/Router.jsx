@@ -62,8 +62,8 @@ export default function Router() {
         <Route path="/inquiry" element={<Inquiry />} />
 
         {/* 수업 개설하기 수정 예정 */}
-        <Route path="/users/profile-card" element={<ProfileCardMake />} />
         <Route path="/users/profile-card/nickname" element={<ProfileCard />} />
+        <Route path="/users/profile-card" element={<ProfileCardMake />} />
 
         <Route path="/offerclass" element={<OfferClass />} />
         <Route path="/offeredclasslist" element={<OfferedClassList />} />

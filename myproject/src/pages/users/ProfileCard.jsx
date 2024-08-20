@@ -3,11 +3,33 @@ import styled from 'styled-components';
 import font from '../../styles/font';
 import color from '../../styles/color';
 import { HeaderComponent } from '../../components/common/header/HeaderComponent';
+import Sidebar from './Sidebar';
 import Footer from '../../components/common/footer';
 import RectangleProfile from '../../components/users/RectangleProfile';
 import ProfileStatus from '../../components/users/ProfileStatus';
 import ProfileWriteButton from '../../components/users/ProfileWriteButton';
 import ProfileTitle from '../../components/users/ProfileTitle';
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+
+
+  .sidebar{
+    margin: 19.8rem 0 8.4rem 20rem;
+  }
+  .status{
+    margin-top: 2.9rem;
+    vertical-align: bottom;
+  }
+`;
+
+const ProfileContainer = styled.div`
+  // display: flex;
+  margin: 29.7rem 19.8rem 0 8.4rem;
+  // margin-right(8.4): 임의
+
+`;
 
 const Text = styled.p`
   font: ${() => font.regular_20};
@@ -16,22 +38,21 @@ const Text = styled.p`
 `;
 
 const List = styled.ul`
-  list-style-type: disc !important; /* 기본 동그라미 기호 설정 */
-  padding-left: 2rem; /* 기호와 텍스트 사이의 간격 - 임시*/
+  // list-style-type: disc !important;
   margin-left: 5rem;
   list-style-position: outside;
   color: ${() => color.black} !important;
-  // background-color: ${() => color.line};
+  padding-inline-start: 0 !important;
 `;
 
 const ListItem = styled.li`
   font: ${() => font.regular_20};
   color: ${() => color.black};
 
-  ::marker {
-    font: ${() => font.regular_20};
-    color: ${() => color.black};
-  }
+  // ::marker {
+  //   font: ${() => font.regular_20};
+  //   color: ${() => color.black};
+  // }
 `;
 
 const TagContainer = styled.div`
@@ -75,18 +96,21 @@ const Url = styled.a`
 
 function ProfileCard() {
     return (
-        <>
-            <HeaderComponent />
+      <>
+        <HeaderComponent />
 
-            {/* 사이드바 */}
+        <Container className="sidebar">
+          <Sidebar />
 
+          <ProfileContainer>
             <RectangleProfile />
 
-            <ProfileStatus />
+            <Container className="status">
+              <ProfileStatus />
 
+              <ProfileWriteButton />
+            </Container>
 
-
-            <ProfileWriteButton />
 
 
             <ProfileTitle title='자기소개'/>
@@ -94,13 +118,13 @@ function ProfileCard() {
 
             <ProfileTitle title='학력 및 교육' />
             <List>
-              <ListItem>안녕대학교 컴퓨터학과(2020.03~)</ListItem>
-              <ListItem>헬로 부트캠프(2021.03~2021.12)</ListItem>
+              <ListItem>• 안녕대학교 컴퓨터학과(2020.03~)</ListItem>
+              <ListItem>• 헬로 부트캠프(2021.03~2021.12)</ListItem>
             </List>
 
             <ProfileTitle title='활동 프로젝트' />
             <List>
-              <ListItem>안녕대학교 컴퓨터학과 동아리 하이하이</ListItem>
+              <ListItem>• 안녕대학교 컴퓨터학과 동아리 하이하이</ListItem>
             </List>
 
             <ProfileTitle title='보유 기술' />
@@ -114,10 +138,12 @@ function ProfileCard() {
             <UrlContainer>
               <Url href="https://www.notion.linky.portfolio">https://www.notion.linky.portfolio</Url>
             </UrlContainer>
+          </ProfileContainer>
+        </Container>
 
-            <Footer />
-            
-        </>
+        
+        <Footer />
+      </>
     );
 }
 

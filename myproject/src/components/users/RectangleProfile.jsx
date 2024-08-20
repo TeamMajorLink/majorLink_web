@@ -7,6 +7,7 @@ import ProfileImg from '../../assets/common/profile_default_125x125.png';
 
 const RectContainer = styled.div`
   position: relative;
+  margin: 0 0 4.3rem 0;
   width: 120.8rem;
   height: 25.6rem;
   display: flex; // 현재 무시되고 있음...
@@ -32,7 +33,7 @@ const RectProInfo = styled.div`
   // position: absolute;
   // top:
   // left:
-  margin-left: 9.4rem;
+  margin: 0 0 0 9.4rem;
   display: flex;
   flex-direction: column;
 `;

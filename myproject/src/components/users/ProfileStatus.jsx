@@ -7,10 +7,11 @@ const StatusContainer = styled.div`
   position: relative;
   width: 100.1rem;
   height: 15.8rem;
+  padding: 2.9rem 3.7rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  // align-items: center;
   border-radius: 1.5rem;
   border: 0.1rem solid ${() => color.grayscale_9d};
 `;
@@ -18,18 +19,18 @@ const StatusContainer = styled.div`
 const Title = styled.p`
   font: ${() => font.semibold_24};
   color: ${() => color.black};
-  text-align: center;
+  // text-align: center;
   margin-bottom: 0.8rem;
 `;
 
 const Text = styled.p`
   font: ${() => font.regular_12};
   color: ${() => color.black};
-  text-align: center;
-  margin-bottom: 2rem;
+  // text-align: center;
+  // margin: 0 2rem; 수정하기 - 오류 나는 것 같아서
 `;
 
-const BarGroup = styled.div`
+const BarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;  // To make sure the bars span across the container
@@ -63,14 +64,14 @@ function ProfileStatus() {
                 <Title>프로필 완성도</Title>
                 <Text>프로필 100% 완성 시 포인트를 지급해드립니다.</Text>
 
-                <BarGroup>
+                <BarContainer>
                     <StatusBar />
                     <StatusBar />
                     <StatusBar />
                     <StatusBar />
                     <StatusBar />
-                </BarGroup>
-                <Percent>20%</Percent>
+                  <Percent>20%</Percent>
+                </BarContainer>
 
             </StatusContainer>
     );

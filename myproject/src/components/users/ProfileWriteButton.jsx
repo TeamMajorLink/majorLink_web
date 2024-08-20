@@ -6,6 +6,10 @@ import font from '../../styles/font';
 import PenIcon from '../../assets/users/pen-icon.png';
 
 const IconImg = styled.img`
+  margin: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+
 
 `;
 
@@ -13,11 +17,11 @@ const ButtonComponent = styled.button`
   margin: 0;
   /* padding: 8rem 12rem; */
 
-  width: 32.6rem;
-  height: 6.4rem;
+  width: 17.6rem;
+  height: 5.8rem;
 
   border: none;
-  border-radius: 0.8rem; //10px로 바꾸기
+  border-radius: 1rem; //10px로 바꾸기
   background-color: ${() => color.primary_semilight};
 
   ${() => font.semibold_20};
@@ -36,7 +40,7 @@ function ProfileWriteButton() {
   return (
     <ButtonComponent onClick={handleMoveToPagename}>
       작성하기
-      <IconImg src={PenIcon} alt="아이콘">아이콘위치수정하기</IconImg>
+      <IconImg src={PenIcon} alt="아이콘" />
     </ButtonComponent>
   );
 }

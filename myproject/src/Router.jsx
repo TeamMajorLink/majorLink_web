@@ -27,7 +27,23 @@ import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
 import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
 import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
-import RecruitClass from './pages/myClass/RecruitClass';
+import RecruitClass from './pages/myClass/tutee/RecruitClass';
+import RecruitDetailClass from './pages/myClass/tutee/RecruitDetailClass';
+import ReviewList from './pages/myClass/review/ReviewList';
+import ReviewForm from './pages/myClass/review/ReviewForm';
+import ReviewDetail from './pages/myClass/review/ReviewDetail';
+import MoveToOnlineClass from './pages/myClass/MoveToOnlineClass';
+import CancelClass from './pages/myClass/tutee/CancelClass';
+import DoingClass from './pages/myClass/tutee/DoingClass';
+import DoingDetailClass from './pages/myClass/tutee/DoingDetailClass';
+import DoneClass from './pages/myClass/tutee/DoneClass';
+import TutorRecruitClass from './pages/myClass/tutor/TutorRecruitClass';
+import TutorRecruitDetailClass from './pages/myClass/tutor/TutorRecruitDetailClass';
+import TutorCancelClass from './pages/myClass/tutor/TutorCancelClass';
+import TutorDoingClass from  './pages/myClass/tutor/TutorDoingClass';
+import TutorDoingDetailClass from  './pages/myClass/tutor/TutorDoingDetailClass';
+import TutorDoneClass from './pages/myClass/tutor/TutorDoneClass';
+
 
 export default function Router() {
   return (
@@ -80,7 +96,31 @@ export default function Router() {
         />
 
         {/* 내 강의실 수정 예정 */}
-        <Route path='/recruitclass' element={<RecruitClass/>} />
+        <Route path='/myclass/recruiting' element={<RecruitClass/>} />
+        <Route path='/myclass/recruiting/:id' element={<RecruitDetailClass/>} />
+        <Route path='/myclass/cancel' element={<CancelClass/>} />
+        <Route path='/myclass/cancel/:id' element={<RecruitDetailClass/>} />
+
+        <Route path='/myclass/doing' element={<DoingClass/>} />
+        <Route path='/myclass/doing/:id' element={<DoingDetailClass/>} />
+        <Route path='/myclass/done' element={<DoneClass/>} />
+        <Route path='/myclass/done/:id' element={<DoingDetailClass />} />
+
+        <Route path='/myclass-tutor/recruiting' element={<TutorRecruitClass/>} />
+        <Route path='/myclass-tutor/recruiting/:id' element={<TutorRecruitDetailClass/>} />
+        <Route path='/myclass-tutor/cancel' element={<TutorCancelClass />} />
+        <Route path='/myclass-tutor/cancel/:id' element={<TutorRecruitDetailClass/>} />
+
+        <Route path='/myclass-tutor/doing' element={<TutorDoingClass/>} />
+        <Route path='/myclass-tutor/doing/:id' element={<TutorDoingDetailClass/>} />
+        <Route path='/myclass-tutor/done' element={<TutorDoneClass/>} />
+        <Route path='/myclass-tutor/done/:id' element={<TutorDoingDetailClass/>} />
+
+        <Route path='/myclass/review-list' element={<ReviewList/>} />
+        <Route path='/myclass/review-list/:id' element={<ReviewDetail/>} />
+        <Route path='/myclass/review-form' element={<ReviewForm/>} />
+        
+        <Route path='/myclass/movetoonlineclass' element={<MoveToOnlineClass/>}/>
       </Routes>
     </BrowserRouter>
   );

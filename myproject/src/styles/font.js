@@ -35,6 +35,8 @@ const font = {
   semibold_36: FONT({ weight: 600, size: 3.6 }),
   semibold_40: FONT({ weight: 600, size: 4.0 }),
   semibold_48: FONT({ weight: 600, size: 4.8 }),
+  bold_16: FONT({ weight: 700, size: 1.6 }),
+  bold_18: FONT({ weight: 700, size: 1.8 }),
   bold_20: FONT({ weight: 700, size: 2.0 }),
   bold_24: FONT({ weight: 700, size: 2.4 }),
 

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import font from "../../styles/font";
@@ -27,15 +26,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const SelectButton = styled.button`
-  background-color: transparent;
-  border: none;
-  ${() => font.mypage};
-  padding: 0;
-  font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
-  color: ${({ active }) => (active ? (color.primary_dark) : (color.black))};
-`;
-
 const SelectUserContainer = styled.div`
   li {
     margin: 0;
@@ -52,38 +42,36 @@ const SelectUserContainer = styled.div`
 
 function Sidebar() {
 
-  // 클래스 관리 버튼 state
-  const [openTab, setOpenTab] = useState(false);
+  // // 클래스 관리 버튼 state
+  // const [openTab, setOpenTab] = useState(false);
 
-  // 튜티 튜터 선택 state
-  const [selectUser, setSelectUser] = useState('tutor');
+  // // 튜티 튜터 선택 state
+  // const [selectUser, setSelectUser] = useState('tutor');
 
   return (
     <Wrapper>
       <div className="sidebar">
         <li>
-        <Link to="/recruitclass" className="title">
+        <Link to="/myclass" className="title">
           내 강의실</Link></li>
         <div className="navlink">
-        <li>
-          <SelectButton type="button" 
-          onClick={() => { setOpenTab(!openTab) }}
-          active={selectUser}>
-            클래스 관리</SelectButton></li>
-        {openTab && <SelectUserContainer>
           <li><NavLink 
-            to="/tutee"
+            to="/myclass"
             className={({ isActive }) => 
-            isActive ? "active" : "normal"}
-            onClick={() => setSelectUser('tutee')}>
+            isActive ? "active" : "normal"}>
+              클래스 관리</NavLink></li>
+        <SelectUserContainer>
+          <li><NavLink 
+            to="/myclass"
+            className={({ isActive }) => 
+            isActive ? "active" : "normal"}>
               • 튜티</NavLink></li>
           <li><NavLink 
-          to="/recruitclass"
+          to="/myclass-tutor"
           className={({ isActive }) => 
-          isActive ? "active" : "normal"}
-          onClick={() => setSelectUser('tutor')}>
+          isActive ? "active" : "normal"}>
             • 튜터</NavLink></li>
-          </SelectUserContainer>}
+          </SelectUserContainer>
         <li><NavLink 
           to="/classapply"
           className={({ isActive }) => 

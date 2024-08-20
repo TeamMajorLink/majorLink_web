@@ -15,14 +15,34 @@ const GridList = styled.div`
 `;
 
 export function ClassList() {
+  // 연동_24.08.20추가 - 클래스 정보
   const [lectureList, setLectureList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchLectureList = async (page = 1) => {
+  const [lectureListMostLiked, setLectureListMostLiked] = useState([]);
+  const [lectureListNew, setLectureListNew] = useState([]);
+  const [lectureListMostRecruited, setLectureListMostRecruited] = useState([]);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isMostLiked = urlParams.get('MostLiked');
+    const isNew = urlParams.get('New');
+    const isMostRecruited = urlParams.get('MostRecruited');
+
+    if (isMostLiked) {
+      setLectureList(lectureListMostLiked);
+    } else if (isNew) {
+      setLectureList(lectureListNew);
+    } else if (isMostRecruited) {
+      setLectureList(lectureListMostRecruited);
+    }
+  }, [lectureListMostLiked, lectureListNew, lectureListMostRecruited]);
+
+  const fetchLectureList = async (endpoint, setState, page = 1) => {
     try {
       const response = await axios.get(
-        'https://dev.majorlink.store/lecture/list',
+        `https://dev.majorlink.store${endpoint}`,
         {
           params: {
             page,
@@ -30,7 +50,7 @@ export function ClassList() {
         },
       );
 
-      setLectureList(response.data.lectureList);
+      setState(response.data.lectureList);
     } catch (err) {
       setError(err);
     } finally {
@@ -39,7 +59,10 @@ export function ClassList() {
   };
 
   useEffect(() => {
-    fetchLectureList();
+    fetchLectureList('/lecture/list', setLectureList);
+    fetchLectureList('/lecture/mostLiked', setLectureListMostLiked);
+    fetchLectureList('/lecture/new', setLectureListNew);
+    fetchLectureList('/lecture/mostRecruited', setLectureListMostRecruited);
   }, []);
 
   if (loading) return <div>Loading...</div>;

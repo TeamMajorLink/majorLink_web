@@ -111,8 +111,6 @@ function ProfileCard() {
               <ProfileWriteButton />
             </Container>
 
-
-
             <ProfileTitle title='자기소개'/>
             <Text>안녕하세요.</Text>
 
@@ -147,4 +145,4 @@ function ProfileCard() {
     );
 }
 
-export default ProfileCard
+export default ProfileCard;

@@ -84,10 +84,7 @@ function ProfileCard() {
 
             <ProfileStatus />
 
-
-
             <ProfileWriteButton />
-
 
             <ProfileTitle title='자기소개'/>
             <Text>안녕하세요.</Text>
@@ -115,10 +112,9 @@ function ProfileCard() {
               <Url href="https://www.notion.linky.portfolio">https://www.notion.linky.portfolio</Url>
             </UrlContainer>
 
-            <Footer />
-            
-        </>
-    );
+      <Footer />
+    </>
+  );
 }
 
-export default ProfileCard
+export default ProfileCard;

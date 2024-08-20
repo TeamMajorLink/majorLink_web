@@ -54,7 +54,7 @@ const Progress = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 25%;
+    width: 33%;
     height: 100%;
     background-color: #49BBBD;
   }
@@ -239,7 +239,7 @@ function EnterBasicInfo() {
         <Box>
           <ProgressContainer>
             <Progress />
-            <Percentage>25%</Percentage>
+            <Percentage>33%</Percentage>
           </ProgressContainer>
           <InputWrapper1>
             <Label>이름</Label>

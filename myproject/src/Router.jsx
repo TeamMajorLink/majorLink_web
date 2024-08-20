@@ -18,6 +18,9 @@ import ChangePW from './pages/Login/ChangePW';
 import ChangePWCompleted from './pages/Login/ChangePWCompleted';
 import ShowEmail from './pages/Login/ShowEmail';
 import FindPW from './pages/Login/FindPW';
+import Coupon from './pages/CreateAccount/Coupon';
+import EnterBasicInfo from './pages/CreateAccount/EnterBasicInfo';
+import EnterRequiredInfo from './pages/CreateAccount/EnterRequiredInfo';
 import ProfileCard from './pages/users/ProfileCard';
 import ProfileCardMake from './pages/users/ProfileCardMake';
 import OfferClass from './pages/users/OfferClass';
@@ -25,23 +28,43 @@ import OfferedClassList from './pages/users/OfferedClassList';
 import OfferedClassModify from './pages/users/OfferedClassModify';
 import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
+import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
+import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* api 연동 테스트 - 삭제 예정!! */}
+        <Route path="/api-test/create" element={<ApiTestCreatePage />} />
+        <Route path="/api-test/read" element={<ApiTestReadPage />} />
+        {/* 소셜로그인 연동 */}
+        <Route path="/new-user" element={<EnterBasicInfo />} />
+        <Route path="/member" element={<HomePage />} />
 
-        {/* home, sign-in, sign-up */}
+        {/* 홈 */}
         <Route path="/" element={<HomePage />} />
+        {/* 로그인 */}
         <Route path="/login" element={<Login />} />
         <Route path="/login-findemail" element={<FindEmail />} />
         <Route path="/login-showemail" element={<ShowEmail />} />
         <Route path="/login-findpw" element={<FindPW />} />
         <Route path="/login-findpw_number" element={<FindPWNumber />} />
-        <Route path="/login-changepw" element={<ChangePW/>} />
-        <Route path="/login-changepwcompleted" element={<ChangePWCompleted/>} />
-        <Route path="/class-matching" element={<ClassMatchingPage />} />
-        <Route path="/class-detail" element={<ClassDetailPage />} />
+        <Route path="/login-changepw" element={<ChangePW />} />
+        <Route
+          path="/login-changepwcompleted"
+          element={<ChangePWCompleted />}
+        />
+        {/* 회원가입 */}
+        <Route
+          path="/createaccount-enterbasicinfo"
+          element={<EnterBasicInfo />}
+        />
+        <Route
+          path="/createaccount-enterrequiredinfo"
+          element={<EnterRequiredInfo />}
+        />
+        <Route path="/createaccount-coupon" element={<Coupon />} />
 
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />
@@ -71,7 +94,6 @@ export default function Router() {
           path="/offeredclassmodify/:class"
           element={<OfferedClassModify />}
         />
-
       </Routes>
     </BrowserRouter>
   );

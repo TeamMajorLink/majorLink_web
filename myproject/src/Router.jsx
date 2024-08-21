@@ -35,7 +35,7 @@ import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
 export default function Router() {
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes>3
         {/* api 연동 테스트 - 삭제 예정!! */}
         <Route path="/api-test/create" element={<ApiTestCreatePage />} />
         <Route path="/api-test/read" element={<ApiTestReadPage />} />

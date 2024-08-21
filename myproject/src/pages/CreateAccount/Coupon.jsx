@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { HeaderComponent } from "../../components/common/header/HeaderComponent";
 import Footer from "../../components/common/footer";
 import font from '../../styles/font';
+import couponImg from '../../assets/class/coupon_icon.png';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,6 +21,13 @@ const Header = styled.div`
   font-weight: bold;
   margin-top: 6rem;
   margin-bottom: 6rem;
+`;
+
+const Image = styled.img`
+  width: 10%;
+  height: 10%;
+  margin-top: 1.5vw;
+  margin-bottom: 1.5vw;
 `;
 
 const Box = styled.div`
@@ -69,67 +77,98 @@ const Percentage = styled.span`
 
 const Title = styled.h1`
   font-family: Inter;
-  font-size: 2.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   text-align: center;
   color: black;
   margin-bottom: 2rem;
 `;
 
+const InputContainer = styled.div`
+  position: relative;
+  width: 95%;
+  margin-bottom: 1.4vh;
+`;
+
 const Input = styled.input`
   ${() => font.regular_16};
   padding: 0.8rem;
-  margin-bottom: 1.4vh;
+  padding-right: 4rem;  // Add extra padding to make space for the button inside
   border-radius: 8px;
   border: 1px solid #dedddd;
-  width: 80%;
+  width: 100%;
+  font-size: 1rem;
   height: 5vh;
   box-sizing: border-box;
-  position: relative;
-  margin-left: 9vh;
+`;
+
+const ButtonInsideInput = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  background-color: #49BBBD;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  height: 3.5vh;
 `;
 
 const BlueBox = styled.div`
+  width: 50%;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #C8EEEC;
   display: flex;
-  justify-content: center; 
-
+  flex-direction: column;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  align-items: center;
 `;
 
 const BoxHeader = styled.div`
   display: flex;
-  margin-bottom: 1.5rem;
-  margin-top: 3rem;
+  margin-bottom: 0.8rem;
+  margin-top: 1rem;
   justify-content: center; 
+  font-weight: bold;
+  ${() => font.bold_20};
 `;
 
 const BoxText = styled.div`
   display: flex;
-  margin-bottom: 1.5rem;
-  margin-top: 3rem;
   justify-content: center; 
+  ${() => font.regular_12};
+  font-weight: bold;
 `;
 
 const InviteBox = styled.div`
   display: flex;
-  margin-bottom: 1.5rem;
-  margin-top: 3rem;
-  justify-content: center; 
+  flex-direction: column;
+  justify-content: center;
+  width: 15vw;
+  height: 8vw;
+  font-weight: bold;
 `;
 
 const BoxLabel = styled.div`
+  ${() => font.regular_12};
   display: flex;
   margin-bottom: 1.5rem;
   margin-top: 3rem;
-  justify-content: center; 
+  justify-items: left; 
+  font-weight: bold;
 `;
 
 const RedLabel = styled.div`
   display: flex;
   margin-bottom: 1.5rem;
-  margin-top: 3rem;
   justify-content: center; 
+  color:red;
 `;
-
 
 const ConfirmContainer = styled.div`
   display: flex;
@@ -139,7 +178,7 @@ const ConfirmContainer = styled.div`
 `;
 
 const ConfirmButton = styled.button`
-  width: 19vh;
+  width: 19vw;
   height: 5vh;
   padding: 1rem;
   background: #49BBBD;
@@ -151,19 +190,23 @@ const ConfirmButton = styled.button`
   cursor: pointer;
   margin: 5 3rem; 
   margin-top: 1.5rem;
-  margin-left: 9vh;
 `;
 
 function Coupon() {
   const navigate = useNavigate();
+  const [inviteCode, setInviteCode] = useState('');
 
   const handleConfirm = () => {
-      navigate("/createaccount-coupon");
-  };
-  const invitecode = () => {
-
+    navigate("/");
   };
 
+  const handleInviteCodeChange = (e) => {
+    setInviteCode(e.target.value);
+  };
+
+  const sendInviteCode = () => {
+    console.log("Invite code sent:", inviteCode);
+  };
 
   return (
     <div>
@@ -175,24 +218,28 @@ function Coupon() {
             <Progress />
             <Percentage>100%</Percentage>
           </ProgressContainer>
-            <presentIcon/>
-            <Title>회원가입을 축하 30000포인트를 지급해드립니다.</Title>
-            <BlueBox>
-                <BoxHeader>추가 쿠폰을 받고 싶다면?</BoxHeader>
-                <BoxText>초대 코드 입력 시 친구와 나  모두에게 10000포인트를 선물로 드려요</BoxText>
-                <InviteBox>
-                    <BoxLabel>친구 초대 코드</BoxLabel>
-                    <Input 
-                    type="text" 
-                    placeholder="친구 초대 코드를 입력해주세요" 
-                    value={invitecode}
-                    />
-                    <RedLabel>초대 코드 입력 시 10000포인트 지급</RedLabel>
-                </InviteBox>
-            </BlueBox>
-            <ConfirmContainer>
-              <ConfirmButton onClick={handleConfirm}>다음</ConfirmButton>
-            </ConfirmContainer>
+          <Image src={couponImg} width="100%" />
+          <Title>회원가입을 축하 30000포인트를 지급해드립니다.</Title>
+          <BlueBox>
+            <BoxHeader>추가 쿠폰을 받고 싶다면?</BoxHeader>
+            <BoxText>초대 코드 입력 시 친구와 나 모두에게 10000포인트를 선물로 드려요</BoxText>
+            <InviteBox>
+              <BoxLabel>친구 초대 코드</BoxLabel>
+              <InputContainer>
+                <Input
+                  type="text"
+                  placeholder="친구 초대 코드를 입력해주세요"
+                  value={inviteCode}
+                  onChange={handleInviteCodeChange}
+                />
+                <ButtonInsideInput onClick={sendInviteCode}>전송하기</ButtonInsideInput>
+              </InputContainer>
+              <RedLabel>초대 코드 입력 시 10000포인트 지급</RedLabel>
+            </InviteBox>
+          </BlueBox>
+          <ConfirmContainer>
+            <ConfirmButton onClick={handleConfirm}>회원가입 완료</ConfirmButton>
+          </ConfirmContainer>
         </Box>
       </Wrapper>
       <Footer />

@@ -17,10 +17,12 @@ const ComponentContainer = styled.div`
 `;
 
 export function ClassComponent({ lecture }) {
+  console.log(`강의 ID: ${lecture.lectureId}`);
+
   return (
     <ComponentContainer>
       <ClassThumbnail />
-      {/* <h3>{lecture.lectureId}</h3> */}
+      <h3>{lecture.lectureId}</h3>
       <ClassInfoBox lecture={lecture} />
     </ComponentContainer>
   );

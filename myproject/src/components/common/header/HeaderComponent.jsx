@@ -4,16 +4,23 @@ import { HeaderAfterLogin } from './HeaderAfterLogin';
 
 export function HeaderComponent() {
   const [isLogined, setIsLogined] = useState(false);
+  const [authToken, setAuthToken] = useState(null);
 
   useEffect(() => {
-    const authToken = localStorage.getItem('authToken');
+    const token = localStorage.getItem('authToken');
 
-    if (authToken && authToken !== 'null') {
+    if (token && token !== 'null') {
       setIsLogined(true);
+      setAuthToken(token);
     } else {
       setIsLogined(false);
+      setAuthToken(null);
     }
   }, []);
 
-  return isLogined ? <HeaderAfterLogin /> : <HeaderBeforeLogin />;
+  return isLogined ? (
+    <HeaderAfterLogin authToken={authToken} />
+  ) : (
+    <HeaderBeforeLogin />
+  );
 }

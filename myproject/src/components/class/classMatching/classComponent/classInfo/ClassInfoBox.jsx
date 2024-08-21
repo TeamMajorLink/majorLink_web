@@ -59,8 +59,6 @@ const ContainerAllInfo = styled.div`
 `;
 
 export function ClassInfoBox({ lecture }) {
-  console.log(lecture);
-
   return (
     <ContainerAllInfo>
       <ContainerFlexBetween>

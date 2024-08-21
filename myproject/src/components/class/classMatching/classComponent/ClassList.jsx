@@ -20,26 +20,7 @@ export function ClassList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [lectureListMostLiked, setLectureListMostLiked] = useState([]);
-  const [lectureListNew, setLectureListNew] = useState([]);
-  const [lectureListMostRecruited, setLectureListMostRecruited] = useState([]);
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const isMostLiked = urlParams.get('MostLiked');
-    const isNew = urlParams.get('New');
-    const isMostRecruited = urlParams.get('MostRecruited');
-
-    if (isMostLiked) {
-      setLectureList(lectureListMostLiked);
-    } else if (isNew) {
-      setLectureList(lectureListNew);
-    } else if (isMostRecruited) {
-      setLectureList(lectureListMostRecruited);
-    }
-  }, [lectureListMostLiked, lectureListNew, lectureListMostRecruited]);
-
-  const fetchLectureList = async (endpoint, setState, page = 1) => {
+  const fetchLectureList = async (endpoint, page = 1) => {
     try {
       const response = await axios.get(
         `https://dev.majorlink.store${endpoint}`,
@@ -50,7 +31,7 @@ export function ClassList() {
         },
       );
 
-      setState(response.data.lectureList);
+      setLectureList(response.data.lectureList);
     } catch (err) {
       setError(err);
     } finally {
@@ -58,11 +39,30 @@ export function ClassList() {
     }
   };
 
+  useEffect(() => {}, []);
+
   useEffect(() => {
-    fetchLectureList('/lecture/list', setLectureList);
-    fetchLectureList('/lecture/mostLiked', setLectureListMostLiked);
-    fetchLectureList('/lecture/new', setLectureListNew);
-    fetchLectureList('/lecture/mostRecruited', setLectureListMostRecruited);
+    const urlParams = new URLSearchParams(window.location.search);
+    const isMostLiked = urlParams.get('MostLiked');
+    const isNew = urlParams.get('New');
+    const isMostRecruited = urlParams.get('MostRecruited');
+    console.log(`isMostLiked: ${isMostLiked}`);
+    console.log(`isNew: ${isNew}`);
+    console.log(`isMostRecruited: ${isMostRecruited}`);
+
+    if (isMostLiked) {
+      fetchLectureList('/lecture/mostLiked');
+      console.log('좋아요순');
+    } else if (isNew) {
+      fetchLectureList('/lecture/new');
+      console.log('최신순');
+    } else if (isMostRecruited) {
+      fetchLectureList('/lecture/mostRecruited');
+      console.log('임박순');
+    } else {
+      fetchLectureList('/lecture/list');
+      console.log('전체 조회');
+    }
   }, []);
 
   if (loading) return <div>Loading...</div>;

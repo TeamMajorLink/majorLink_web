@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { css, styled } from 'styled-components';
 import color from '../../../styles/color';
@@ -92,7 +92,7 @@ const ConfirmButton = styled.button`
 `;
 
 export function ClassApplicationModal({ closeModal, lectureId = 1 }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [authToken, setAuthToken] = useState(null);
 
   useEffect(() => {
@@ -122,7 +122,7 @@ export function ClassApplicationModal({ closeModal, lectureId = 1 }) {
       );
 
       console.log('수강신청 요청 성공:', response.data);
-      navigate(`/class/application-completed`);
+      // navigate(`/class/application-completed`);
     } catch (error) {
       if (error.response) {
         // 서버가 응답했으나 상태 코드가 2xx 범위가 아닐 때

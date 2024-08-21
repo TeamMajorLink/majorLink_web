@@ -47,6 +47,9 @@ import TutorDoingClass from './pages/myClass/tutor/TutorDoingClass';
 import TutorDoingDetailClass from './pages/myClass/tutor/TutorDoingDetailClass';
 import TutorDoneClass from './pages/myClass/tutor/TutorDoneClass';
 import LectureLikeButton from './pages/apiTest/DDClassLikeButton';
+import NotificationSubscribe from './apis/getNotificationSubscribe';
+import { HeaderComponent } from './components/common/header/HeaderComponent';
+import PostNotification from './pages/apiTest/DDPostNotification';
 
 export default function Router() {
   return (
@@ -56,6 +59,14 @@ export default function Router() {
         <Route path="/api-test/create" element={<ApiTestCreatePage />} />
         <Route path="/api-test/read" element={<ApiTestReadPage />} />
         <Route path="/dd" element={<LectureLikeButton />} />
+        <Route path="/notc" element={<PostNotification />} />
+        <Route path="/header" element={<HeaderComponent />} />
+
+        {/* 알림 연동 */}
+        <Route
+          path="/notification-subscribe"
+          element={<NotificationSubscribe />}
+        />
         {/* 소셜로그인 연동 */}
         <Route path="/new-user" element={<EnterBasicInfo />} />
         <Route path="/member" element={<HomePage />} />

@@ -36,50 +36,33 @@ export function HeaderAfterLogin({ authToken }) {
 
   // 알림 연동
   useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        // 초기 알림 가져오기
-        // const response = await axios.get(
-        //   'https://dev.majorlink.store/notification',
-        //   {
-        //     headers: {
-        //       'X-AUTH-TOKEN': authToken,
-        //     },
-        //   },
-        // );
-        // setNotifications(response.data);
+    const fetchNotifications = () => {
+      // WebSocket을 사용하여 실시간 알림 처리
+      const socket = new EventSource(
+        `https://dev.majorlink.store/notification/subscribe/${authToken}`,
+      );
 
-        // WebSocket을 사용하여 실시간 알림 처리
-        const socket = new EventSource(
-          `https://dev.majorlink.store/notification/subscribe/${authToken}`,
-        );
+      socket.onmessage = (event) => {
+        const newNotification = JSON.parse(event.data);
+        console.log(`소켓 데이터: ${newNotification.content}`);
 
-        socket.onmessage = (event) => {
-          const newNotification = JSON.parse(event.data);
-          // setNotifications((prevNotifications) => [
-          //   ...prevNotifications,
-          //   newNotification,
-          // ]);
-          // console.log(`소켓데이터::::${newNotification}`);
-          // 브라우저 알림 표시
-          showNotification(newNotification);
-        };
+        // 브라우저 알림 표시
+        showNotification(newNotification);
+      };
 
-        socket.onerror = (err) => {
-          console.error('WebSocket 에러:', err);
-          socket.close(); // 오류 발생 시 연결을 닫습니다.
-        };
-        socket.onclose = () => {
-          console.log('WebSocket connection closed');
-        };
+      socket.onerror = (err) => {
+        console.error('WebSocket 에러:', err);
+        socket.close(); // 오류 발생 시 연결을 닫습니다.
+      };
 
-        // 컴포넌트 언마운트 시 WebSocket 연결 종료
-        return () => {
-          socket.close();
-        };
-      } catch (error) {
-        console.error('알림(header get요청코드) 에러났어요~~', error);
-      }
+      socket.onclose = () => {
+        console.log('WebSocket connection closed');
+      };
+
+      // 컴포넌트 언마운트 시 WebSocket 연결 종료
+      return () => {
+        socket.close();
+      };
     };
 
     fetchNotifications();

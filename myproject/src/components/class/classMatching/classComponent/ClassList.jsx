@@ -39,8 +39,6 @@ export function ClassList() {
     }
   };
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const isMostLiked = urlParams.get('MostLiked');

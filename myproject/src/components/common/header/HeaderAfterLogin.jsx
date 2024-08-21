@@ -26,12 +26,29 @@ export function HeaderAfterLogin({ authToken }) {
           },
         );
         setNotifications(response.data);
+        // // 실시간 알림??
+        // const eventSource = new EventSource(
+        //   `https://dev.majorlink.store/notification/subscribe/${authToken}`,
+        // );
+
+        // eventSource.onmessage = (event) => {
+        //   const newNotification = JSON.parse(event.data);
+        //   displayNotification(newNotification);
+        //   console.log(`추가 데이ㅓ터::::${newNotification}`);
+        // };
+        // eventSource.onerror = (err) => {
+        //   console.error('이벤트알람 실패:', err);
+        //   eventSource.close(); // 오류 발생 시 연결을 닫습니다.
+        // };
 
         // 브라우저 알림 권한
         const showNotification = () => {
-          const notification = new Notification('코드 봐줘', {
-            body: response.data.content,
-          });
+          const notification = new Notification(
+            'HeaderAfterLogin.jsx에서 보내는 알림',
+            {
+              body: response.data.content,
+            },
+          );
 
           setTimeout(() => {
             notification.close();
@@ -63,7 +80,7 @@ export function HeaderAfterLogin({ authToken }) {
 
     fetchNotifications();
   }, []);
-  console.log(notifications);
+  // console.log(notifications);
 
   notifications.forEach((notification) => {
     console.log('여기 notification 데이터 내용');

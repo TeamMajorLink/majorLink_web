@@ -83,30 +83,32 @@ const ClassHashTag = styled.p`
   align-items: center;
 `;
 
-export function ClassDetailTitle() {
+export function ClassDetailTitle({ lectureInfo }) {
   return (
     <ComponentContainer>
       <ThumbnailImgContainer>
         <ThumbnailImg src={ThumbnailPng} alt="thumbnail-img" />
       </ThumbnailImgContainer>
       <ClassInfoContainer>
-        <ClassTitleText>백엔드 웹 개발 기초</ClassTitleText>
+        <ClassTitleText>{lectureInfo.name}</ClassTitleText>
         <ClassInfoLine />
         <ClassSubInfoContainer>
           <ClassInfoName>분야</ClassInfoName>
-          <ClassInfoContent>공학 &gt; 컴퓨터 공학</ClassInfoContent>
+          <ClassInfoContent>
+            {lectureInfo.mainCategory} &gt; {lectureInfo.subCategory}
+          </ClassInfoContent>
         </ClassSubInfoContainer>
         <ClassSubInfoContainer>
           <ClassInfoName>레벨</ClassInfoName>
-          <ClassInfoContent>초급</ClassInfoContent>
+          <ClassInfoContent>{lectureInfo.level}</ClassInfoContent>
         </ClassSubInfoContainer>
         <ClassSubInfoContainer>
           <ClassInfoName>수업 개요</ClassInfoName>
-          <ClassInfoContent>웹 개발의 프로세스와 백엔드 실습</ClassInfoContent>
+          <ClassInfoContent>{lectureInfo.body}</ClassInfoContent>
         </ClassSubInfoContainer>
         <ClassSubInfoContainer>
-          <ClassHashTag>#프로그래밍</ClassHashTag>
-          <ClassHashTag>#백엔드</ClassHashTag>
+          <ClassHashTag>#{lectureInfo.tag}</ClassHashTag>
+          <ClassHashTag>#컴퓨터공학</ClassHashTag>
         </ClassSubInfoContainer>
       </ClassInfoContainer>
     </ComponentContainer>

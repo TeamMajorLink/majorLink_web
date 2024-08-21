@@ -344,8 +344,10 @@ function HomePage() {
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}
                   </ClassInstruction>
-                  <ClassRating>⭐ {lecture.cnum}</ClassRating>
-                  <ClassPeopleListening>👥{lecture.pnum}</ClassPeopleListening>
+                  <ClassRating>⭐ 4.8</ClassRating>
+                  <ClassPeopleListening>
+                    👥{lecture.cnum}/{lecture.pnum}
+                  </ClassPeopleListening>
                 </ClassContent>
               </ClassCard>
             ))}
@@ -388,8 +390,10 @@ function HomePage() {
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}
                   </ClassInstruction>
-                  <ClassRating>⭐ {lecture.cnum}</ClassRating>
-                  <ClassPeopleListening>👥{lecture.pnum}</ClassPeopleListening>
+                  <ClassRating>⭐ 4.8</ClassRating>
+                  <ClassPeopleListening>
+                    👥{lecture.cnum}/{lecture.pnum}
+                  </ClassPeopleListening>
                 </ClassContent>
               </ClassCard>
             ))}
@@ -415,8 +419,10 @@ function HomePage() {
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}
                   </ClassInstruction>
-                  <ClassRating>⭐ {lecture.cnum}</ClassRating>
-                  <ClassPeopleListening>👥{lecture.pnum}</ClassPeopleListening>
+                  <ClassRating>⭐ 4.8</ClassRating>
+                  <ClassPeopleListening>
+                    👥{lecture.cnum}/{lecture.pnum}
+                  </ClassPeopleListening>
                 </ClassContent>
               </ClassCard>
             ))}

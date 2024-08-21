@@ -20,6 +20,7 @@ export function ClassComponent({ lecture }) {
   return (
     <ComponentContainer>
       <ClassThumbnail />
+      {/* <h3>{lecture.lectureId}</h3> */}
       <ClassInfoBox lecture={lecture} />
     </ComponentContainer>
   );

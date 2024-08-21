@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function LectureLikeButton({ lectureId = 1 }) {
+function LectureLikeButton({ lectureId = 8 }) {
   const [authToken, setAuthToken] = useState(null);
 
   useEffect(() => {

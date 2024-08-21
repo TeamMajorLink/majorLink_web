@@ -11,7 +11,7 @@ import ProgilePng from '../../../assets/common/back_header_profile_63x63.png';
 export function HeaderAfterLogin({ authToken }) {
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
-  // console.log(`authToken(헤더 알림): ${authToken}`);
+  // console.log(authToken(헤더 알림): ${authToken});
 
   // 알림 연동
   useEffect(() => {
@@ -25,27 +25,20 @@ export function HeaderAfterLogin({ authToken }) {
             },
           },
         );
-        const notificationsData = response.data;
-        console.log(notificationsData);
-
-        setNotifications(notificationsData);
+        setNotifications(response.data);
 
         // 브라우저 알림 권한
-        const showNotification = (notification) => {
-          const browserNotification = new Notification(
-            'majorLink에서 알림이 왔습니다.',
-            {
-              body: notification.content,
-              // body: response.data.content,
-            },
-          );
+        const showNotification = () => {
+          const notification = new Notification('코드 봐줘', {
+            body: response.data.content,
+          });
 
           setTimeout(() => {
-            browserNotification.close();
+            notification.close();
           }, 10 * 1000);
 
-          browserNotification.addEventListener('click', () => {
-            window.open(notification.url, '_blank');
+          notification.addEventListener('click', () => {
+            window.open(data.url, '_blank');
           });
         };
 
@@ -60,10 +53,8 @@ export function HeaderAfterLogin({ authToken }) {
         }
 
         // 알림 보여주기
-        if (granted && Array.isArray(notificationsData)) {
-          notificationsData.forEach((notification) => {
-            showNotification(notification);
-          });
+        if (granted) {
+          showNotification();
         }
       } catch (error) {
         console.error('알림(header get요청코드) 에러났어요~~', error);

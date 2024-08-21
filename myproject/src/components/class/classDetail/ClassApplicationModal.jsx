@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { css, styled } from 'styled-components';
 import color from '../../../styles/color';
 import font from '../../../styles/font';
@@ -88,7 +91,56 @@ const ConfirmButton = styled.button`
   color: ${() => color.white};
 `;
 
-export function ClassApplicationModal({ closeModal }) {
+export function ClassApplicationModal({ closeModal, lectureId = 1 }) {
+  const navigate = useNavigate();
+  const [authToken, setAuthToken] = useState(null);
+
+  useEffect(() => {
+    setAuthToken(localStorage.getItem('authToken'));
+  }, []);
+
+  const handleLectureRegister = async () => {
+    if (!authToken) {
+      console.error('authToken이 없습니다.');
+    } else {
+      console.log(`lectureId: ${lectureId}`);
+      console.log(`authToken: ${authToken}`);
+    }
+
+    const url = `https://dev.majorlink.store/lecture/${lectureId}/register`;
+
+    try {
+      const response = await axios.post(
+        url,
+        {},
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-AUTH-TOKEN': authToken,
+          },
+        },
+      );
+
+      console.log('수강신청 요청 성공:', response.data);
+      navigate(`/class/application-completed`);
+    } catch (error) {
+      if (error.response) {
+        // 서버가 응답했으나 상태 코드가 2xx 범위가 아닐 때
+        console.error(
+          '요청 실패:',
+          error.response.status,
+          error.response.statusText,
+        );
+      } else if (error.request) {
+        // 요청이 전송되었으나 응답이 없을 때
+        console.error('요청 실패: 응답이 없습니다.', error.request);
+      } else {
+        // 요청을 설정하는 중에 발생한 에러
+        console.error('요청 중 에러 발생:', error.message);
+      }
+    }
+  };
+
   return (
     <ComponentContainer>
       <BackgroundGray>
@@ -101,7 +153,9 @@ export function ClassApplicationModal({ closeModal }) {
           </ModalContent>
           <ButtonContainer>
             <CancelButton onClick={closeModal}>취소</CancelButton>
-            <ConfirmButton>수업 신청서 보내기</ConfirmButton>
+            <ConfirmButton onClick={handleLectureRegister}>
+              수업 신청서 보내기
+            </ConfirmButton>
           </ButtonContainer>
         </ModalContainer>
       </BackgroundGray>

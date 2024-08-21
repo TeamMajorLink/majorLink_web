@@ -7,10 +7,16 @@ import Footer from '../../components/common/footer';
 import RectangleProfile from '../../components/users/RectangleProfile';
 // import ProfileWriteButton from '../../components/users/ProfileWriteButton';
 import ProfileTitle from '../../components/users/ProfileTitle';
+import DateInput from '../../components/users/DateInput';
+import AddButton from '../../components/users/AddButton';
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
+
+  .date{
+
+  }
 `;
 
 const ProfileContainer = styled.div`
@@ -24,17 +30,26 @@ const Subhead = styled.p`
   font: ${() => font.semibold_24};
   color: ${() => color.black};
   margin: 4.8rem 0 3.3rem 5.3rem;
+
+  .tilde {
+    margin: 0; //임시
+  }
 `;
 
 const BigInput = styled.input`
   width: 105.5rem;
-  height: auto;
   padding: 2rem 2.7rem;
   font: ${() => font.regular_20};
   color: ${() => color.black};
   border: 0.1rem solid ${() => color.grayscale_9d};
   border-radius: 1.5rem;
 
+  .onelineintro{
+    height: 11.2rem; 
+  }
+  .introduce{
+    height: 19.6rem; 
+  }
 `;
 
 // 수정하기
@@ -53,6 +68,14 @@ const BasicInput = styled.input`
   .long{
     width: 65.6rem;
   }
+  .check{
+      
+  }
+`;
+
+const Label = styled.label`
+  font: ${() => font.regular_20};
+  color: ${() => color.black};
 `;
 
 const CharacterCount = styled.p`
@@ -119,54 +142,55 @@ function ProfileCardMake() {
             <RectangleProfile />
 
             <Subhead>한 줄 소개</Subhead>
-            <BigInput placeholder='한 줄 소개를 입력해주세요' />
-            {/* 한 줄 소개를 입력해주세요 */}
+            <BigInput className='onelineintro' placeholder='한 줄 소개를 입력해주세요' />
             <CharacterCount>0/100</CharacterCount>
-
-
 
             <ProfileTitle title='자기소개'/>
             <Subhead>자기소개</Subhead>
-            <BigInput placeholder='직무 경험, 핵심 역량, 강점 등 구체적인 내용을 작성해보세요.' />
-            {/* 직무 경험, 핵심 역량, 강점 등 구체적인 내용을 작성해보세요. */}
+            <BigInput className='introduce' placeholder='직무 경험, 핵심 역량, 강점 등 구체적인 내용을 작성해보세요.' />
             <CharacterCount>0/1000</CharacterCount>
 
             <ProfileTitle title='학력 및 교육' />
             <Container>
               <Subhead>교육기관</Subhead>
               <BasicInput className='short' placeholder='학교명이나 교육기관 명을 입력해주세요' />
-              {/* 학교명이나 교육기관 명을 입력해주세요 */}
             </Container>
             <Container>
               <Subhead>전공/과정</Subhead>
               <BasicInput className='long' placeholder='전공 혹은 과정 명을 입력해주세요. 예) 컴퓨터학과/웹 개발 과정' />
-              {/* 전공 혹은 과정 명을 입력해주세요. 예) 컴퓨터학과/웹 개발 과정 */}
             </Container>
-            <Container> {/* className 다르게 줘서 flex 별도 설정 */}
+            <Container className='date'> {/* 수정 - flex 별도 설정? */}
               <Subhead>교육 기간</Subhead>
-              {/* 심란하다...기간 컴포넌트 만들어서 추후 수정 */}
+              <DateInput content='시작일' placeholder='예) 2024-03-04' />
+              <Subhead className='tilde'>~</Subhead>
+              <DateInput content='종료일' placeholder='예) 2024-06-25' />
+              <BasicInput type='checkbox' id='ongoing1' name='ongoing1' />
+              <Label htmlFor='ongoing1'>진행중</Label>
             </Container>
-            {/* 추가하기 버튼 컴포넌트? */}
+            <AddButton content='추가하기' />
+            {/* 버튼 추가 */}
+
 
             <ProfileTitle title='활동 프로젝트' />
             <Container>
               <Subhead>활동 구분</Subhead>
               <BasicInput className='short' placeholder='예) 인턴, 대외활동, 프로젝트, 동아리 등' />
-              {/* 예) 인턴, 대외활동, 프로젝트, 동아리 등 */}
             </Container>
             <Container>
               <Subhead>기관/장소</Subhead>
               <BasicInput className='long' placeholder='기관/장소 명을 입력해주세요' />
-              {/* 기관/장소 명을 입력해주세요 */}
             </Container>
             <Container>
-              <Subhead>활동 기간</Subhead>
-              {/* 심란하다...기간 컴포넌트 만들어서 추후 수정 */}
+              <Subhead className='date'>활동 기간</Subhead> {/* 수정 - flex 별도 설정? */}
+              <DateInput content='시작일' placeholder='예) 2024.01.01' />
+              <Subhead className='tilde'>~</Subhead>
+              <DateInput content='종료일' placeholder='예) 2024.01.01' />
+              <BasicInput type='checkbox' id='ongoing2' name='ongoing2' />
+              <Label htmlFor='ongoing2'>진행중</Label>
             </Container>
             <Container>
               <Subhead>활동 내용</Subhead>
               <BasicInput className='long' placeholder='예) ios 모바일 어플 개발 프로젝트 진행' />
-              {/* 예) ios 모바일 어플 개발 프로젝트 진행 */}
             </Container>
             {/* 추가하기 버튼 컴포넌트? */}
 

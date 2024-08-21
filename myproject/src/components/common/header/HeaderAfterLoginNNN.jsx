@@ -9,7 +9,7 @@ import MessageIconPng from '../../../assets/common/header_icon_message_30x30.png
 import AlarmIconPng from '../../../assets/common/header_icon_alarm_30x30.png';
 import ProgilePng from '../../../assets/common/back_header_profile_63x63.png';
 
-export function HeaderAfterLogin({ authToken }) {
+export function HeaderAfterLoginNNN({ authToken }) {
   const navigate = useNavigate();
   // const [notifications, setNotifications] = useState([]);
   // console.log(authToken(헤더 알림): ${authToken});
@@ -50,7 +50,7 @@ export function HeaderAfterLogin({ authToken }) {
           typeof newNotification === 'string' &&
           newNotification.includes('EventStream Create')
         ) {
-          console.log('알림 없다고요~~');
+          console.log('알림 없어요~~');
           return;
         }
         console.log(`소켓 데이터: ${newNotification.content}`);

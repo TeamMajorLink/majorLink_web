@@ -4,7 +4,6 @@ import font from '../../styles/font';
 import color from '../../styles/color';
 import { HeaderComponent } from '../../components/common/header/HeaderComponent';
 import Sidebar from './Sidebar';
-import OfferedClassTable from '../../components/users/OfferedClassTable';
 
 const Container = styled.div`
   display: flex;
@@ -33,13 +32,6 @@ const Title = styled.p`
   //margin: 4.8rem 0 3.3rem 5.3rem;
 `;
 
-const Line = styled.hr`
-  display: flex;
-  width: 120.8rem;
-  margin: 5rem 0 2.3rem 0; // 위쪽: 미정입니다...
-  border: 0.7rem solid ${() => color.line};
-`;
-
 function OfferClass() {
     return (
         <>
@@ -48,12 +40,8 @@ function OfferClass() {
                 <Sidebar />
 
                 <ClassContainer>
-                    <Title>개설 클래스</Title>
-                    {/* 클래스 만들기 버튼 - 추가하기 */}
+                    <Title>강의계획서</Title>
                 </ClassContainer>
-                <Line />
-                <OfferedClassTable />
-                {/* 배치 이게 맞나...? */}
             </Container>
         </>
     );

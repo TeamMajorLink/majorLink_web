@@ -43,10 +43,14 @@ import DoneClass from './pages/myClass/tutee/DoneClass';
 import TutorRecruitClass from './pages/myClass/tutor/TutorRecruitClass';
 import TutorRecruitDetailClass from './pages/myClass/tutor/TutorRecruitDetailClass';
 import TutorCancelClass from './pages/myClass/tutor/TutorCancelClass';
-import TutorDoingClass from  './pages/myClass/tutor/TutorDoingClass';
-import TutorDoingDetailClass from  './pages/myClass/tutor/TutorDoingDetailClass';
+import TutorDoingClass from './pages/myClass/tutor/TutorDoingClass';
+import TutorDoingDetailClass from './pages/myClass/tutor/TutorDoingDetailClass';
 import TutorDoneClass from './pages/myClass/tutor/TutorDoneClass';
-
+import LectureLikeButton from './pages/apiTest/DDClassLikeButton';
+import NotificationSubscribe from './apis/getNotificationSubscribe';
+import PostNotification from './pages/apiTest/DDPostNotification';
+import { HeaderComponentNNN } from './components/common/header/HeaderComponentNNN';
+import { HeaderComponent } from './components/common/header/HeaderComponent';
 
 export default function Router() {
   return (
@@ -55,6 +59,16 @@ export default function Router() {
         {/* api 연동 테스트 - 삭제 예정!! */}
         <Route path="/api-test/create" element={<ApiTestCreatePage />} />
         <Route path="/api-test/read" element={<ApiTestReadPage />} />
+        <Route path="/dd" element={<LectureLikeButton />} />
+        <Route path="/headerNNN" element={<HeaderComponentNNN />} />
+        <Route path="/header" element={<HeaderComponent />} />
+
+        {/* 알림 연동 - 구독, 수강신청 */}
+        <Route
+          path="/notification-subscribe"
+          element={<NotificationSubscribe />}
+        />
+        <Route path="/notc" element={<PostNotification />} />
         {/* 소셜로그인 연동 */}
         <Route path="/new-user" element={<EnterBasicInfo />} />
         <Route path="/member" element={<HomePage />} />
@@ -110,31 +124,52 @@ export default function Router() {
         <Route path="/lecture/lectureid" element={<LectureModify />} />
 
         {/* 내 강의실 수정 예정 */}
-        <Route path='/myclass/recruiting' element={<RecruitClass/>} />
-        <Route path='/myclass/recruiting/:id' element={<RecruitDetailClass/>} />
-        <Route path='/myclass/cancel' element={<CancelClass/>} />
-        <Route path='/myclass/cancel/:id' element={<RecruitDetailClass/>} />
+        <Route path="/myclass/recruiting" element={<RecruitClass />} />
+        <Route
+          path="/myclass/recruiting/:id"
+          element={<RecruitDetailClass />}
+        />
+        <Route path="/myclass/cancel" element={<CancelClass />} />
+        <Route path="/myclass/cancel/:id" element={<RecruitDetailClass />} />
 
-        <Route path='/myclass/doing' element={<DoingClass/>} />
-        <Route path='/myclass/doing/:id' element={<DoingDetailClass/>} />
-        <Route path='/myclass/done' element={<DoneClass/>} />
-        <Route path='/myclass/done/:id' element={<DoingDetailClass />} />
+        <Route path="/myclass/doing" element={<DoingClass />} />
+        <Route path="/myclass/doing/:id" element={<DoingDetailClass />} />
+        <Route path="/myclass/done" element={<DoneClass />} />
+        <Route path="/myclass/done/:id" element={<DoingDetailClass />} />
 
-        <Route path='/myclass-tutor/recruiting' element={<TutorRecruitClass/>} />
-        <Route path='/myclass-tutor/recruiting/:id' element={<TutorRecruitDetailClass/>} />
-        <Route path='/myclass-tutor/cancel' element={<TutorCancelClass />} />
-        <Route path='/myclass-tutor/cancel/:id' element={<TutorRecruitDetailClass/>} />
+        <Route
+          path="/myclass-tutor/recruiting"
+          element={<TutorRecruitClass />}
+        />
+        <Route
+          path="/myclass-tutor/recruiting/:id"
+          element={<TutorRecruitDetailClass />}
+        />
+        <Route path="/myclass-tutor/cancel" element={<TutorCancelClass />} />
+        <Route
+          path="/myclass-tutor/cancel/:id"
+          element={<TutorRecruitDetailClass />}
+        />
 
-        <Route path='/myclass-tutor/doing' element={<TutorDoingClass/>} />
-        <Route path='/myclass-tutor/doing/:id' element={<TutorDoingDetailClass/>} />
-        <Route path='/myclass-tutor/done' element={<TutorDoneClass/>} />
-        <Route path='/myclass-tutor/done/:id' element={<TutorDoingDetailClass/>} />
+        <Route path="/myclass-tutor/doing" element={<TutorDoingClass />} />
+        <Route
+          path="/myclass-tutor/doing/:id"
+          element={<TutorDoingDetailClass />}
+        />
+        <Route path="/myclass-tutor/done" element={<TutorDoneClass />} />
+        <Route
+          path="/myclass-tutor/done/:id"
+          element={<TutorDoingDetailClass />}
+        />
 
-        <Route path='/myclass/review-list' element={<ReviewList/>} />
-        <Route path='/myclass/review-list/:id' element={<ReviewDetail/>} />
-        <Route path='/myclass/review-form' element={<ReviewForm/>} />
-        
-        <Route path='/myclass/movetoonlineclass' element={<MoveToOnlineClass/>}/>
+        <Route path="/myclass/review-list" element={<ReviewList />} />
+        <Route path="/myclass/review-list/:id" element={<ReviewDetail />} />
+        <Route path="/myclass/review-form" element={<ReviewForm />} />
+
+        <Route
+          path="/myclass/movetoonlineclass"
+          element={<MoveToOnlineClass />}
+        />
       </Routes>
     </BrowserRouter>
   );

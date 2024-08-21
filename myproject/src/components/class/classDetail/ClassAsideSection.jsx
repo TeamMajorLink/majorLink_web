@@ -105,31 +105,35 @@ const IconImg = styled.img`
   height: 2rem;
 `;
 
-export function ClassAsideSection({ openModal }) {
+export function ClassAsideSection({ openModal, lectureInfo }) {
   return (
     <ComponentContainer>
-      <ClassTitleText>백엔드 웹 개발 기초</ClassTitleText>
+      <ClassTitleText>{lectureInfo.name}</ClassTitleText>
 
       <ClassInfoBox>
         <ClassSubInfoContainer>
           <ClassInfoName>분야</ClassInfoName>
-          <ClassInfoContent>공학 &gt; 컴퓨터 공학</ClassInfoContent>
+          <ClassInfoContent>
+            {lectureInfo.mainCategory} &gt; {lectureInfo.subCategory}
+          </ClassInfoContent>
         </ClassSubInfoContainer>
         <ClassSubInfoContainer>
           <ClassInfoName>레벨</ClassInfoName>
-          <ClassInfoContent>초급</ClassInfoContent>
+          <ClassInfoContent>{lectureInfo.level}</ClassInfoContent>
         </ClassSubInfoContainer>
         <ClassSubInfoContainer>
           <ClassInfoName>모집 인원</ClassInfoName>
-          <ClassInfoContent>2명 ~ 4명</ClassInfoContent>
+          <ClassInfoContent>{lectureInfo.pnum}명</ClassInfoContent>
         </ClassSubInfoContainer>
         <ClassSubInfoContainer>
           <ClassInfoName>수업 횟수</ClassInfoName>
-          <ClassInfoContent>6회차</ClassInfoContent>
+          <ClassInfoContent>{lectureInfo.curri}회차</ClassInfoContent>
         </ClassSubInfoContainer>
         <ClassSubInfoContainer>
           <ClassInfoName>요일/시간</ClassInfoName>
-          <ClassInfoContent>협의 가능</ClassInfoContent>
+          <ClassInfoContent>
+            {lectureInfo.day} / {lectureInfo.time}
+          </ClassInfoContent>
         </ClassSubInfoContainer>
       </ClassInfoBox>
 

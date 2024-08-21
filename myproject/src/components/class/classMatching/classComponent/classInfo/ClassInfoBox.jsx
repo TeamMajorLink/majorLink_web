@@ -59,13 +59,11 @@ const ContainerAllInfo = styled.div`
 `;
 
 export function ClassInfoBox({ lecture }) {
-  console.log(lecture);
-
   return (
     <ContainerAllInfo>
       <ContainerFlexBetween>
         <TutorName>by 링키</TutorName>
-        <ClassStarRating starRating={lecture.cnum} />
+        <ClassStarRating />
       </ContainerFlexBetween>
       <LectureName>{lecture.name}</LectureName>
 
@@ -81,7 +79,7 @@ export function ClassInfoBox({ lecture }) {
 
       <ContainerFlexBetween>
         <ClassSubInfo img={TimeIcon16} content="협의 가능" />
-        <ClassHeadcount headCount={lecture.pnum} />
+        <ClassHeadcount cnum={lecture.cnum} pnum={lecture.pnum} />
       </ContainerFlexBetween>
     </ContainerAllInfo>
   );

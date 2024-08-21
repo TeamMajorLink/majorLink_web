@@ -11,7 +11,6 @@ import ProgilePng from '../../../assets/common/back_header_profile_63x63.png';
 export function HeaderAfterLogin({ authToken }) {
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
-  // 로그 삭제
   // console.log(`authToken(헤더 알림): ${authToken}`);
 
   // 알림 연동
@@ -26,7 +25,46 @@ export function HeaderAfterLogin({ authToken }) {
             },
           },
         );
-        setNotifications(response.data);
+        const notificationsData = response.data;
+        console.log(notificationsData);
+
+        setNotifications(notificationsData);
+
+        // 브라우저 알림 권한
+        const showNotification = (notification) => {
+          const browserNotification = new Notification(
+            'majorLink에서 알림이 왔습니다.',
+            {
+              body: notification.content,
+              // body: response.data.content,
+            },
+          );
+
+          setTimeout(() => {
+            browserNotification.close();
+          }, 10 * 1000);
+
+          browserNotification.addEventListener('click', () => {
+            window.open(notification.url, '_blank');
+          });
+        };
+
+        // 브라우저 알림 허용 권한
+        let granted = false;
+
+        if (Notification.permission === 'granted') {
+          granted = true;
+        } else if (Notification.permission !== 'denied') {
+          const permission = await Notification.requestPermission();
+          granted = permission === 'granted';
+        }
+
+        // 알림 보여주기
+        if (granted && Array.isArray(notificationsData)) {
+          notificationsData.forEach((notification) => {
+            showNotification(notification);
+          });
+        }
       } catch (error) {
         console.error('알림(header get요청코드) 에러났어요~~', error);
       }
@@ -34,7 +72,10 @@ export function HeaderAfterLogin({ authToken }) {
 
     fetchNotifications();
   }, []);
+  console.log(notifications);
+
   notifications.forEach((notification) => {
+    console.log('여기 notification 데이터 내용');
     console.log(`id: ${notification.id}`);
     console.log(`receiver: ${notification.receiver}`);
     console.log(`sender: ${notification.sender}`);
@@ -64,7 +105,7 @@ export function HeaderAfterLogin({ authToken }) {
         <A.IconContainer onClick={handleMoveToHome}>
           <A.IconImg src={AlarmIconPng} alt="img" />
         </A.IconContainer>
-        {notifications.map((notification) => (
+        {/* {notifications.map((notification) => (
           <li key={notification.id}>
             <p>
               <strong>Receiver:</strong> {notification.receiver}
@@ -83,7 +124,7 @@ export function HeaderAfterLogin({ authToken }) {
               {new Date(notification.createdAt).toLocaleString()}
             </p>
           </li>
-        ))}
+        ))} */}
         {/* 프로필 이미지 수정 예정 */}
         <A.ProfileContainer onClick={handleMoveToMyPage}>
           <A.ProfileImg src={ProgilePng} alt="img" />

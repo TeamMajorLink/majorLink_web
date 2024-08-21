@@ -8,11 +8,18 @@ export default function NotificationSubscribe() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setAuthToken(localStorage.getItem('authToken'));
+    const token = localStorage.getItem('authToken');
+    setAuthToken(token);
   }, []);
   console.log(authToken);
 
   const fetchLectureList = async (setState) => {
+    if (!authToken) {
+      setError(new Error('No auth token found'));
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await axios.get(
         `https://dev.majorlink.store/notification/subscribe`,
@@ -24,6 +31,7 @@ export default function NotificationSubscribe() {
         },
       );
 
+      console.log(response.data); // 데이터를 콘솔에 출력 (개발 단계에서 확인)
       setState(response.data.lectureList);
     } catch (err) {
       setError(err);
@@ -32,10 +40,12 @@ export default function NotificationSubscribe() {
     }
   };
   useEffect(() => {
-    fetchLectureList();
-  }, []);
+    if (authToken) {
+      fetchLectureList();
+    }
+  }, [authToken]);
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div>알림구독에러: {error.message}</div>;
 
   return (
     <>

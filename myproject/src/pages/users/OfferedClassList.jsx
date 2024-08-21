@@ -10,7 +10,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
 
-
   .sidebar{
     margin: 19.8rem 0 8.4rem 20rem;
   }
@@ -33,27 +32,30 @@ const Title = styled.p`
   //margin: 4.8rem 0 3.3rem 5.3rem;
 `;
 
-const Line = styled.hr`
-  display: flex;
-  width: 120.8rem;
-  margin: 5rem 0 2.3rem 0; // 위쪽: 미정입니다...
-  border: 0.7rem solid ${() => color.line};
-`;
+// const Line = styled.hr`
+//   display: flex;
+//   width: 120.8rem;
+//   margin: 5rem 0 2.3rem 0; // 위쪽: 미정입니다...
+//   border: 0.7rem solid ${() => color.primary_normal};
+// `;
 
 function OfferClass() {
     return (
         <>
             <HeaderComponent />
-            <Container>
+
+            <Container className='sidebar'>
                 <Sidebar />
 
                 <ClassContainer>
+                  <Container>
                     <Title>개설 클래스</Title>
-                    {/* 클래스 만들기 버튼 - 추가하기 */}
+                      {/* 클래스 만들기 버튼 - 추가하기 */}
+                    <button type='button'>+ 클래스 만들기</button>  
+                  </Container>
+                  {/* <Line /> */}
+                  <OfferedClassTable />
                 </ClassContainer>
-                <Line />
-                <OfferedClassTable />
-                {/* 배치 이게 맞나...? */}
             </Container>
         </>
     );

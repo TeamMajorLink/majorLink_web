@@ -14,7 +14,7 @@ const GridList = styled.div`
   width: 1584px;
 `;
 
-export function ClassList() {
+export function ClassList({ categoryIdChanged }) {
   // 연동_24.08.20추가 - 클래스 정보
   const [lectureList, setLectureList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,28 +45,28 @@ export function ClassList() {
     const isNew = urlParams.get('New');
     const isMostRecruited = urlParams.get('MostRecruited');
     const categoryId = urlParams.get('CategoryId');
-    console.log(`isMostLiked: ${isMostLiked}`);
-    console.log(`isNew: ${isNew}`);
-    console.log(`isMostRecruited: ${isMostRecruited}`);
-    console.log(`categoryId: ${categoryId}`);
+    // console.log(`isMostLiked: ${isMostLiked}`);
+    // console.log(`isNew: ${isNew}`);
+    // console.log(`isMostRecruited: ${isMostRecruited}`);
+    // console.log(`categoryId: ${categoryId}`);
 
     if (isMostLiked) {
       fetchLectureList('/lecture/mostLiked');
-      console.log('좋아요순');
+      // console.log('좋아요순');
     } else if (isNew) {
       fetchLectureList('/lecture/new');
-      console.log('최신순');
+      // console.log('최신순');
     } else if (isMostRecruited) {
       fetchLectureList('/lecture/mostRecruited');
-      console.log('임박순');
+      // console.log('임박순');
     } else if (categoryId) {
       fetchLectureList(`/lecture/${categoryId}`);
-      console.log(`카테고리: ${categoryId}`);
+      // console.log(`카테고리: ${categoryId}`);
     } else {
       fetchLectureList('/lecture/list');
-      console.log('전체 조회');
+      // console.log('전체 조회');
     }
-  }, []);
+  }, [categoryIdChanged]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;

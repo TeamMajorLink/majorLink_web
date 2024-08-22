@@ -79,23 +79,17 @@ const DorpdownItem = styled.li`
   align-items: center;
 `;
 
-export function DropdownComponent({ resetCategory, setCategoryIdChanged }) {
+export function DropdownComponent3({ resetCategory, setCategoryIdChanged }) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState({
     id: 0,
-    label: '카테고리',
+    label: '인원',
   });
 
   const options = [
-    { id: 3, label: '인문과학' },
-    { id: 4, label: '사회과학' },
-    { id: 1, label: '공학' },
-    { id: 2, label: '자연과학' },
-    { id: 5, label: '교육학' },
-    { id: 6, label: '의약학' },
-    { id: 7, label: '예체능' },
-    { id: 8, label: '기타' },
+    { id: 1, label: '1:1' },
+    { id: 2, label: '그룹' },
   ];
 
   const toggleDropdown = () => {
@@ -108,10 +102,11 @@ export function DropdownComponent({ resetCategory, setCategoryIdChanged }) {
     setCategoryIdChanged(option.id);
     navigate(`/class/matching?CategoryId=${option.id}`);
   };
+
   useEffect(() => {
     setSelectedOption({
       id: 0,
-      label: '카테고리',
+      label: '인원',
     });
     setIsOpen(false);
     // console.log(`초기화~~`);

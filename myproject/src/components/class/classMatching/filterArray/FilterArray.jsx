@@ -1,10 +1,13 @@
 // import { createGlobalStyle } from "styled-components";
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import color from '../../../../styles/color';
 import font from '../../../../styles/font';
 import { DropdownComponent } from './DropdownComponent';
 import ResetIconPng from '../../../../assets/class/class_icon_reset_24x24.png';
+import { DropdownComponent2 } from './DropdownComponent2';
+import { DropdownComponent3 } from './DropdownComponent3';
 
 const SectionContainer = styled.div`
   margin: 0;
@@ -81,11 +84,27 @@ const ArrayText = styled.p`
   cursor: pointer;
 `;
 
-export function FilterArray() {
-  const [isArraySelected, setIsArraySelected] = useState(true);
+export function FilterArray({ setCategoryIdChanged }) {
+  const navigate = useNavigate();
+  const [resetCategory, setResetCategory] = useState(false);
+  const [toggleMostLiked, setToggleMostLiked] = useState(false);
+  const [toggleNew, setToggleNew] = useState(false);
 
-  const toggleSelected = () => {
-    setIsArraySelected(true);
+  const handleToggleMostLiked = () => {
+    setToggleMostLiked(true);
+    setToggleNew(false);
+    setCategoryIdChanged('toggleMostLiked');
+  };
+  const handleToggleNew = () => {
+    setToggleNew(true);
+    setToggleMostLiked(false);
+    setCategoryIdChanged('toggleNew');
+  };
+
+  const handleMoveToMatchingPage = () => {
+    setCategoryIdChanged('0');
+    setResetCategory(!resetCategory);
+    navigate(`/class/matching`);
   };
 
   return (
@@ -93,19 +112,28 @@ export function FilterArray() {
       <SectionText>검색 필터</SectionText>
       <FilterArrayContainer>
         <FilterContainer>
-          <DropdownComponent />
-          <DropdownComponent />
-          <DropdownComponent />
-          <ResetButton>
+          <DropdownComponent
+            resetCategory={resetCategory}
+            setCategoryIdChanged={setCategoryIdChanged}
+          />
+          <DropdownComponent2
+            resetCategory={resetCategory}
+            setCategoryIdChanged={setCategoryIdChanged}
+          />
+          <DropdownComponent3
+            resetCategory={resetCategory}
+            setCategoryIdChanged={setCategoryIdChanged}
+          />
+          <ResetButton onClick={handleMoveToMatchingPage}>
             <ResetIconImg src={ResetIconPng} alt="img" />
             <ResetText>초기화</ResetText>
           </ResetButton>
         </FilterContainer>
         <ArrayContainer>
-          <ArrayText selected={isArraySelected} onClick={toggleSelected}>
+          <ArrayText selected={toggleMostLiked} onClick={handleToggleMostLiked}>
             인기순
           </ArrayText>
-          <ArrayText selected={!isArraySelected} onClick={toggleSelected}>
+          <ArrayText selected={toggleNew} onClick={handleToggleNew}>
             최신순
           </ArrayText>
         </ArrayContainer>

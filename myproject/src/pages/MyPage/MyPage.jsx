@@ -88,14 +88,11 @@ const LinkContainer = styled.div`
 const AuthContainer = styled.div`
   display: flex;
   margin-top: 40px;
-  p {
-    margin-right: 20px;
-    color: ${() => color.grayscale_9d};
-  }
-  div {
-    border-left: 2px solid ${() => color.grayscale_9d};
-    margin-right: 20px;
-  }
+`;
+
+const Vertical = styled.div`
+  border-left: 1px solid ${() => color.grayscale_9d};
+  margin: 0 20px;
 `;
 
 const QuitButton = styled.button`
@@ -103,11 +100,13 @@ const QuitButton = styled.button`
   border: none;
   color: ${() => color.grayscale_9d};
 `;
+
 // 로그아웃 버튼 추가했어요_24.08.20
 const LogOutButton = styled.button`
   background-color: white;
   border: none;
   cursor: pointer;
+  color: ${() => color.grayscale_9d};
 `;
 
 const QuitContainer = styled.div`
@@ -263,6 +262,7 @@ function MyPage() {
               <LogOutButton type="button" onClick={clearAuthToken}>
                 로그아웃
               </LogOutButton>
+              <Vertical />
               <QuitButton
                 onClick={() => {
                   setModal(!modal);

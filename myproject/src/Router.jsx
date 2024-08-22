@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
-import HomePage from './pages/HomePage';
+import {HomePage} from './pages/HomePage';
 import { ClassMatchingPage } from './pages/class/ClassMatchingPage';
 import { ClassDetailPage } from './pages/class/ClassDetailPage';
 import MyPage from './pages/MyPage/MyPage';
@@ -46,6 +46,8 @@ import TutorCancelClass from './pages/myClass/tutor/TutorCancelClass';
 import TutorDoingClass from './pages/myClass/tutor/TutorDoingClass';
 import TutorDoingDetailClass from './pages/myClass/tutor/TutorDoingDetailClass';
 import TutorDoneClass from './pages/myClass/tutor/TutorDoneClass';
+import NotFound from './components/common/NotFound';
+
 import LectureLikeButton from './pages/apiTest/DDClassLikeButton';
 import NotificationSubscribe from './apis/getNotificationSubscribe';
 import PostNotification from './pages/apiTest/DDPostNotification';
@@ -164,6 +166,13 @@ export default function Router() {
           element={<TutorDoingDetailClass />}
         />
 
+        <Route path='/reviews/list' element={<ReviewList/>} />
+        {/* <Route path='/myclass/review-list/:id' element={<ReviewDetail/>} /> */}
+        <Route path='/reviews/:id/details' element={<ReviewDetail/>} />
+        {/* <Route path='/myclass/review-form' element={<ReviewForm/>} /> */}
+        <Route path='reviews/:id' element={<ReviewForm/>} />
+
+        <Route path='/*' element={<NotFound/>} />
         <Route path="/myclass/review-list" element={<ReviewList />} />
         <Route path="/myclass/review-list/:id" element={<ReviewDetail />} />
         <Route path="/myclass/review-form" element={<ReviewForm />} />

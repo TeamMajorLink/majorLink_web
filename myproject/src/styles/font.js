@@ -49,8 +49,8 @@ const font = {
   test_100: FONT({ weight: 900, size: 10.0 }),
   mypage: FONT({ weight: 500, size: 1.8 }),
   title: FONT({ weight: 600, size: 3.0 }),
-
   profilecard: FONT({ weight: 700, size: 1.323}),
+  regi_button: FONT({ weight: 600, size: 2.935 }),
 };
 
 export default font;

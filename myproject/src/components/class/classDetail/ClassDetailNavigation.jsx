@@ -81,7 +81,7 @@ const SectionTitleText = styled.p`
   ${() => font.semibold_36};
 `;
 
-export function ClassDetailNavigation({ openModal }) {
+export function ClassDetailNavigation({ openModal, lectureInfo }) {
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
@@ -121,16 +121,20 @@ export function ClassDetailNavigation({ openModal }) {
           {/* section1Ref */}
           <SectionContainer ref={section1Ref}>
             <SectionTitleText>클래스 소개</SectionTitleText>
+            <h4>{lectureInfo.info}</h4>
+            <h4>시작 날짜: {lectureInfo.startDate}</h4>
           </SectionContainer>
 
           {/* section2Ref */}
           <SectionContainer ref={section2Ref}>
             <SectionTitleText>커리큘럼</SectionTitleText>
+            <h4>{lectureInfo.info}</h4>
           </SectionContainer>
 
           {/* section3Ref */}
           <SectionContainer ref={section3Ref}>
             <SectionTitleText>튜터 소개</SectionTitleText>
+            <h4>{lectureInfo.tutor}</h4>
           </SectionContainer>
 
           {/* section4Ref */}
@@ -141,7 +145,7 @@ export function ClassDetailNavigation({ openModal }) {
         </SectionListContainer>
 
         <AsideContainer>
-          <ClassAsideSection openModal={openModal} />
+          <ClassAsideSection openModal={openModal} lectureInfo={lectureInfo} />
         </AsideContainer>
       </SectionFlex>
     </ComponentContainer>

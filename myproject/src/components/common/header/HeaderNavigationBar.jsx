@@ -24,7 +24,7 @@ export function HeaderNavigationBar() {
     setIsRegistrationPageSelected(true);
   };
   const handleMyClassPage = () => {
-    navigate(`/`);
+    navigate(`/myclass/recruiting`);
     setIsMyClassPageSelected(true);
   };
 

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
 import { HeaderComponent } from "../../components/common/header/HeaderComponent";
 import Footer from "../../components/common/footer";
 import font from '../../styles/font';
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -180,12 +182,12 @@ const Separator = styled.hr`
 
 function EnterBasicInfo() {
   const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [dob, setDob] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUserName] = useState("");
+  const [birth , setBirth] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState({
     all: false,
     age: false,
@@ -196,14 +198,7 @@ function EnterBasicInfo() {
     marketingNotification: false,
   });
   const [passwordVisible, setPasswordVisible] = useState(false);
-
-  const handleConfirm = () => {
-    if (name && dob && nickname.length >= 2 && email && password && confirmPassword === password && termsAccepted.age && termsAccepted.terms && termsAccepted.privacy) {
-      navigate("/next-page");
-    } else {
-      alert('모든 필수 정보를 올바르게 입력해주세요.');
-    }
-  };
+  const [message, setMessage] = useState(""); 
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -211,7 +206,7 @@ function EnterBasicInfo() {
 
   const handleTermsChange = (e) => {
     const { name: checkboxName, checked } = e.target;
-    if (checkboxName === 'all') {
+    if (checkboxName === "all") {
       setTermsAccepted({
         all: checked,
         age: checked,
@@ -222,14 +217,55 @@ function EnterBasicInfo() {
         marketingNotification: checked,
       });
     } else {
-      setTermsAccepted(prevState => {
+      setTermsAccepted((prevState) => {
         const newState = { ...prevState, [checkboxName]: checked };
-        const allChecked = newState.age && newState.terms && newState.privacy && newState.optionalPrivacy && newState.marketing && newState.marketingNotification;
+        const allChecked =
+          newState.age &&
+          newState.terms &&
+          newState.privacy &&
+          newState.optionalPrivacy &&
+          newState.marketing &&
+          newState.marketingNotification;
         return { ...newState, all: allChecked };
       });
     }
   };
-  
+
+  const handleConfirm = () => {
+    if (
+      username &&
+      birth &&
+      nickname.length >= 2 &&
+      email &&
+      password &&
+      confirmPassword === password &&
+      termsAccepted.age &&
+      termsAccepted.terms &&
+      termsAccepted.privacy
+    ) {
+      axios
+        .post("/users/sign-up", {
+          username,
+          birth,
+          nickname,
+          email,
+          password,
+        })
+        .then((response) => {
+          console.log(response);
+          alert("회원가입이 완료되었습니다!");
+          if (response.status === 200) {
+            navigate("/next-page");
+          }
+        })
+        .catch((error) => {
+          setMessage(error.response?.data?.message || "회원가입 중 오류가 발생했습니다.");
+          console.log(error);
+        });
+    } else {
+      alert("모든 필수 정보를 올바르게 입력해주세요.");
+    }
+  };
 
   return (
     <div>
@@ -243,114 +279,127 @@ function EnterBasicInfo() {
           </ProgressContainer>
           <InputWrapper1>
             <Label>이름</Label>
-            <Input 
-              type="text" 
-              placeholder="이름(실명)을 입력해주세요" 
-              value={name} 
-              onChange={(e) => setName(e.target.value)} 
+            <Input
+              type="text"
+              placeholder="이름(실명)을 입력해주세요"
+              value={username}
+              onChange={(e) => setUserName(e.target.value)}
             />
             <SmallBox>타인 명의로 가입 시 계정이 정지되고 재가입이 불가능합니다.</SmallBox>
+
             <Label>생년월일</Label>
-            <Input 
-              type="date" 
-              value={dob} 
-              onChange={(e) => setDob(e.target.value)} 
+            <Input
+              type="date"
+              value={birth}
+              onChange={(e) => setBirth(e.target.value)}
             />
+
             <Label>닉네임</Label>
-            <Input 
-              type="text" 
-              placeholder="2자 이상 입력해주세요" 
-              value={nickname} 
-              onChange={(e) => setNickname(e.target.value)} 
+            <Input
+              type="text"
+              placeholder="2자 이상 입력해주세요"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
             />
+
             <Label>이메일</Label>
-            <Input 
-              type="email" 
-              placeholder="example@email.com" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
+            <Input
+              type="email"
+              placeholder="example@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={!message ? "inputLogin" : "err_password"}
             />
+
             <Label>비밀번호</Label>
             <PasswordInputWrapper>
-              <Input 
-                type={passwordVisible ? 'text' : 'password'} 
-                placeholder="영문, 숫자, 특수문자 조합 8자 이상 입력해주세요" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
+              <Input
+                type={passwordVisible ? "text" : "password"}
+                placeholder="영문, 숫자, 특수문자 조합 8자 이상 입력해주세요"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <IconWrapper onClick={togglePasswordVisibility}>
-                {passwordVisible ? <IoEyeOffOutline size={24} /> : <IoEyeOutline size={24} />}
+                {passwordVisible ? (
+                  <IoEyeOffOutline size={24} />
+                ) : (
+                  <IoEyeOutline size={24} />
+                )}
               </IconWrapper>
             </PasswordInputWrapper>
+
             <Label>비밀번호 확인</Label>
-            <Input 
-              type="password" 
-              placeholder="영문, 숫자, 특수문자 조합 8자 이상 입력해주세요" 
-              value={confirmPassword} 
-              onChange={(e) => setConfirmPassword(e.target.value)} 
+            <Input
+              type="password"
+              placeholder="비밀번호를 다시 입력해주세요"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
+
+            <p style={{ color: "red" }}>{message}</p> 
+
             <CheckboxContainer>
               <CheckboxWrapper>
-                <Checkbox 
-                  type="checkbox" 
-                  name="all" 
-                  checked={termsAccepted.all} 
-                  onChange={handleTermsChange} 
+                <Checkbox
+                  type="checkbox"
+                  name="all"
+                  checked={termsAccepted.all}
+                  onChange={handleTermsChange}
                 />
                 <CheckboxLabel>약관 전체 동의</CheckboxLabel>
               </CheckboxWrapper>
               <Separator />
               <CheckboxWrapper>
-                <Checkbox 
-                  type="checkbox" 
-                  name="age" 
-                  checked={termsAccepted.age} 
-                  onChange={handleTermsChange} 
+                <Checkbox
+                  type="checkbox"
+                  name="age"
+                  checked={termsAccepted.age}
+                  onChange={handleTermsChange}
                 />
                 <CheckboxLabel>만 14세 이상입니다 (필수)</CheckboxLabel>
               </CheckboxWrapper>
               <CheckboxWrapper>
-                <Checkbox 
-                  type="checkbox" 
-                  name="terms" 
-                  checked={termsAccepted.terms} 
-                  onChange={handleTermsChange} 
+                <Checkbox
+                  type="checkbox"
+                  name="terms"
+                  checked={termsAccepted.terms}
+                  onChange={handleTermsChange}
                 />
                 <CheckboxLabel>이용약관 동의 (필수)</CheckboxLabel>
               </CheckboxWrapper>
               <CheckboxWrapper>
-                <Checkbox 
-                  type="checkbox" 
-                  name="privacy" 
-                  checked={termsAccepted.privacy} 
-                  onChange={handleTermsChange} 
+                <Checkbox
+                  type="checkbox"
+                  name="privacy"
+                  checked={termsAccepted.privacy}
+                  onChange={handleTermsChange}
                 />
                 <CheckboxLabel>개인정보 수집 및 이용 동의 (필수)</CheckboxLabel>
               </CheckboxWrapper>
               <CheckboxWrapper>
-                <Checkbox 
-                  type="checkbox" 
-                  name="optionalPrivacy" 
-                  checked={termsAccepted.optionalPrivacy} 
-                  onChange={handleTermsChange} 
+                <Checkbox
+                  type="checkbox"
+                  name="optionalPrivacy"
+                  checked={termsAccepted.optionalPrivacy}
+                  onChange={handleTermsChange}
                 />
                 <CheckboxLabel>선택정보 수집 및 이용 동의 (선택)</CheckboxLabel>
               </CheckboxWrapper>
               <CheckboxWrapper>
-                <Checkbox 
-                  type="checkbox" 
-                  name="marketing" 
-                  checked={termsAccepted.marketing} 
-                  onChange={handleTermsChange} 
+                <Checkbox
+                  type="checkbox"
+                  name="marketing"
+                  checked={termsAccepted.marketing}
+                  onChange={handleTermsChange}
                 />
                 <CheckboxLabel>개인정보 마케팅 활용 동의 (선택)</CheckboxLabel>
               </CheckboxWrapper>
               <CheckboxWrapper>
-                <Checkbox 
-                  type="checkbox" 
-                  name="marketingNotification" 
-                  checked={termsAccepted.marketingNotification} 
-                  onChange={handleTermsChange} 
+                <Checkbox
+                  type="checkbox"
+                  name="marketingNotification"
+                  checked={termsAccepted.marketingNotification}
+                  onChange={handleTermsChange}
                 />
                 <CheckboxLabel>마케팅 알림 수신 동의 (선택)</CheckboxLabel>
               </CheckboxWrapper>

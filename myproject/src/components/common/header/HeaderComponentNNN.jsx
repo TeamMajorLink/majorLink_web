@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { HeaderBeforeLogin } from './HeaderBeforeLogin';
-import { HeaderAfterLogin } from './HeaderAfterLogin';
+import { HeaderAfterLoginNNN } from './HeaderAfterLoginNNN';
 
-export function HeaderComponent() {
+export function HeaderComponentNNN() {
   const [isLogined, setIsLogined] = useState(false);
   const [authToken, setAuthToken] = useState(null);
 
@@ -19,7 +19,7 @@ export function HeaderComponent() {
   }, []);
 
   return isLogined ? (
-    <HeaderAfterLogin authToken={authToken} />
+    <HeaderAfterLoginNNN authToken={authToken} />
   ) : (
     <HeaderBeforeLogin />
   );

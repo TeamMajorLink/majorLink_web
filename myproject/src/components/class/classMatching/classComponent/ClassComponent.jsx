@@ -1,4 +1,5 @@
 // import { createGlobalStyle } from "styled-components";
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { ClassThumbnail } from './thumbnail/ClassThumbnail';
 import { ClassInfoBox } from './classInfo/ClassInfoBox';
@@ -16,11 +17,18 @@ const ComponentContainer = styled.div`
   cursor: pointer;
 `;
 
-export function ClassComponent() {
+export function ClassComponent({ lecture }) {
+  const navigate = useNavigate();
+  const handleMoveToDetail = () => {
+    navigate(`/class/detail?lectureId=${lecture.lectureId}`);
+  };
+  // console.log(`강의 ID: ${lecture.lectureId}`);
+
   return (
-    <ComponentContainer>
+    <ComponentContainer onClick={handleMoveToDetail}>
       <ClassThumbnail />
-      <ClassInfoBox />
+      <h3>{lecture.lectureId}</h3>
+      <ClassInfoBox lecture={lecture} />
     </ComponentContainer>
   );
 }

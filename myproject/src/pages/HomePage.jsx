@@ -1,12 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import viewAll from './Login/Login';
+// import viewAll from './Login/Login';
 import background from '../assets/class/HomePage_sliding.png';
 import background2 from '../assets/class/HomePage_sliding2.png';
-import examplepng from '../assets/class/HomePage_example.jpg';
+import examplepng1 from '../assets/class/HomePage_example1.jpg';
+import examplepng2 from '../assets/class/HomePage_example2.png';
+import examplepng3 from '../assets/class/HomePage_example3.png';
+import examplepng4 from '../assets/class/HomePage_example4.png';
 import category1 from '../assets/class/category1.png';
 import category2 from '../assets/class/category2.png';
 import category3 from '../assets/class/category3.png';
@@ -18,8 +23,9 @@ import category8 from '../assets/class/category8.png';
 import searchIcon from '../assets/class/searchIcon.png';
 import ad1 from '../assets/class/ad1.png';
 import ad2 from '../assets/class/ad2.png';
-import { HeaderComponent } from '../components/common/header/HeaderComponent';
-import Footer from '../components/common/footer';
+import { HeaderComponent } from "../components/common/header/HeaderComponent";
+import Footer from "../components/common/footer";
+
 
 const Container = styled.div`
   width: 100%;
@@ -201,7 +207,8 @@ const ClassPeopleListening = styled.div`
 `;
 
 function HomePage() {
-  // 연동_24.08.20추가
+  const navigate = useNavigate();
+  // 연동_24.08.20추가 - X-Auth-Token
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const authToken = urlParams.get('X-Auth-Token');
@@ -210,6 +217,49 @@ function HomePage() {
       localStorage.setItem('authToken', authToken);
     }
   }, []);
+
+  // 연동_24.08.20추가 - 클래스 정보
+  const [lectureListMostLiked, setLectureListMostLiked] = useState([]);
+  const [lectureListNew, setLectureListNew] = useState([]);
+  const [lectureListMostRecruited, setLectureListMostRecruited] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const handleMoveToMostLiked = () => {
+    navigate(`/class/matching?MostLiked=true`);
+  };
+  const handleMoveToNew = () => {
+    navigate(`/class/matching?New=true`);
+  };
+  const handleMoveToMostRecruited = () => {
+    navigate(`/class/matching?MostRecruited=true`);
+  };
+
+  const fetchLectureList = async (endpoint, setState, page = 1) => {
+    try {
+      const response = await axios.get(
+        `https://dev.majorlink.store${endpoint}`,
+        {
+          params: {
+            page,
+          },
+        },
+      );
+
+      setState(response.data.lectureList);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchLectureList('/lecture/mostLiked', setLectureListMostLiked);
+    fetchLectureList('/lecture/new', setLectureListNew);
+    fetchLectureList('/lecture/mostRecruited', setLectureListMostRecruited);
+  }, []);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
@@ -244,35 +294,35 @@ function HomePage() {
             </SearchButton>
           </SearchInputWrapper>
           <CategoryWrapper>
-            <CategoryButton>
+            <CategoryButton onClick={RecruitClass}>
               <CategoryImg src={category1} alt="img" />
               <CategoryText>인문과학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton onClick={RecruitClass}>
               <CategoryImg src={category2} alt="img" />
               <CategoryText>사회과학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton onClick={RecruitClass}>
               <CategoryImg src={category3} alt="img" />
               <CategoryText>공학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton onClick={RecruitClass}>
               <CategoryImg src={category4} alt="img" />
               <CategoryText>자연과학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton onClick={RecruitClass}>
               <CategoryImg src={category5} alt="img" />
               <CategoryText>교육학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton onClick={RecruitClass}>
               <CategoryImg src={category6} alt="img" />
               <CategoryText>의약학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton onClick={RecruitClass}>
               <CategoryImg src={category7} alt="img" />
               <CategoryText>예체능</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton onClick={RecruitClass}>
               <CategoryImg src={category8} alt="img" />
               <CategoryText>기타</CategoryText>
             </CategoryButton>
@@ -282,9 +332,12 @@ function HomePage() {
         <ClassSection>
           <ClassHeader>
             <ClassTitle>⭐지금 인기 있는 클래스</ClassTitle>
-            <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+            <ViewAllButton onClick={handleMoveToMostLiked}>
+              전체보기 &gt;
+            </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
+<<<<<<< HEAD
             <ClassCard>
               <ClassImage src={examplepng} alt="Marketing Image" />
               <ClassContent>
@@ -321,6 +374,26 @@ function HomePage() {
                 <ClassPeopleListening>👥2/5</ClassPeopleListening>
               </ClassContent>
             </ClassCard>
+=======
+            {/* 클래스 컴포넌트 연동 */}
+            {lectureListMostLiked.slice(0, 4).map((lecture, index) => (
+              <ClassCard
+                key={index /* eslint-disable-line react/no-array-index-key */}
+              >
+                <ClassImage src={examplepng} alt="Marketing Image" />
+                <ClassContent>
+                  <ClassTitleText>{lecture.name}</ClassTitleText>
+                  <ClassInstruction>
+                    {lecture.mainCategory} {'>'} {lecture.subCategory}
+                  </ClassInstruction>
+                  <ClassRating>⭐ 4.8</ClassRating>
+                  <ClassPeopleListening>
+                    👥{lecture.cnum}/{lecture.pnum}
+                  </ClassPeopleListening>
+                </ClassContent>
+              </ClassCard>
+            ))}
+>>>>>>> 32ed7f40857f45e6de9d184db6ad223951c02892
           </ClassGrid>
         </ClassSection>
 
@@ -344,9 +417,12 @@ function HomePage() {
         <ClassSection>
           <ClassHeader>
             <ClassTitle>🔎새로 등록된 클래스</ClassTitle>
-            <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+            <ViewAllButton onClick={handleMoveToNew}>
+              전체보기 &gt;
+            </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
+<<<<<<< HEAD
             <ClassCard>
               <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
               <ClassContent>
@@ -383,15 +459,38 @@ function HomePage() {
                 <ClassPeopleListening>👥2/5</ClassPeopleListening>
               </ClassContent>
             </ClassCard>
+=======
+            {/* 클래스 컴포넌트 연동 */}
+            {lectureListNew.slice(0, 4).map((lecture, index) => (
+              <ClassCard
+                key={index /* eslint-disable-line react/no-array-index-key */}
+              >
+                <ClassImage src={examplepng} alt="Marketing Image" />
+                <ClassContent>
+                  <ClassTitleText>{lecture.name}</ClassTitleText>
+                  <ClassInstruction>
+                    {lecture.mainCategory} {'>'} {lecture.subCategory}
+                  </ClassInstruction>
+                  <ClassRating>⭐ 4.8</ClassRating>
+                  <ClassPeopleListening>
+                    👥{lecture.cnum}/{lecture.pnum}
+                  </ClassPeopleListening>
+                </ClassContent>
+              </ClassCard>
+            ))}
+>>>>>>> 32ed7f40857f45e6de9d184db6ad223951c02892
           </ClassGrid>
         </ClassSection>
 
         <ClassSection>
           <ClassHeader>
             <ClassTitle>🔥모집 인원 마감 임박 클래스</ClassTitle>
-            <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+            <ViewAllButton onClick={handleMoveToMostRecruited}>
+              전체보기 &gt;
+            </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
+<<<<<<< HEAD
             <ClassCard>
               <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
               <ClassContent>
@@ -428,6 +527,26 @@ function HomePage() {
                 <ClassPeopleListening>👥2/5</ClassPeopleListening>
               </ClassContent>
             </ClassCard>
+=======
+            {/* 클래스 컴포넌트 연동 */}
+            {lectureListMostRecruited.slice(0, 4).map((lecture, index) => (
+              <ClassCard
+                key={index /* eslint-disable-line react/no-array-index-key */}
+              >
+                <ClassImage src={examplepng} alt="Marketing Image" />
+                <ClassContent>
+                  <ClassTitleText>{lecture.name}</ClassTitleText>
+                  <ClassInstruction>
+                    {lecture.mainCategory} {'>'} {lecture.subCategory}
+                  </ClassInstruction>
+                  <ClassRating>⭐ 4.8</ClassRating>
+                  <ClassPeopleListening>
+                    👥{lecture.cnum}/{lecture.pnum}
+                  </ClassPeopleListening>
+                </ClassContent>
+              </ClassCard>
+            ))}
+>>>>>>> 32ed7f40857f45e6de9d184db6ad223951c02892
           </ClassGrid>
         </ClassSection>
       </Container>

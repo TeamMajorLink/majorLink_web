@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
-import {HomePage} from './pages/HomePage';
+import HomePage from './pages/HomePage';
 import { ClassMatchingPage } from './pages/class/ClassMatchingPage';
 import { ClassDetailPage } from './pages/class/ClassDetailPage';
 import MyPage from './pages/MyPage/MyPage';
@@ -172,15 +172,12 @@ export default function Router() {
         {/* <Route path='/myclass/review-form' element={<ReviewForm/>} /> */}
         <Route path='reviews/:id' element={<ReviewForm/>} />
 
-        <Route path='/*' element={<NotFound/>} />
-        <Route path="/myclass/review-list" element={<ReviewList />} />
-        <Route path="/myclass/review-list/:id" element={<ReviewDetail />} />
-        <Route path="/myclass/review-form" element={<ReviewForm />} />
-
         <Route
           path="/myclass/movetoonlineclass"
           element={<MoveToOnlineClass />}
         />
+
+        <Route path='/*' element={<NotFound/>} />
       </Routes>
     </BrowserRouter>
   );

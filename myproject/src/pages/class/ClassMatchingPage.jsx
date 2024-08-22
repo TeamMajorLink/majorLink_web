@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import { SearchSection } from '../../components/class/classMatching/search/SearchSection';
 import { FilterArray } from '../../components/class/classMatching/filterArray/FilterArray';
@@ -17,15 +17,16 @@ const PageContainer = styled.div`
 `;
 
 export function ClassMatchingPage() {
+  const [categoryIdChanged, setCategoryIdChanged] = useState('');
   return (
     <div>
       <HeaderComponent />
 
       <PageContainer>
         <SearchSection />
-        <FilterArray />
+        <FilterArray setCategoryIdChanged={setCategoryIdChanged} />
         {/* 클래스 컴포넌트 */}
-        <ClassList />
+        <ClassList categoryIdChanged={categoryIdChanged} />
         <Pagination />
       </PageContainer>
     </div>

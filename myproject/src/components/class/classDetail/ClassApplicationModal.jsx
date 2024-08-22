@@ -125,17 +125,14 @@ export function ClassApplicationModal({ closeModal, lectureId = 1 }) {
       // navigate(`/class/application-completed`);
     } catch (error) {
       if (error.response) {
-        // 서버가 응답했으나 상태 코드가 2xx 범위가 아닐 때
         console.error(
           '요청 실패:',
           error.response.status,
           error.response.statusText,
         );
       } else if (error.request) {
-        // 요청이 전송되었으나 응답이 없을 때
         console.error('요청 실패: 응답이 없습니다.', error.request);
       } else {
-        // 요청을 설정하는 중에 발생한 에러
         console.error('요청 중 에러 발생:', error.message);
       }
     }

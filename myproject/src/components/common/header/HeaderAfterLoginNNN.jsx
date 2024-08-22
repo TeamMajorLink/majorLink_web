@@ -19,7 +19,7 @@ export function HeaderAfterLoginNNN({ authToken }) {
     if (!notification) return; // notification 데이터가 없으면 리턴
 
     const browserNotification = new Notification(
-      'HeaderAfterLogin.jsx에서 보내는 알림',
+      'majorLink에서 알림이 왔습니다.',
       {
         body: notification.content, // 알림 내용 표시
       },
@@ -37,7 +37,7 @@ export function HeaderAfterLoginNNN({ authToken }) {
   // 알림 연동
   useEffect(() => {
     const fetchNotifications = () => {
-      // WebSocket을 사용하여 실시간 알림 처리
+      // Socket을 사용하여 실시간 알림 처리
       const socket = new EventSource(
         `https://dev.majorlink.store/notification/subscribe/${authToken}`,
       );
@@ -61,15 +61,15 @@ export function HeaderAfterLoginNNN({ authToken }) {
       };
 
       socket.onerror = (err) => {
-        console.error('WebSocket 에러:', err);
+        console.error('Socket 에러:', err);
         socket.close(); // 오류 발생 시 연결을 닫습니다.
       };
 
       socket.onclose = () => {
-        console.log('WebSocket connection closed');
+        console.log('Socket connection closed');
       };
 
-      // 컴포넌트 언마운트 시 WebSocket 연결 종료
+      // 컴포넌트 언마운트 시 Socket 연결 종료
       return () => {
         socket.close();
       };

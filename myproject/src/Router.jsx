@@ -63,12 +63,12 @@ export default function Router() {
         <Route path="/header" element={<HeaderComponent />} />
 
         {/* 알림 연동 - 구독, 수강신청, 알림 받기 */}
+        <Route path="/headerNNN" element={<HeaderComponentNNN />} />
+        <Route path="/notc" element={<PostNotification />} />
         <Route
           path="/notification-subscribe"
           element={<NotificationSubscribe />}
         />
-        <Route path="/notc" element={<PostNotification />} />
-        <Route path="/headerNNN" element={<HeaderComponentNNN />} />
         {/* 소셜로그인 연동 */}
         <Route path="/new-user" element={<EnterBasicInfo />} />
         <Route path="/member" element={<HomePage />} />
@@ -126,7 +126,9 @@ export default function Router() {
           element={<OfferedClassModify />}
         />
 
-        {/* 내 강의실 수정 예정 */}
+        {/* 내 강의실 */}
+        {/* 내 강의실 */}
+        {/* 내 강의실 */}
         <Route path="/myclass/recruiting" element={<RecruitClass />} />
         <Route
           path="/myclass/recruiting/:id"

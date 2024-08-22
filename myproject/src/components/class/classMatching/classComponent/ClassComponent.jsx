@@ -26,7 +26,7 @@ export function ClassComponent({ lecture }) {
 
   return (
     <ComponentContainer onClick={handleMoveToDetail}>
-      <ClassThumbnail />
+      <ClassThumbnail mainCategory={lecture.mainCategory} />
       {/* <h3>(임시) lectureId: {lecture.lectureId}</h3> */}
       <ClassInfoBox lecture={lecture} />
     </ComponentContainer>

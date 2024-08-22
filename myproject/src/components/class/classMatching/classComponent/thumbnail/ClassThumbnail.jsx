@@ -34,13 +34,13 @@ const ButtonsContainer = styled.div`
   align-items: center;
 `;
 
-export function ClassThumbnail() {
+export function ClassThumbnail({ mainCategory }) {
   return (
     <ThumbnailImgContainer>
       <ThumbnailImg src={ThumbnailPng} alt="img" />
 
       <ButtonsContainer>
-        <ClassCategoryButton />
+        <ClassCategoryButton mainCategory={mainCategory} />
         <ClassInterestIcon />
       </ButtonsContainer>
     </ThumbnailImgContainer>

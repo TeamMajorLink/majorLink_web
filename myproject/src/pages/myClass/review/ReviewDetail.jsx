@@ -51,13 +51,15 @@ const Table = styled.table`
 `;
 
 function ReviewDetail() {
-
-  // const { reviewId } = useParams();
+  
   const [reviews, setReviews] = useState([]);
 
-  const reviewId = 1;
-
   const location = useLocation();
+  const lecture = location.state;
+  const { reviewId } = lecture;
+
+  console.log(reviewId);
+
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -88,13 +90,7 @@ function ReviewDetail() {
       <Wrapper>
       <Sidebar />
         <Container>
-          {/* <Title>{review.title}</Title> */}
-          {/* <Title>과목명</Title> */}
-          <Title>
-            {reviews.map((review) => (
-              review.lecture
-            ))}
-          </Title>
+          <Title>{lecture.lecture}</Title>
           <DetailContainer>
             <Table>
               <thead>

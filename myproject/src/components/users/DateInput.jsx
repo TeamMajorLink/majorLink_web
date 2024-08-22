@@ -4,13 +4,14 @@ import font from "../../styles/font";
 import color from "../../styles/color";
 
 const Container = styled.div`
-  //display:
+  // display:
+  margin: 0 0 0 1.7rem;
 `;
 
 const Text = styled.p`
   font: ${() => font.regular_20};
   color: ${() => color.black};
-//   margin-left: 5rem;
+  margin-bottom: 2rem;
 `;
 
 const DateSelect = styled.input`

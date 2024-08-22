@@ -9,6 +9,7 @@ import RectangleProfile from '../../components/users/RectangleProfile';
 import ProfileTitle from '../../components/users/ProfileTitle';
 import DateInput from '../../components/users/DateInput';
 import AddButton from '../../components/users/AddButton';
+import RegisterButton from '../../components/users/RegisterButton';
 
 const Container = styled.div`
   display: flex;
@@ -16,6 +17,10 @@ const Container = styled.div`
 
   .date{
 
+  }
+  .cansav{
+    // margin-left: auto;
+    justify-content: end;
   }
 `;
 
@@ -29,10 +34,12 @@ const ProfileContainer = styled.div`
 const Subhead = styled.p`
   font: ${() => font.semibold_24};
   color: ${() => color.black};
-  margin: 4.8rem 0 3.3rem 5.3rem;
+  width: 14.9rem;
+  margin: 4.8rem 6.3rem 3.3rem 5.3rem;
+  white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 */
 
   .tilde {
-    margin: 0; //임시
+    margin: 0 0.5rem 0 2.1rem; //0: 임시, 0.5: 맞나?...
   }
 `;
 
@@ -68,14 +75,15 @@ const BasicInput = styled.input`
   .long{
     width: 65.6rem;
   }
-  .check{
-      
+  .checkbox{
+    margin-left: 4.6rem;
   }
 `;
 
 const Label = styled.label`
   font: ${() => font.regular_20};
   color: ${() => color.black};
+  white-space: nowrap;
 `;
 
 const CharacterCount = styled.p`
@@ -164,7 +172,7 @@ function ProfileCardMake() {
               <DateInput content='시작일' placeholder='예) 2024-03-04' />
               <Subhead className='tilde'>~</Subhead>
               <DateInput content='종료일' placeholder='예) 2024-06-25' />
-              <BasicInput type='checkbox' id='ongoing1' name='ongoing1' />
+              <BasicInput type='checkbox' className='checkbox' id='ongoing1' name='ongoing1' />
               <Label htmlFor='ongoing1'>진행중</Label>
             </Container>
             <AddButton content='추가하기' />
@@ -185,25 +193,37 @@ function ProfileCardMake() {
               <DateInput content='시작일' placeholder='예) 2024.01.01' />
               <Subhead className='tilde'>~</Subhead>
               <DateInput content='종료일' placeholder='예) 2024.01.01' />
-              <BasicInput type='checkbox' id='ongoing2' name='ongoing2' />
+              <BasicInput type='checkbox' className='checkbox' id='ongoing2' name='ongoing2' />
               <Label htmlFor='ongoing2'>진행중</Label>
             </Container>
             <Container>
               <Subhead>활동 내용</Subhead>
               <BasicInput className='long' placeholder='예) ios 모바일 어플 개발 프로젝트 진행' />
             </Container>
+            <AddButton content='추가하기' />
             {/* 추가하기 버튼 컴포넌트? */}
 
             <ProfileTitle title='보유 기술' />
             <Container>
               <Subhead>보유 기술</Subhead>
-              <BasicInput className='long' placeholder='키워드 입력 후 Enter' />
-              {/* 수정 - Enter 또는 버튼 클릭 시 기능 추가하기 */}
-              {/* 등록 버튼 컴포넌트? */}
-              <Text>예시: Google Ananlytics, Photoshop, Figma, Notion, Python, Javascript, Confluence 등</Text>
-              <TagContainer>
-                <Tag>Figma</Tag>
-              </TagContainer>
+
+
+
+
+              <Container>
+                <Container>
+                  <BasicInput className='long' placeholder='키워드 입력 후 Enter' />
+                  {/* 수정 - Enter 또는 버튼 클릭 시 기능 추가하기 */}
+                  <RegisterButton variant='normal' content='등록' />
+                  {/* 등록 버튼 컴포넌트? */}
+                </Container>
+                <Text>예시: Google Ananlytics, Photoshop, Figma, Notion, Python, Javascript, Confluence 등</Text>
+                <TagContainer>
+                  <Tag>Figma</Tag>
+                  <Tag>React native</Tag>
+                  <Tag>Notion</Tag>
+                </TagContainer>
+              </Container>
             </Container>
 
 
@@ -212,6 +232,7 @@ function ProfileCardMake() {
               <Subhead>첨부파일</Subhead>
               <BasicInput type='file' className='long' placeholder='첨부할 파일을 찾아주세요'/>
               {/* 첨부할 파일을 찾아주세요 */}
+              <RegisterButton variant='normal' content='파일 첨부' />
               {/* 파일 첨부 버튼 컴포넌트 */}
             </Container>
 
@@ -219,6 +240,7 @@ function ProfileCardMake() {
               <Subhead>URL</Subhead>
               <BasicInput type='url' className='long' placeholder='URL 링크를 입력하세요' />
               {/* URL 링크를 입력하세요 */}
+              <RegisterButton variant='normal' content='등록' />
               {/* 등록 버튼 컴포넌트 */}
               <UrlContainer>
                 <Url>https:임시.com</Url>
@@ -228,10 +250,17 @@ function ProfileCardMake() {
 
           </ProfileContainer>
 
+          {/* 수정하기!!! 배치... */}
           <Container>
-              {/* 취소 버튼 컴포넌트 */}
-              {/* 저장하기 버튼 컴포넌트 */}
+            <Container />
+
+            <Container className='cansav'>
+              <RegisterButton variant='cancle' content='취소' />
+                {/* 취소 버튼 컴포넌트 */}
+              <RegisterButton variant='save' content='저장하기' />
+                {/* 저장하기 버튼 컴포넌트 */}
             </Container>
+          </Container>
 
         
         <Footer />

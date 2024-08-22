@@ -337,6 +337,7 @@ function HomePage() {
             </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
+<<<<<<< HEAD
             <ClassCard>
               <ClassImage src={examplepng} alt="Marketing Image" />
               <ClassContent>
@@ -373,6 +374,26 @@ function HomePage() {
                 <ClassPeopleListening>👥2/5</ClassPeopleListening>
               </ClassContent>
             </ClassCard>
+=======
+            {/* 클래스 컴포넌트 연동 */}
+            {lectureListMostLiked.slice(0, 4).map((lecture, index) => (
+              <ClassCard
+                key={index /* eslint-disable-line react/no-array-index-key */}
+              >
+                <ClassImage src={examplepng} alt="Marketing Image" />
+                <ClassContent>
+                  <ClassTitleText>{lecture.name}</ClassTitleText>
+                  <ClassInstruction>
+                    {lecture.mainCategory} {'>'} {lecture.subCategory}
+                  </ClassInstruction>
+                  <ClassRating>⭐ 4.8</ClassRating>
+                  <ClassPeopleListening>
+                    👥{lecture.cnum}/{lecture.pnum}
+                  </ClassPeopleListening>
+                </ClassContent>
+              </ClassCard>
+            ))}
+>>>>>>> 32ed7f40857f45e6de9d184db6ad223951c02892
           </ClassGrid>
         </ClassSection>
 
@@ -401,6 +422,7 @@ function HomePage() {
             </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
+<<<<<<< HEAD
             <ClassCard>
               <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
               <ClassContent>
@@ -437,6 +459,26 @@ function HomePage() {
                 <ClassPeopleListening>👥2/5</ClassPeopleListening>
               </ClassContent>
             </ClassCard>
+=======
+            {/* 클래스 컴포넌트 연동 */}
+            {lectureListNew.slice(0, 4).map((lecture, index) => (
+              <ClassCard
+                key={index /* eslint-disable-line react/no-array-index-key */}
+              >
+                <ClassImage src={examplepng} alt="Marketing Image" />
+                <ClassContent>
+                  <ClassTitleText>{lecture.name}</ClassTitleText>
+                  <ClassInstruction>
+                    {lecture.mainCategory} {'>'} {lecture.subCategory}
+                  </ClassInstruction>
+                  <ClassRating>⭐ 4.8</ClassRating>
+                  <ClassPeopleListening>
+                    👥{lecture.cnum}/{lecture.pnum}
+                  </ClassPeopleListening>
+                </ClassContent>
+              </ClassCard>
+            ))}
+>>>>>>> 32ed7f40857f45e6de9d184db6ad223951c02892
           </ClassGrid>
         </ClassSection>
 
@@ -448,6 +490,7 @@ function HomePage() {
             </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
+<<<<<<< HEAD
             <ClassCard>
               <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
               <ClassContent>
@@ -484,6 +527,26 @@ function HomePage() {
                 <ClassPeopleListening>👥2/5</ClassPeopleListening>
               </ClassContent>
             </ClassCard>
+=======
+            {/* 클래스 컴포넌트 연동 */}
+            {lectureListMostRecruited.slice(0, 4).map((lecture, index) => (
+              <ClassCard
+                key={index /* eslint-disable-line react/no-array-index-key */}
+              >
+                <ClassImage src={examplepng} alt="Marketing Image" />
+                <ClassContent>
+                  <ClassTitleText>{lecture.name}</ClassTitleText>
+                  <ClassInstruction>
+                    {lecture.mainCategory} {'>'} {lecture.subCategory}
+                  </ClassInstruction>
+                  <ClassRating>⭐ 4.8</ClassRating>
+                  <ClassPeopleListening>
+                    👥{lecture.cnum}/{lecture.pnum}
+                  </ClassPeopleListening>
+                </ClassContent>
+              </ClassCard>
+            ))}
+>>>>>>> 32ed7f40857f45e6de9d184db6ad223951c02892
           </ClassGrid>
         </ClassSection>
       </Container>

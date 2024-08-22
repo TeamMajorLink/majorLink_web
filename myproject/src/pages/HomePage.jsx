@@ -232,6 +232,7 @@ function HomePage() {
   const [lectureListMostLiked, setLectureListMostLiked] = useState([]);
   const [lectureListNew, setLectureListNew] = useState([]);
   const [lectureListMostRecruited, setLectureListMostRecruited] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -243,6 +244,9 @@ function HomePage() {
   };
   const handleMoveToMostRecruited = () => {
     navigate(`/class/matching?MostRecruited=true`);
+  };
+  const handleMoveToCategory = (num) => {
+    navigate(`/class/matching?CategoryId=${num}`);
   };
 
   const fetchLectureList = async (endpoint, setState, page = 1) => {
@@ -310,35 +314,67 @@ function HomePage() {
           </SearchInputWrapper>
           <CategoryWrapper>
             {/* <CategoryButton onClick={RecruitClass}> */}
-            <CategoryButton>
+            <CategoryButton
+              onClick={() => {
+                handleMoveToCategory('3');
+              }}
+            >
               <CategoryImg src={category1} alt="img" />
               <CategoryText>인문과학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton
+              onClick={() => {
+                handleMoveToCategory('4');
+              }}
+            >
               <CategoryImg src={category2} alt="img" />
               <CategoryText>사회과학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton
+              onClick={() => {
+                handleMoveToCategory('1');
+              }}
+            >
               <CategoryImg src={category3} alt="img" />
               <CategoryText>공학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton
+              onClick={() => {
+                handleMoveToCategory('2');
+              }}
+            >
               <CategoryImg src={category4} alt="img" />
               <CategoryText>자연과학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton
+              onClick={() => {
+                handleMoveToCategory('5');
+              }}
+            >
               <CategoryImg src={category5} alt="img" />
               <CategoryText>교육학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton
+              onClick={() => {
+                handleMoveToCategory('6');
+              }}
+            >
               <CategoryImg src={category6} alt="img" />
               <CategoryText>의약학</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton
+              onClick={() => {
+                handleMoveToCategory('7');
+              }}
+            >
               <CategoryImg src={category7} alt="img" />
               <CategoryText>예체능</CategoryText>
             </CategoryButton>
-            <CategoryButton>
+            <CategoryButton
+              onClick={() => {
+                handleMoveToCategory('8');
+              }}
+            >
               <CategoryImg src={category8} alt="img" />
               <CategoryText>기타</CategoryText>
             </CategoryButton>

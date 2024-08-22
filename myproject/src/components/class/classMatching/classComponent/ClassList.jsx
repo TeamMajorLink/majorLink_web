@@ -44,9 +44,11 @@ export function ClassList() {
     const isMostLiked = urlParams.get('MostLiked');
     const isNew = urlParams.get('New');
     const isMostRecruited = urlParams.get('MostRecruited');
+    const categoryId = urlParams.get('CategoryId');
     console.log(`isMostLiked: ${isMostLiked}`);
     console.log(`isNew: ${isNew}`);
     console.log(`isMostRecruited: ${isMostRecruited}`);
+    console.log(`categoryId: ${categoryId}`);
 
     if (isMostLiked) {
       fetchLectureList('/lecture/mostLiked');
@@ -57,6 +59,9 @@ export function ClassList() {
     } else if (isMostRecruited) {
       fetchLectureList('/lecture/mostRecruited');
       console.log('임박순');
+    } else if (categoryId) {
+      fetchLectureList(`/lecture/${categoryId}`);
+      console.log(`카테고리: ${categoryId}`);
     } else {
       fetchLectureList('/lecture/list');
       console.log('전체 조회');

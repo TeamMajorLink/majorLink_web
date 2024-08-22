@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
-import {HomePage} from './pages/HomePage';
+import HomePage from './pages/HomePage';
 import { ClassMatchingPage } from './pages/class/ClassMatchingPage';
 import { ClassDetailPage } from './pages/class/ClassDetailPage';
 import MyPage from './pages/MyPage/MyPage';
@@ -57,13 +57,12 @@ import { HeaderComponent } from './components/common/header/HeaderComponent';
 export default function Router() {
   return (
     <BrowserRouter>
-      <Routes>3
+      <Routes>
         {/* api 연동 테스트 - 삭제 예정!! */}
         <Route path="/api-test/create" element={<ApiTestCreatePage />} />
         <Route path="/api-test/read" element={<ApiTestReadPage />} />
         <Route path="/dd" element={<LectureLikeButton />} />
         <Route path="/header" element={<HeaderComponent />} />
-
         {/* 알림 연동 - 구독, 수강신청, 알림 받기 */}
         <Route path="/headerNNN" element={<HeaderComponentNNN />} />
         <Route path="/notc" element={<PostNotification />} />
@@ -74,7 +73,6 @@ export default function Router() {
         {/* 소셜로그인 연동 */}
         <Route path="/new-user" element={<EnterBasicInfo />} />
         <Route path="/member" element={<HomePage />} />
-
         {/* 홈 */}
         <Route path="/" element={<HomePage />} />
         {/* 로그인 */}
@@ -98,7 +96,6 @@ export default function Router() {
           element={<EnterRequiredInfo />}
         />
         <Route path="/createaccount-coupon" element={<Coupon />} />
-
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />
         <Route path="/class/detail" element={<ClassDetailPage />} />
@@ -116,15 +113,12 @@ export default function Router() {
         <Route path="/notice" element={<Notice />} />
         <Route path="/event" element={<Event />} />
         <Route path="/inquiry" element={<Inquiry />} />
-
         {/* 수업 개설하기 수정 예정 */}
         <Route path="/users/profile-card/nickname" element={<ProfileCard />} />
         <Route path="/users/profile-card" element={<ProfileCardMake />} />
-
         <Route path="/offeredclasslist" element={<OfferedClassList />} />
         <Route path="/lecture/create" element={<LectureCreate />} />
         <Route path="/lecture/lectureid" element={<LectureModify />} />
-
         {/* 내 강의실 */}
         {/* 내 강의실 */}
         {/* 내 강의실 */}
@@ -135,12 +129,10 @@ export default function Router() {
         />
         <Route path="/myclass/cancel" element={<CancelClass />} />
         <Route path="/myclass/cancel/:id" element={<RecruitDetailClass />} />
-
         <Route path="/myclass/doing" element={<DoingClass />} />
         <Route path="/myclass/doing/:id" element={<DoingDetailClass />} />
         <Route path="/myclass/done" element={<DoneClass />} />
         <Route path="/myclass/done/:id" element={<DoingDetailClass />} />
-
         <Route
           path="/myclass-tutor/recruiting"
           element={<TutorRecruitClass />}
@@ -154,7 +146,6 @@ export default function Router() {
           path="/myclass-tutor/cancel/:id"
           element={<TutorRecruitDetailClass />}
         />
-
         <Route path="/myclass-tutor/doing" element={<TutorDoingClass />} />
         <Route
           path="/myclass-tutor/doing/:id"
@@ -165,18 +156,15 @@ export default function Router() {
           path="/myclass-tutor/done/:id"
           element={<TutorDoingDetailClass />}
         />
-
-        <Route path='/reviews/list' element={<ReviewList/>} />
+        <Route path="/reviews/list" element={<ReviewList />} />
         {/* <Route path='/myclass/review-list/:id' element={<ReviewDetail/>} /> */}
-        <Route path='/reviews/:id/details' element={<ReviewDetail/>} />
+        <Route path="/reviews/:id/details" element={<ReviewDetail />} />
         {/* <Route path='/myclass/review-form' element={<ReviewForm/>} /> */}
-        <Route path='reviews/:id' element={<ReviewForm/>} />
-
-        <Route path='/*' element={<NotFound/>} />
+        <Route path="reviews/:id" element={<ReviewForm />} />
+        <Route path="/*" element={<NotFound />} />
         <Route path="/myclass/review-list" element={<ReviewList />} />
         <Route path="/myclass/review-list/:id" element={<ReviewDetail />} />
         <Route path="/myclass/review-form" element={<ReviewForm />} />
-
         <Route
           path="/myclass/movetoonlineclass"
           element={<MoveToOnlineClass />}

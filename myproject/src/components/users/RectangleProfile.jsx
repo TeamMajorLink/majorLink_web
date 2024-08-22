@@ -7,33 +7,33 @@ import ProfileImg from '../../assets/common/profile_default_125x125.png';
 
 const RectContainer = styled.div`
   position: relative;
-  width: 1208px;
-  height: 256px;
+  margin: 0 0 4.3rem 0;
+  width: 120.8rem;
+  height: 25.6rem;
   display: flex; // 현재 무시되고 있음...
-  align-items: center; // 현재 무시되고 있음...
+  align-items: center; // 현재 무시되고 있나?...
   justify-content: flex-start; /* 가로 축에서 왼쪽 정렬 */ 
   background: ${() => color.gradation_rectangle};
-  border-radius: 40px 40px 0px 0px;
-  padding: 20px;
+  border-radius: 4rem 4rem 0 0;
+  padding: 2rem;
   display: flex;
-  align-items: center;
 `;
 
 const ProImg = styled.img`
   // position: absolute;
   // top: 82px;
   // left: 98px;
-  width: 125px;
-  height: 125px;
+  width: 12.5rem;
+  height: 12.5rem;
   border-radius: 50%;
-  margin-left: 98px;
+  margin-left: 9.8rem;
 `;
 
 const RectProInfo = styled.div`
   // position: absolute;
   // top:
   // left:
-  margin-left: 94px;
+  margin: 0 0 0 9.4rem;
   display: flex;
   flex-direction: column;
 `;
@@ -53,7 +53,7 @@ const Major = styled.p`
 const Intro = styled.p`
   font: ${() => font.regular_16};
   color: ${() => color.white};
-  margin-top: 10px;
+  margin-top: 1rem;
 `;
 
 function RectangleProfile() {

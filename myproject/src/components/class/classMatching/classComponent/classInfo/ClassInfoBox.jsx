@@ -58,17 +58,22 @@ const ContainerAllInfo = styled.div`
   align-items: flex-start;
 `;
 
-export function ClassInfoBox() {
+export function ClassInfoBox({ lecture }) {
+  console.log(lecture);
+
   return (
     <ContainerAllInfo>
       <ContainerFlexBetween>
         <TutorName>by 링키</TutorName>
-        <ClassStarRating />
+        <ClassStarRating starRating={lecture.cnum} />
       </ContainerFlexBetween>
-      <LectureName>백엔드 웹 개발 기초</LectureName>
+      <LectureName>{lecture.name}</LectureName>
 
       <ContainerFlexStart>
-        <ClassSubInfo img={MajorIcon16} content="공학 > 컴퓨터공학" />
+        <ClassSubInfo
+          img={MajorIcon16}
+          content={`${lecture.mainCategory} > ${lecture.subCategory}`}
+        />
         <ClassSubInfo img={LevelIcon16} content="초급" />
         <ClassSubInfo img={LectureIcon16} content="11차시" />
       </ContainerFlexStart>
@@ -76,7 +81,7 @@ export function ClassInfoBox() {
 
       <ContainerFlexBetween>
         <ClassSubInfo img={TimeIcon16} content="협의 가능" />
-        <ClassHeadcount />
+        <ClassHeadcount headCount={lecture.pnum} />
       </ContainerFlexBetween>
     </ContainerAllInfo>
   );

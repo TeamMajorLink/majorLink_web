@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import viewAll from './Login/Login';
+// import viewAll from './Login/Login';
 import background from '../assets/class/HomePage_sliding.png';
 import background2 from '../assets/class/HomePage_sliding2.png';
 import examplepng1 from '../assets/class/HomePage_example1.jpg';
@@ -23,7 +25,7 @@ import ad1 from '../assets/class/ad1.png';
 import ad2 from '../assets/class/ad2.png';
 import { HeaderComponent } from "../components/common/header/HeaderComponent";
 import Footer from "../components/common/footer";
-import RecruitClass from "./myClass/RecruitClass";
+
 
 const Container = styled.div`
   width: 100%;
@@ -205,6 +207,60 @@ const ClassPeopleListening = styled.div`
 `;
 
 function HomePage() {
+  const navigate = useNavigate();
+  // 연동_24.08.20추가 - X-Auth-Token
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const authToken = urlParams.get('X-Auth-Token');
+
+    if (authToken) {
+      localStorage.setItem('authToken', authToken);
+    }
+  }, []);
+
+  // 연동_24.08.20추가 - 클래스 정보
+  const [lectureListMostLiked, setLectureListMostLiked] = useState([]);
+  const [lectureListNew, setLectureListNew] = useState([]);
+  const [lectureListMostRecruited, setLectureListMostRecruited] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const handleMoveToMostLiked = () => {
+    navigate(`/class/matching?MostLiked=true`);
+  };
+  const handleMoveToNew = () => {
+    navigate(`/class/matching?New=true`);
+  };
+  const handleMoveToMostRecruited = () => {
+    navigate(`/class/matching?MostRecruited=true`);
+  };
+
+  const fetchLectureList = async (endpoint, setState, page = 1) => {
+    try {
+      const response = await axios.get(
+        `https://dev.majorlink.store${endpoint}`,
+        {
+          params: {
+            page,
+          },
+        },
+      );
+
+      setState(response.data.lectureList);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchLectureList('/lecture/mostLiked', setLectureListMostLiked);
+    fetchLectureList('/lecture/new', setLectureListNew);
+    fetchLectureList('/lecture/mostRecruited', setLectureListMostRecruited);
+  }, []);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
     <div>
       <HeaderComponent />
@@ -276,11 +332,13 @@ function HomePage() {
         <ClassSection>
           <ClassHeader>
             <ClassTitle>⭐지금 인기 있는 클래스</ClassTitle>
-            <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+            <ViewAllButton onClick={handleMoveToMostLiked}>
+              전체보기 &gt;
+            </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
             <ClassCard>
-              <ClassImage src={examplepng1} alt="Marketing Image" />
+              <ClassImage src={examplepng} alt="Marketing Image" />
               <ClassContent>
                 <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -289,7 +347,7 @@ function HomePage() {
               </ClassContent>
             </ClassCard>
             <ClassCard>
-              <ClassImage src={examplepng2} alt="Marketing Image" />
+              <ClassImage src={examplepng} alt="Marketing Image" />
               <ClassContent>
                 <ClassTitleText>C 프로그래밍</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -298,7 +356,7 @@ function HomePage() {
               </ClassContent>
             </ClassCard>
             <ClassCard>
-              <ClassImage src={examplepng3} alt="기계요소 설계" />
+              <ClassImage src={examplepng} alt="기계요소 설계" />
               <ClassContent>
                 <ClassTitleText>기계요소 설계</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -307,7 +365,7 @@ function HomePage() {
               </ClassContent>
             </ClassCard>
             <ClassCard>
-              <ClassImage src={examplepng4} alt="디지털 마케팅" />
+              <ClassImage src={examplepng} alt="디지털 마케팅" />
               <ClassContent>
                 <ClassTitleText>디지털 마케팅</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -338,11 +396,13 @@ function HomePage() {
         <ClassSection>
           <ClassHeader>
             <ClassTitle>🔎새로 등록된 클래스</ClassTitle>
-            <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+            <ViewAllButton onClick={handleMoveToNew}>
+              전체보기 &gt;
+            </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
             <ClassCard>
-              <ClassImage src={examplepng1} alt="비즈니스 영어 회화" />
+              <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
               <ClassContent>
                 <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -351,7 +411,7 @@ function HomePage() {
               </ClassContent>
             </ClassCard>
             <ClassCard>
-              <ClassImage src={examplepng2} alt="C 프로그래밍" />
+              <ClassImage src={examplepng} alt="C 프로그래밍" />
               <ClassContent>
                 <ClassTitleText>C 프로그래밍</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -360,7 +420,7 @@ function HomePage() {
               </ClassContent>
             </ClassCard>
             <ClassCard>
-              <ClassImage src={examplepng3} alt="기계요소 설계" />
+              <ClassImage src={examplepng} alt="기계요소 설계" />
               <ClassContent>
                 <ClassTitleText>기계요소 설계</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -369,7 +429,7 @@ function HomePage() {
               </ClassContent>
             </ClassCard>
             <ClassCard>
-              <ClassImage src={examplepng4} alt="디지털 마케팅" />
+              <ClassImage src={examplepng} alt="디지털 마케팅" />
               <ClassContent>
                 <ClassTitleText>디지털 마케팅</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -383,11 +443,13 @@ function HomePage() {
         <ClassSection>
           <ClassHeader>
             <ClassTitle>🔥모집 인원 마감 임박 클래스</ClassTitle>
-            <ViewAllButton onClick={viewAll}>전체보기 &gt;</ViewAllButton>
+            <ViewAllButton onClick={handleMoveToMostRecruited}>
+              전체보기 &gt;
+            </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
             <ClassCard>
-              <ClassImage src={examplepng1} alt="비즈니스 영어 회화" />
+              <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
               <ClassContent>
                 <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -396,7 +458,7 @@ function HomePage() {
               </ClassContent>
             </ClassCard>
             <ClassCard>
-              <ClassImage src={examplepng2} alt="C 프로그래밍" />
+              <ClassImage src={examplepng} alt="C 프로그래밍" />
               <ClassContent>
                 <ClassTitleText>C 프로그래밍</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -405,7 +467,7 @@ function HomePage() {
               </ClassContent>
             </ClassCard>
             <ClassCard>
-              <ClassImage src={examplepng3} alt="기계요소 설계" />
+              <ClassImage src={examplepng} alt="기계요소 설계" />
               <ClassContent>
                 <ClassTitleText>기계요소 설계</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -414,7 +476,7 @@ function HomePage() {
               </ClassContent>
             </ClassCard>
             <ClassCard>
-              <ClassImage src={examplepng4} alt="디지털 마케팅" />
+              <ClassImage src={examplepng} alt="디지털 마케팅" />
               <ClassContent>
                 <ClassTitleText>디지털 마케팅</ClassTitleText>
                 <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
@@ -425,7 +487,7 @@ function HomePage() {
           </ClassGrid>
         </ClassSection>
       </Container>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

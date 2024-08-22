@@ -20,9 +20,11 @@ export function HeaderNavigationBar() {
     setIsClassPageSelected(true);
   };
   const handleRegistrationPage = () => {
+    navigate(`/users/profile-card`);
     setIsRegistrationPageSelected(true);
   };
   const handleMyClassPage = () => {
+    navigate(`/myclass/recruiting`);
     setIsMyClassPageSelected(true);
   };
 

@@ -80,8 +80,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  border: 0.94px solid ${() => color.info_border_color};
-  color: ${() => color.info_text_color};
+  border: 0.94px solid ${() => color.grayscale_9d};
   margin-top: 15px;
   width: 350px;
   height: 40px;
@@ -133,7 +132,7 @@ const GenderLabel = styled.label`
   display: inline-block;
   width: 160px;
   height: 40px;
-  border: 0.94px solid ${() => color.info_border_color};
+  border: 0.94px solid ${() => color.grayscale_9d};
   border-radius: 6px;
   background-color: ${(props) => (props.isSelected ? '#36D9D4' : '#FFFFFF')};
   color: ${(props) => (props.isSelected ? '#FFFFFF' : '#000000')};
@@ -315,10 +314,8 @@ function EditProfile() {
                   placeholder="example@email.com" 
                   {...register("email", {
                     pattern: {
-                      value:
-                        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/,
-                      message:
-                        '영문, 숫자, 특수문자 조합 8자 이상 입력해주세요',
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: '이메일 형식에 맞게 다시 입력해주세요.',
                     },
                   })}
                   />

@@ -1,18 +1,18 @@
-import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { useState } from 'react';
 // import axios from "axios";
-import font from "../../styles/font";
-import color from "../../styles/color";
-import ProfileImg from "../../assets/pages/page_profile_sample.png"
-import { HeaderComponent } from "../../components/common/header/HeaderComponent";
-import Sidebar from "./Sidebar";
+import font from '../../styles/font';
+import color from '../../styles/color';
+import ProfileImg from '../../assets/pages/page_profile_sample.png';
+import { HeaderComponent } from '../../components/common/header/HeaderComponent';
+import Sidebar from './Sidebar';
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin: 100px 200px;
-  
+
   * {
     ${() => font.mypage};
   }
@@ -81,7 +81,7 @@ const Setting = styled.div`
 
 const LinkContainer = styled.div`
   li {
-  margin: 20px 0;
+    margin: 20px 0;
   }
 `;
 
@@ -103,6 +103,12 @@ const QuitButton = styled.button`
   border: none;
   color: ${() => color.grayscale_9d};
 `;
+// 로그아웃 버튼 추가했어요_24.08.20
+const LogOutButton = styled.button`
+  background-color: white;
+  border: none;
+  cursor: pointer;
+`;
 
 const QuitContainer = styled.div`
   width: 100%;
@@ -111,7 +117,7 @@ const QuitContainer = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 `;
 
 const ModalContainer = styled.div`
@@ -123,7 +129,7 @@ const ModalContainer = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 `;
 
 const ModalTitle = styled.p`
@@ -158,13 +164,12 @@ const CancelButton = styled.button`
   margin: 0 20px;
 `;
 
-function Modal( {setModal} ) {
-
+function Modal({ setModal }) {
   const closeModal = () => {
     setModal(false);
-  }
+  };
 
-  return(
+  return (
     <QuitContainer>
       <ModalContainer>
         <ModalTitle>정말 탈퇴하시겠습니까?</ModalTitle>
@@ -172,7 +177,8 @@ function Modal( {setModal} ) {
         <BtnGroup>
           <RealQuitButton type="button">탈퇴하기</RealQuitButton>
           <CancelButton type="button" onClick={() => closeModal()}>
-            취소하기</CancelButton>
+            취소하기
+          </CancelButton>
         </BtnGroup>
       </ModalContainer>
     </QuitContainer>
@@ -180,18 +186,24 @@ function Modal( {setModal} ) {
 }
 
 function MyPage() {
+  const navigate = useNavigate();
+
+  // 연동_08.20추가
+  const clearAuthToken = () => {
+    localStorage.removeItem('authToken');
+    navigate('/');
+  };
+
   // const API = axios.create({
   //   baseURL: 'https://dev.majorlink.store/',
   // })
 
-  const navigate = useNavigate();
-
   function handleMoveToEdit() {
-    navigate("/editprofile");
+    navigate('/editprofile');
   }
 
   function handleMoveToPoints() {
-    navigate("/rechargepoints");
+    navigate('/rechargepoints');
   }
 
   const [modal, setModal] = useState(false);
@@ -200,7 +212,7 @@ function MyPage() {
     <div>
       <HeaderComponent />
       <Wrapper>
-      <Sidebar/>
+        <Sidebar />
         <Container>
           {/* 프로필 */}
           <Profile>
@@ -217,26 +229,47 @@ function MyPage() {
                 <p>support@majorlink.co.kr</p>
               </Profileinfo>
             </ProfileContainer>
-            <AccountButton type="button" onClick={() => handleMoveToEdit()}>계정설정</AccountButton>
-              <PointButton onClick={() => handleMoveToPoints()}>포인트</PointButton>
+            <AccountButton type="button" onClick={() => handleMoveToEdit()}>
+              계정설정
+            </AccountButton>
+            <PointButton onClick={() => handleMoveToPoints()}>
+              포인트
+            </PointButton>
           </Profile>
 
           {/* 설정 */}
           <Setting>
             <Title>설정</Title>
             <LinkContainer>
-              <li><Link to="/posts">게시물</Link></li>
-              <li><Link to="/invitation">친구초대코드</Link></li>
-              <li><Link to="/notice">공지사항</Link></li>
-              <li><Link to="/event">이벤트</Link></li>
-              <li><Link to="/inquiry">문의하기</Link></li>
+              <li>
+                <Link to="/posts">게시물</Link>
+              </li>
+              <li>
+                <Link to="/invitation">친구초대코드</Link>
+              </li>
+              <li>
+                <Link to="/notice">공지사항</Link>
+              </li>
+              <li>
+                <Link to="/event">이벤트</Link>
+              </li>
+              <li>
+                <Link to="/inquiry">문의하기</Link>
+              </li>
             </LinkContainer>
 
             {/* 추후 수정 */}
             <AuthContainer>
-              <p>로그아웃</p>
-              <div />
-              <QuitButton onClick={() => { setModal(!modal) }}>계정 탈퇴</QuitButton>
+              <LogOutButton type="button" onClick={clearAuthToken}>
+                로그아웃
+              </LogOutButton>
+              <QuitButton
+                onClick={() => {
+                  setModal(!modal);
+                }}
+              >
+                계정 탈퇴
+              </QuitButton>
             </AuthContainer>
             {modal && <Modal setModal={setModal} />}
           </Setting>

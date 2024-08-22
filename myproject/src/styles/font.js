@@ -17,10 +17,12 @@ const font = {
   
   regular_12: FONT({ weight: 400, size: 1.2 }),
   regular_14: FONT({ weight: 400, size: 1.4 }),
+  regular_15: FONT({ weight: 400, size: 1.5 }),
   regular_16: FONT({ weight: 400, size: 1.6 }),
   regular_18: FONT({ weight: 400, size: 1.8 }),
   regular_20: FONT({ weight: 400, size: 2.0 }),
   regular_22: FONT({ weight: 400, size: 2.2 }),
+  regular_24: FONT({ weight: 400, size: 2.4 }),
   regular_28: FONT({ weight: 400, size: 2.8 }),
   regular_32: FONT({ weight: 400, size: 3.2 }),
   medium_14: FONT({ weight: 500, size: 1.4 }),
@@ -37,6 +39,8 @@ const font = {
   semibold_36: FONT({ weight: 600, size: 3.6 }),
   semibold_40: FONT({ weight: 600, size: 4.0 }),
   semibold_48: FONT({ weight: 600, size: 4.8 }),
+  bold_16: FONT({ weight: 700, size: 1.6 }),
+  bold_18: FONT({ weight: 700, size: 1.8 }),
   bold_20: FONT({ weight: 700, size: 2.0 }),
   bold_24: FONT({ weight: 700, size: 2.4 }),
 
@@ -44,7 +48,7 @@ const font = {
   mypage: FONT({ weight: 500, size: 1.8 }),
   title: FONT({ weight: 600, size: 3.0 }),
 
-  percent: FONT({ weight: 700, size: 1.323}),
+  profilecard: FONT({ weight: 700, size: 1.323}),
 };
 
 export default font;

@@ -268,14 +268,14 @@ function Login() {
           <Divider>
             <DividerText>다른 방법으로 로그인하기</DividerText>
           </Divider>
-          <SocialButton1>
-            <SocialIcon src={kakaoIcon} alt="kakao_Icon" />
-            카카오로 로그인
-          </SocialButton1>
           <SocialButton2 onClick={webSocialLoginNaver}>
             <SocialIcon src={naverIcon} alt="naver_Icon" />
             네이버로 로그인
           </SocialButton2>
+          <SocialButton1>
+            <SocialIcon src={kakaoIcon} alt="kakao_Icon" />
+            카카오로 로그인
+          </SocialButton1>
         </LoginBox>
 
         {showModal && (

@@ -23,14 +23,30 @@ import EnterBasicInfo from './pages/CreateAccount/EnterBasicInfo';
 import EnterRequiredInfo from './pages/CreateAccount/EnterRequiredInfo';
 import ProfileCard from './pages/users/ProfileCard';
 import ProfileCardMake from './pages/users/ProfileCardMake';
-import OfferClass from './pages/users/OfferClass';
 import OfferedClassList from './pages/users/OfferedClassList';
-import OfferedClassModify from './pages/users/OfferedClassModify';
+import LectureCreate from './pages/users/LectureCreate';
+import LectureModify from './pages/users/LectureModify';
 import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
 import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
 import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
-// import { ApiTestProgilePage } from './pages/apiTest/ApiTestProfilePage';
+import RecruitClass from './pages/myClass/tutee/RecruitClass';
+import RecruitDetailClass from './pages/myClass/tutee/RecruitDetailClass';
+import ReviewList from './pages/myClass/review/ReviewList';
+import ReviewForm from './pages/myClass/review/ReviewForm';
+import ReviewDetail from './pages/myClass/review/ReviewDetail';
+import MoveToOnlineClass from './pages/myClass/MoveToOnlineClass';
+import CancelClass from './pages/myClass/tutee/CancelClass';
+import DoingClass from './pages/myClass/tutee/DoingClass';
+import DoingDetailClass from './pages/myClass/tutee/DoingDetailClass';
+import DoneClass from './pages/myClass/tutee/DoneClass';
+import TutorRecruitClass from './pages/myClass/tutor/TutorRecruitClass';
+import TutorRecruitDetailClass from './pages/myClass/tutor/TutorRecruitDetailClass';
+import TutorCancelClass from './pages/myClass/tutor/TutorCancelClass';
+import TutorDoingClass from  './pages/myClass/tutor/TutorDoingClass';
+import TutorDoingDetailClass from  './pages/myClass/tutor/TutorDoingDetailClass';
+import TutorDoneClass from './pages/myClass/tutor/TutorDoneClass';
+
 
 export default function Router() {
   return (
@@ -39,17 +55,13 @@ export default function Router() {
         {/* api 연동 테스트 - 삭제 예정!! */}
         <Route path="/api-test/create" element={<ApiTestCreatePage />} />
         <Route path="/api-test/read" element={<ApiTestReadPage />} />
-        {/* <Route
-          path="/api-test/login-profile"
-          element={<ApiTestProgilePage />}
-        /> */}
-        <Route path="/naver" element={<FindEmail />} />
-        <Route path="/signup" element={<FindEmail />} />
-        {/* 여기 회원가입 페이지 */}
-        <Route path="/new-user" element={<FindEmail />} />
+        {/* 소셜로그인 연동 */}
+        <Route path="/new-user" element={<EnterBasicInfo />} />
+        <Route path="/member" element={<HomePage />} />
 
-        {/* home, sign-in, sign-up */}
+        {/* 홈 */}
         <Route path="/" element={<HomePage />} />
+        {/* 로그인 */}
         <Route path="/login" element={<Login />} />
         <Route path="/login-findemail" element={<FindEmail />} />
         <Route path="/login-showemail" element={<ShowEmail />} />
@@ -60,11 +72,17 @@ export default function Router() {
           path="/login-changepwcompleted"
           element={<ChangePWCompleted />}
         />
-
+        {/* 회원가입 */}
+        <Route
+          path="/createaccount-enterbasicinfo"
+          element={<EnterBasicInfo />}
+        />
+        <Route
+          path="/createaccount-enterrequiredinfo"
+          element={<EnterRequiredInfo />}
+        />
         <Route path="/createaccount-coupon" element={<Coupon />} />
-        <Route path="/createaccount-enterbasicinfo" element={<EnterBasicInfo />} />
-        <Route path="/createaccount-enterrequiredinfo" element={<EnterRequiredInfo />} />
-        
+
         {/* class - 강승현 */}
         <Route path="/class/matching" element={<ClassMatchingPage />} />
         <Route path="/class/detail" element={<ClassDetailPage />} />
@@ -84,15 +102,39 @@ export default function Router() {
         <Route path="/inquiry" element={<Inquiry />} />
 
         {/* 수업 개설하기 수정 예정 */}
-        <Route path="/users/profile-card" element={<ProfileCardMake />} />
         <Route path="/users/profile-card/nickname" element={<ProfileCard />} />
+        <Route path="/users/profile-card" element={<ProfileCardMake />} />
 
-        <Route path="/offerclass" element={<OfferClass />} />
         <Route path="/offeredclasslist" element={<OfferedClassList />} />
-        <Route
-          path="/offeredclassmodify/:class"
-          element={<OfferedClassModify />}
-        />
+        <Route path="/lecture/create" element={<LectureCreate />} />
+        <Route path="/lecture/lectureid" element={<LectureModify />} />
+
+        {/* 내 강의실 수정 예정 */}
+        <Route path='/myclass/recruiting' element={<RecruitClass/>} />
+        <Route path='/myclass/recruiting/:id' element={<RecruitDetailClass/>} />
+        <Route path='/myclass/cancel' element={<CancelClass/>} />
+        <Route path='/myclass/cancel/:id' element={<RecruitDetailClass/>} />
+
+        <Route path='/myclass/doing' element={<DoingClass/>} />
+        <Route path='/myclass/doing/:id' element={<DoingDetailClass/>} />
+        <Route path='/myclass/done' element={<DoneClass/>} />
+        <Route path='/myclass/done/:id' element={<DoingDetailClass />} />
+
+        <Route path='/myclass-tutor/recruiting' element={<TutorRecruitClass/>} />
+        <Route path='/myclass-tutor/recruiting/:id' element={<TutorRecruitDetailClass/>} />
+        <Route path='/myclass-tutor/cancel' element={<TutorCancelClass />} />
+        <Route path='/myclass-tutor/cancel/:id' element={<TutorRecruitDetailClass/>} />
+
+        <Route path='/myclass-tutor/doing' element={<TutorDoingClass/>} />
+        <Route path='/myclass-tutor/doing/:id' element={<TutorDoingDetailClass/>} />
+        <Route path='/myclass-tutor/done' element={<TutorDoneClass/>} />
+        <Route path='/myclass-tutor/done/:id' element={<TutorDoingDetailClass/>} />
+
+        <Route path='/myclass/review-list' element={<ReviewList/>} />
+        <Route path='/myclass/review-list/:id' element={<ReviewDetail/>} />
+        <Route path='/myclass/review-form' element={<ReviewForm/>} />
+        
+        <Route path='/myclass/movetoonlineclass' element={<MoveToOnlineClass/>}/>
       </Routes>
     </BrowserRouter>
   );

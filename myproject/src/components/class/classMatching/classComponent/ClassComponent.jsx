@@ -16,11 +16,11 @@ const ComponentContainer = styled.div`
   cursor: pointer;
 `;
 
-export function ClassComponent() {
+export function ClassComponent({ lecture }) {
   return (
     <ComponentContainer>
       <ClassThumbnail />
-      <ClassInfoBox />
+      <ClassInfoBox lecture={lecture} />
     </ComponentContainer>
   );
 }

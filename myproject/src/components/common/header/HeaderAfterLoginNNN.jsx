@@ -12,7 +12,7 @@ import ProgilePng from '../../../assets/common/back_header_profile_63x63.png';
 export function HeaderAfterLoginNNN({ authToken }) {
   const navigate = useNavigate();
   // const [notifications, setNotifications] = useState([]);
-  // console.log(authToken(헤더 알림): ${authToken});
+  console.log(`authToken(헤더 알림): ${authToken}`);
 
   // 브라우저 알림 표시
   const showNotification = (notification) => {
@@ -51,8 +51,9 @@ export function HeaderAfterLoginNNN({ authToken }) {
           newNotification.includes('EventStream Create')
         ) {
           console.log('알림 없어요~~');
-          return;
+          // return;
         }
+        console.log(`event.data 데이터: ${event.data}`);
         console.log(`소켓 데이터: ${newNotification.content}`);
 
         // 브라우저 알림 표시

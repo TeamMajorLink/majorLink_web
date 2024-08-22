@@ -257,6 +257,11 @@ function HomePage() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  // 연동_24.08.22추가 - 클래스 상세보기 페이지 이동
+  const handleMoveToDetail = (lectureId) => {
+    navigate(`/class/detail?lectureId=${lectureId}`);
+  };
+
   return (
     <div>
       <HeaderComponent />
@@ -336,10 +341,12 @@ function HomePage() {
             {/* 클래스 컴포넌트 연동 */}
             {lectureListMostLiked.slice(0, 4).map((lecture, index) => (
               <ClassCard
+                onClick={() => handleMoveToDetail(lecture.lectureId)}
                 key={index /* eslint-disable-line react/no-array-index-key */}
               >
                 <ClassImage src={examplepng} alt="Marketing Image" />
                 <ClassContent>
+                  <h3>(임시) lectureId: {lecture.lectureId}</h3>
                   <ClassTitleText>{lecture.name}</ClassTitleText>
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}
@@ -382,10 +389,12 @@ function HomePage() {
             {/* 클래스 컴포넌트 연동 */}
             {lectureListNew.slice(0, 4).map((lecture, index) => (
               <ClassCard
+                onClick={() => handleMoveToDetail(lecture.lectureId)}
                 key={index /* eslint-disable-line react/no-array-index-key */}
               >
                 <ClassImage src={examplepng} alt="Marketing Image" />
                 <ClassContent>
+                  <h3>(임시) lectureId: {lecture.lectureId}</h3>
                   <ClassTitleText>{lecture.name}</ClassTitleText>
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}
@@ -411,10 +420,12 @@ function HomePage() {
             {/* 클래스 컴포넌트 연동 */}
             {lectureListMostRecruited.slice(0, 4).map((lecture, index) => (
               <ClassCard
+                onClick={() => handleMoveToDetail(lecture.lectureId)}
                 key={index /* eslint-disable-line react/no-array-index-key */}
               >
                 <ClassImage src={examplepng} alt="Marketing Image" />
                 <ClassContent>
+                  <h3>(임시) lectureId: {lecture.lectureId}</h3>
                   <ClassTitleText>{lecture.name}</ClassTitleText>
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}

@@ -8,10 +8,11 @@ import Slider from 'react-slick';
 // import viewAll from './Login/Login';
 import background from '../assets/class/HomePage_sliding.png';
 import background2 from '../assets/class/HomePage_sliding2.png';
-import examplepng1 from '../assets/class/HomePage_example1.jpg';
-import examplepng2 from '../assets/class/HomePage_example2.png';
-import examplepng3 from '../assets/class/HomePage_example3.png';
-import examplepng4 from '../assets/class/HomePage_example4.png';
+import examplepng from '../assets/class/HomePage_example1.jpg';
+// import examplepng1 from '../assets/class/HomePage_example1.jpg';
+// import examplepng2 from '../assets/class/HomePage_example2.png';
+// import examplepng3 from '../assets/class/HomePage_example3.png';
+// import examplepng4 from '../assets/class/HomePage_example4.png';
 import category1 from '../assets/class/category1.png';
 import category2 from '../assets/class/category2.png';
 import category3 from '../assets/class/category3.png';
@@ -23,9 +24,8 @@ import category8 from '../assets/class/category8.png';
 import searchIcon from '../assets/class/searchIcon.png';
 import ad1 from '../assets/class/ad1.png';
 import ad2 from '../assets/class/ad2.png';
-import { HeaderComponent } from "../components/common/header/HeaderComponent";
-import Footer from "../components/common/footer";
-
+import { HeaderComponent } from '../components/common/header/HeaderComponent';
+import Footer from '../components/common/footer';
 
 const Container = styled.div`
   width: 100%;
@@ -294,35 +294,36 @@ function HomePage() {
             </SearchButton>
           </SearchInputWrapper>
           <CategoryWrapper>
-            <CategoryButton onClick={RecruitClass}>
+            {/* <CategoryButton onClick={RecruitClass}> */}
+            <CategoryButton>
               <CategoryImg src={category1} alt="img" />
               <CategoryText>인문과학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category2} alt="img" />
               <CategoryText>사회과학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category3} alt="img" />
               <CategoryText>공학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category4} alt="img" />
               <CategoryText>자연과학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category5} alt="img" />
               <CategoryText>교육학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category6} alt="img" />
               <CategoryText>의약학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category7} alt="img" />
               <CategoryText>예체능</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category8} alt="img" />
               <CategoryText>기타</CategoryText>
             </CategoryButton>
@@ -337,44 +338,6 @@ function HomePage() {
             </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
-<<<<<<< HEAD
-            <ClassCard>
-              <ClassImage src={examplepng} alt="Marketing Image" />
-              <ClassContent>
-                <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-            <ClassCard>
-              <ClassImage src={examplepng} alt="Marketing Image" />
-              <ClassContent>
-                <ClassTitleText>C 프로그래밍</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-            <ClassCard>
-              <ClassImage src={examplepng} alt="기계요소 설계" />
-              <ClassContent>
-                <ClassTitleText>기계요소 설계</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-            <ClassCard>
-              <ClassImage src={examplepng} alt="디지털 마케팅" />
-              <ClassContent>
-                <ClassTitleText>디지털 마케팅</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-=======
             {/* 클래스 컴포넌트 연동 */}
             {lectureListMostLiked.slice(0, 4).map((lecture, index) => (
               <ClassCard
@@ -393,7 +356,6 @@ function HomePage() {
                 </ClassContent>
               </ClassCard>
             ))}
->>>>>>> 32ed7f40857f45e6de9d184db6ad223951c02892
           </ClassGrid>
         </ClassSection>
 
@@ -422,44 +384,6 @@ function HomePage() {
             </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
-<<<<<<< HEAD
-            <ClassCard>
-              <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
-              <ClassContent>
-                <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-            <ClassCard>
-              <ClassImage src={examplepng} alt="C 프로그래밍" />
-              <ClassContent>
-                <ClassTitleText>C 프로그래밍</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-            <ClassCard>
-              <ClassImage src={examplepng} alt="기계요소 설계" />
-              <ClassContent>
-                <ClassTitleText>기계요소 설계</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-            <ClassCard>
-              <ClassImage src={examplepng} alt="디지털 마케팅" />
-              <ClassContent>
-                <ClassTitleText>디지털 마케팅</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-=======
             {/* 클래스 컴포넌트 연동 */}
             {lectureListNew.slice(0, 4).map((lecture, index) => (
               <ClassCard
@@ -478,7 +402,6 @@ function HomePage() {
                 </ClassContent>
               </ClassCard>
             ))}
->>>>>>> 32ed7f40857f45e6de9d184db6ad223951c02892
           </ClassGrid>
         </ClassSection>
 
@@ -490,44 +413,6 @@ function HomePage() {
             </ViewAllButton>
           </ClassHeader>
           <ClassGrid>
-<<<<<<< HEAD
-            <ClassCard>
-              <ClassImage src={examplepng} alt="비즈니스 영어 회화" />
-              <ClassContent>
-                <ClassTitleText>비즈니스 영어 회화</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-            <ClassCard>
-              <ClassImage src={examplepng} alt="C 프로그래밍" />
-              <ClassContent>
-                <ClassTitleText>C 프로그래밍</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-            <ClassCard>
-              <ClassImage src={examplepng} alt="기계요소 설계" />
-              <ClassContent>
-                <ClassTitleText>기계요소 설계</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-            <ClassCard>
-              <ClassImage src={examplepng} alt="디지털 마케팅" />
-              <ClassContent>
-                <ClassTitleText>디지털 마케팅</ClassTitleText>
-                <ClassInstruction>인문과학 {'>'} 영어영문</ClassInstruction>
-                <ClassRating>⭐ 4.2</ClassRating>
-                <ClassPeopleListening>👥2/5</ClassPeopleListening>
-              </ClassContent>
-            </ClassCard>
-=======
             {/* 클래스 컴포넌트 연동 */}
             {lectureListMostRecruited.slice(0, 4).map((lecture, index) => (
               <ClassCard
@@ -546,7 +431,6 @@ function HomePage() {
                 </ClassContent>
               </ClassCard>
             ))}
->>>>>>> 32ed7f40857f45e6de9d184db6ad223951c02892
           </ClassGrid>
         </ClassSection>
       </Container>

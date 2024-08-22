@@ -8,9 +8,10 @@ import Slider from 'react-slick';
 // import viewAll from './Login/Login';
 import background from '../assets/class/HomePage_sliding.png';
 import background2 from '../assets/class/HomePage_sliding2.png';
-import examplepng1 from '../assets/class/HomePage_example1.jpg';
-import examplepng2 from '../assets/class/HomePage_example2.png';
-import examplepng3 from '../assets/class/HomePage_example3.png';
+import examplepng from '../assets/class/HomePage_example1.jpg';
+// import examplepng1 from '../assets/class/HomePage_example1.jpg';
+// import examplepng2 from '../assets/class/HomePage_example2.png';
+// import examplepng3 from '../assets/class/HomePage_example3.png';
 // import examplepng4 from '../assets/class/HomePage_example4.png';
 import category1 from '../assets/class/category1.png';
 import category2 from '../assets/class/category2.png';
@@ -23,10 +24,8 @@ import category8 from '../assets/class/category8.png';
 import searchIcon from '../assets/class/searchIcon.png';
 import ad1 from '../assets/class/ad1.png';
 import ad2 from '../assets/class/ad2.png';
-import { HeaderComponent } from "../components/common/header/HeaderComponent";
-import Footer from "../components/common/footer";
-import RecruitClass from './myClass/tutee/RecruitClass';
-
+import { HeaderComponent } from '../components/common/header/HeaderComponent';
+import Footer from '../components/common/footer';
 
 const Container = styled.div`
   width: 100%;
@@ -175,6 +174,8 @@ const ClassCard = styled.div`
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
 `;
 
 const ClassImage = styled.img`
@@ -207,17 +208,25 @@ const ClassPeopleListening = styled.div`
   color: black;
 `;
 
+// 함수
+// 함수
+// 함수
+// 함수
+// 함수
 function HomePage() {
   const navigate = useNavigate();
+  const [authToken, setAuthToken] = useState();
   // 연동_24.08.20추가 - X-Auth-Token
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const authToken = urlParams.get('X-Auth-Token');
+    const firstToken = urlParams.get('X-Auth-Token');
+    setAuthToken(firstToken);
 
-    if (authToken) {
+    if (firstToken) {
       localStorage.setItem('authToken', authToken);
     }
   }, []);
+  // console.log(`authToken: ${authToken}`);
 
   // 연동_24.08.20추가 - 클래스 정보
   const [lectureListMostLiked, setLectureListMostLiked] = useState([]);
@@ -260,7 +269,12 @@ function HomePage() {
     fetchLectureList('/lecture/mostRecruited', setLectureListMostRecruited);
   }, []);
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) console.log(`Error: {error.message}`);
+
+  // 연동_24.08.22추가 - 클래스 상세보기 페이지 이동
+  const handleMoveToDetail = (lectureId) => {
+    navigate(`/class/detail?lectureId=${lectureId}`);
+  };
 
   return (
     <div>
@@ -295,35 +309,36 @@ function HomePage() {
             </SearchButton>
           </SearchInputWrapper>
           <CategoryWrapper>
-            <CategoryButton onClick={RecruitClass}>
+            {/* <CategoryButton onClick={RecruitClass}> */}
+            <CategoryButton>
               <CategoryImg src={category1} alt="img" />
               <CategoryText>인문과학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category2} alt="img" />
               <CategoryText>사회과학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category3} alt="img" />
               <CategoryText>공학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category4} alt="img" />
               <CategoryText>자연과학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category5} alt="img" />
               <CategoryText>교육학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category6} alt="img" />
               <CategoryText>의약학</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category7} alt="img" />
               <CategoryText>예체능</CategoryText>
             </CategoryButton>
-            <CategoryButton onClick={RecruitClass}>
+            <CategoryButton>
               <CategoryImg src={category8} alt="img" />
               <CategoryText>기타</CategoryText>
             </CategoryButton>
@@ -341,10 +356,12 @@ function HomePage() {
             {/* 클래스 컴포넌트 연동 */}
             {lectureListMostLiked.slice(0, 4).map((lecture, index) => (
               <ClassCard
+                onClick={() => handleMoveToDetail(lecture.lectureId)}
                 key={index /* eslint-disable-line react/no-array-index-key */}
               >
-                <ClassImage src={examplepng1} alt="Marketing Image" />
+                <ClassImage src={examplepng} alt="Marketing Image" />
                 <ClassContent>
+                  <h3>(임시) lectureId: {lecture.lectureId}</h3>
                   <ClassTitleText>{lecture.name}</ClassTitleText>
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}
@@ -387,10 +404,12 @@ function HomePage() {
             {/* 클래스 컴포넌트 연동 */}
             {lectureListNew.slice(0, 4).map((lecture, index) => (
               <ClassCard
+                onClick={() => handleMoveToDetail(lecture.lectureId)}
                 key={index /* eslint-disable-line react/no-array-index-key */}
               >
-                <ClassImage src={examplepng2} alt="Marketing Image" />
+                <ClassImage src={examplepng} alt="Marketing Image" />
                 <ClassContent>
+                  <h3>(임시) lectureId: {lecture.lectureId}</h3>
                   <ClassTitleText>{lecture.name}</ClassTitleText>
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}
@@ -416,10 +435,12 @@ function HomePage() {
             {/* 클래스 컴포넌트 연동 */}
             {lectureListMostRecruited.slice(0, 4).map((lecture, index) => (
               <ClassCard
+                onClick={() => handleMoveToDetail(lecture.lectureId)}
                 key={index /* eslint-disable-line react/no-array-index-key */}
               >
-                <ClassImage src={examplepng3} alt="Marketing Image" />
+                <ClassImage src={examplepng} alt="Marketing Image" />
                 <ClassContent>
+                  <h3>(임시) lectureId: {lecture.lectureId}</h3>
                   <ClassTitleText>{lecture.name}</ClassTitleText>
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}

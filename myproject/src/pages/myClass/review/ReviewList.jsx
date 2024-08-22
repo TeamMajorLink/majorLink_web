@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
+// import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+// import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import { HeaderComponent } from "../../../components/common/header/HeaderComponent";
 import Sidebar from "../Sidebar";
 import font from "../../../styles/font";
 import color from "../../../styles/color";
+import Pagination from "./Pagination";
 
 const Wrapper = styled.div`
   display: flex;
@@ -65,22 +68,6 @@ const Table = styled.table`
   }
 `;
 
-const Pagination = styled.div`
-  width: 100%;
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  button {
-    font: ${() => font.regular_24};
-    // border: 2px solid ${() => color.primary_normal};
-    border: none;
-    border-radius: 50%;
-    background-color: transparent;
-    width: 30px;
-    margin: auto 5px;
-  }
-`;
-
 function ReviewList() {
 
   const [reviews, setReviews] = useState([]);
@@ -90,29 +77,29 @@ function ReviewList() {
   const navigate = useNavigate();
 
   const lectureId = 1;
-  const { reviewId } = useParams();
+  // const lectureId = 2;
+  // const lectureId = 8;
 
       // Pagination 
-  const [totalPage, setTotalPage] = useState(0); // 전체 리뷰 수를 위한 상태 추가
+  const [totalPage, setTotalPage] = useState(0); // 전체 리뷰 수
   const [page, setPage] = useState(1);  // 현재 페이지 번호
   const limit = 10;                     // 페이지 당 데이터 수
   const offset = (page - 1) * limit;      // 첫 게시물의 위치
   const numPages = Math.ceil(totalPage / limit) // 총 페이지 수
 
   useEffect(() => {
-    if (location.state && location.state.newReview) {
-      setReviews(prevReviews => [location.state.newReview, ...prevReviews]);
-    }
-
     const fetchReviews = async () => {
       try {
-        // const response = await axios.get(`https://dev.majorlink.store/reviews/${lectureId}`, {
-        //   params: { page : 1 }
-        // });
         const response = await axios.get(`https://dev.majorlink.store/reviews/list`, { 
           params: { page } 
         });
-        setReviews(response.data.reviewList);
+        const newReviews = location.state && location.state.newReview 
+        ? [location.state.newReview, ...response.data.reviewList] 
+        : response.data.reviewList;
+        
+        setReviews(prevReviews => page === 1 
+          ? newReviews 
+          : [...prevReviews, ...newReviews]);
         setTotalPage(response.data.totalElements);
         console.log(response.data.reviewList);
       } catch (error) {
@@ -127,11 +114,10 @@ function ReviewList() {
       }
     };
     fetchReviews();
-  }, [page, lectureId]);
+  }, [page, location.state]);
 
   const headers = [
     { text: "번호", value: "reviewId" },
-    // { text: "썸네일", value: "img" },
     { text: "클래스 명", value: "lecture" },
     { text: "평점", value: "rate" },
     { text: '작성자', value: 'ownerNickname' },
@@ -165,15 +151,13 @@ function ReviewList() {
                       <td>{review.reviewId}</td>
                       <td>
                         <Link 
-                          // to={`/myclass/review-list/${review.id}`}
-                          // to={`/reviews/${review.id}/details`}
-                          to={`/reviews/${ reviewId }/details`}
-                          state={{ review }}>
+                          // to={`/reviews/${location.state.reviewId}/details`}
+                          to={`/reviews/${ review.reviewId }/details`}
+                          state={ review }>
                             {review.lecture}
                         </Link>
                       </td>
                       <td>⭐ {review.rate}</td>
-                      {/* <td>{review.img}</td> */}
                       <td>{review.ownerNickname}</td>
                       <td>{review.createdAt}</td>
                     </tr>
@@ -181,33 +165,10 @@ function ReviewList() {
                 </tbody>
               </Table>
             </ListContainer>
-            <Pagination>
-              <button type="button" 
-                onClick={() => setPage(page - 1)} 
-                disabled={page === 1}>&lt;</button>
-                {Array(numPages)
-                .fill()
-                .map((_, i) => {
-                  const pageNumber = i + 1;
-                  const isCurrentPage = pageNumber === page;
-                  return (
-                    <button
-                      key={pageNumber}
-                      type="button"
-                      onClick={() => setPage(pageNumber)}
-                      aria-current={isCurrentPage ? "page" : undefined}
-                      style={{ backgroundColor: isCurrentPage ? '#D9D9D9' : "white" }} // 현재 페이지인 경우에만 보이게 함
-                      >
-                        {pageNumber}
-                      </button>
-                  );
-                })}
-                <button type="button" 
-                  onClick={() => setPage(page + 1)} 
-                  disabled={page === numPages}>
-                &gt;
-                </button>
-            </Pagination>
+            <Pagination
+              numPages={numPages}
+              page={page}
+              setPage={setPage} />
         </Container>
       </Wrapper>
     </div>

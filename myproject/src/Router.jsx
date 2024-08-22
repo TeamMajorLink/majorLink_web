@@ -28,8 +28,6 @@ import LectureCreate from './pages/users/LectureCreate';
 import LectureModify from './pages/users/LectureModify';
 import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
-import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
-import { ApiTestCreatePage } from './pages/apiTest/ApiTestCreatePage';
 import RecruitClass from './pages/myClass/tutee/RecruitClass';
 import RecruitDetailClass from './pages/myClass/tutee/RecruitDetailClass';
 import ReviewList from './pages/myClass/review/ReviewList';
@@ -59,8 +57,6 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         {/* api 연동 테스트 - 삭제 예정!! */}
-        <Route path="/api-test/create" element={<ApiTestCreatePage />} />
-        <Route path="/api-test/read" element={<ApiTestReadPage />} />
         <Route path="/dd" element={<LectureLikeButton />} />
         <Route path="/header" element={<HeaderComponent />} />
         {/* 알림 연동 - 구독, 수강신청, 알림 받기 */}
@@ -70,6 +66,7 @@ export default function Router() {
           path="/notification-subscribe"
           element={<NotificationSubscribe />}
         />
+
         {/* 소셜로그인 연동 */}
         <Route path="/new-user" element={<EnterBasicInfo />} />
         <Route path="/member" element={<HomePage />} />
@@ -161,14 +158,13 @@ export default function Router() {
         <Route path="/reviews/:id/details" element={<ReviewDetail />} />
         {/* <Route path='/myclass/review-form' element={<ReviewForm/>} /> */}
         <Route path="reviews/:id" element={<ReviewForm />} />
-        <Route path="/*" element={<NotFound />} />
-        <Route path="/myclass/review-list" element={<ReviewList />} />
-        <Route path="/myclass/review-list/:id" element={<ReviewDetail />} />
-        <Route path="/myclass/review-form" element={<ReviewForm />} />
+
         <Route
           path="/myclass/movetoonlineclass"
           element={<MoveToOnlineClass />}
         />
+
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

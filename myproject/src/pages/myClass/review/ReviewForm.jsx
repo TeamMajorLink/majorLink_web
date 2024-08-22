@@ -115,10 +115,8 @@ function ReviewForm() {
 
   const ARRAY = [1, 2, 3, 4, 5];  // 별 배열
 
-  // const [lecture, setLecture] = useState('');  // 강의명
   const [content, setContent] = useState('');
   const [rate, setRate] = useState(0);  // 선택된 별 개수
-  // const [ownerNickname, setOwwnerNickname] = useState('');
 
   const authToken = localStorage.getItem('authToken');
   // console.log(authToken);
@@ -140,7 +138,7 @@ function ReviewForm() {
 
   const onSubmit = async () => { 
     const formData = {content, rate, createdAt: todayDate()};
-    // const formData = {content, rate};
+
     const lectureId = 1;
     try {
       const response = await axios.post(
@@ -155,12 +153,12 @@ function ReviewForm() {
         },
       );
       // console.log('성공적으로 전송된 데이터', response.data);
-      const {reviewId} = response.data.reviewId;
+      // const {reviewId} = response.data;
       const newReview = {...response.data};
-      // console.log(newReview);
-      navigate(`/reviews/${reviewId}/details`, { state: { newReview } });
-      // const { newReview } = response.data;
-      // navigate('/reviews/list', { state: { newReview } });
+      console.log(newReview);
+      // navigate(`/reviews/${newReview.reviewId}/details`, { state: { newReview } });
+      // navigate(`/reviews/${reviewId}/details`, { state: { newReview } });
+      navigate('/reviews/list', { state: { newReview } })
 
     } catch (error) {
       if (error.response) {

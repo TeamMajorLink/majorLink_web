@@ -29,6 +29,7 @@ const font = {
   medium_16: FONT({ weight: 500, size: 1.6 }),
   medium_18: FONT({ weight: 500, size: 1.8 }),
   medium_20: FONT({ weight: 500, size: 2.0 }),
+  medium_40: FONT({ weight: 500, size: 4.0 }),
   semibold_16: FONT({ weight: 600, size: 1.6 }),
   semibold_18: FONT({ weight: 600, size: 1.8 }),
   semibold_20: FONT({ weight: 600, size: 2.0 }),
@@ -43,6 +44,7 @@ const font = {
   bold_18: FONT({ weight: 700, size: 1.8 }),
   bold_20: FONT({ weight: 700, size: 2.0 }),
   bold_24: FONT({ weight: 700, size: 2.4 }),
+  bold_60: FONT({ weight: 700, size: 6.0 }),
 
   test_100: FONT({ weight: 900, size: 10.0 }),
   mypage: FONT({ weight: 500, size: 1.8 }),

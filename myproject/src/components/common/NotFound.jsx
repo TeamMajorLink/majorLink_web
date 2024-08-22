@@ -1,11 +1,10 @@
 import styled from "styled-components";
+import { HeaderComponent } from "./header/HeaderComponent";
 import font from "../../styles/font";
-import { HeaderComponent } from "../../components/common/header/HeaderComponent";
-import CharacterImg from "../../assets/pages/page_character.png";
+import CharacterImg from "../../assets/pages/page_character.png"
 import BlueImg from "../../assets/pages/page_blue.png";
 import PurpleImg from "../../assets/pages/page_purple.png";
 import QuestionImg from "../../assets/pages/page_question.png";
-import color from "../../styles/color";
 
 const Wrapper = styled.div`
   position: relative;
@@ -15,6 +14,16 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  p {
+  ${() => font.medium_40};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  position: absolute; /* 위치를 절대 위치로 설정 */
+  bottom: 5%; /* 아래에서 10% 위치로 조정 */
+  }
 `;
 
 const BackgroundContainer = styled.div`
@@ -27,9 +36,12 @@ const BackgroundContainer = styled.div`
   z-index: -1;
 
   p {
-    ${() => font.semibold_40};
+    ${() => font.bold_60};
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top: 5%;
+    top: -60%;
   }
 `;
 
@@ -58,7 +70,7 @@ const MainContainer = styled.div`
 
 const MainImg = styled.img`
   width: 300px;
-  margin-top: 50px;
+  margin-top: 100px;
 `;
 
 const Question = styled.img`
@@ -69,28 +81,14 @@ const Question = styled.img`
   height: 90px;
 `;
 
-const ZoomBtn = styled.button`
-  ${() => font.title};
-  color: ${() => color.white};
-  width: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 21.5px;
-  background-color: ${() => color.primary_dark};
-  margin-top: -80px;
-  padding: 15px 0;
-`;
 
-
-function MoveToOnlineClass() {
+function NotFound() {
   return(
     <div>
       <HeaderComponent />
       <Wrapper>
         <BackgroundContainer>
-          <p>즐겁게 수업을 시작해보아요!</p>
+          <p>Error 404</p>
           <Blue src={BlueImg} alt="파란 이미지" />
           <Purple src={PurpleImg} alt="파란 이미지" />
         </BackgroundContainer>
@@ -98,10 +96,10 @@ function MoveToOnlineClass() {
           <MainImg src={CharacterImg} alt="링키 이미지" />
           <Question src={QuestionImg} alt="물음표 이미지" />
         </MainContainer>
-        <ZoomBtn type="button">Zoom으로 연결</ZoomBtn>
+        <p>페이지를 찾을 수 없습니다.</p>
       </Wrapper>
     </div>
   );
 }
 
-export default MoveToOnlineClass;
+export default NotFound;

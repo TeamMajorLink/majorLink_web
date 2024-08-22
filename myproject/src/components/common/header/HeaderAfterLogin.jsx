@@ -75,7 +75,7 @@ export function HeaderAfterLogin({ authToken }) {
 
   // 네비게이션 수정 예정
   const handleMoveToHome = () => {
-    navigate(`/login`);
+    navigate(`/mypage`);
   };
   const handleMoveToMyPage = () => {
     navigate(`/mypage`);

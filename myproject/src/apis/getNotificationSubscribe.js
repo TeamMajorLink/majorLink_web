@@ -22,7 +22,7 @@ export default function NotificationSubscribe() {
 
     try {
       const response = await axios.get(
-        `https://dev.majorlink.store/notification/subscribe`,
+        `https://dev.majorlink.store/notification`,
         {
           headers: {
             'Content-Type': 'application/json',

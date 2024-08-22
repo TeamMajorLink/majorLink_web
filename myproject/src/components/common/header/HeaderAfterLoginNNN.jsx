@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-// import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
 import * as A from './Header.Style';
 import { HeaderNavigationBar } from './HeaderNavigationBar';
 import BookmarkIconPng from '../../../assets/common/header_icon_bookmark_30x30.png';
@@ -11,17 +9,17 @@ import ProgilePng from '../../../assets/common/back_header_profile_63x63.png';
 
 export function HeaderAfterLoginNNN({ authToken }) {
   const navigate = useNavigate();
-  // const [notifications, setNotifications] = useState([]);
-  // console.log(authToken(헤더 알림): ${authToken});
-
-  // 브라우저 알림 표시
+  const [retryTimeout, setRetryTimeout] = useState(null);
+  // 연동_24.08.22추가 - 실시간 알림
+  // 연동_24.08.22추가 - 실시간 알림
+  // 연동_24.08.22추가 - 실시간 알림
   const showNotification = (notification) => {
-    if (!notification) return; // notification 데이터가 없으면 리턴
+    if (!notification) return;
 
     const browserNotification = new Notification(
-      'HeaderAfterLogin.jsx에서 보내는 알림',
+      'majorLink에서 알림이 왔습니다.',
       {
-        body: notification.content, // 알림 내용 표시
+        body: notification.content,
       },
     );
 
@@ -30,63 +28,60 @@ export function HeaderAfterLoginNNN({ authToken }) {
     }, 10 * 1000);
 
     browserNotification.addEventListener('click', () => {
-      window.open(notification.url, '_blank'); // 알림 클릭 시 링크 열기
+      // window.open(notification.url, '_blank'); // 알림 클릭 시 링크 열기
+      window.open('http://localhost:3000/'); // 알림 클릭 시 링크 열기
     });
   };
-
-  // 알림 연동
   useEffect(() => {
     const fetchNotifications = () => {
-      // WebSocket을 사용하여 실시간 알림 처리
       const socket = new EventSource(
         `https://dev.majorlink.store/notification/subscribe/${authToken}`,
       );
 
       socket.onmessage = (event) => {
         const newNotification = JSON.parse(event.data);
-        // 초기 연결 메시지를 무시하도록 필터링(오류 원인찾기용)
-        // 초기 연결 메시지를 무시하도록 필터링(오류 원인찾기용)
+        // 초기 연결 메시지를 무시하도록 필터링
         if (
           typeof newNotification === 'string' &&
           newNotification.includes('EventStream Create')
         ) {
-          console.log('알림 없어요~~');
           return;
         }
-        console.log(`소켓 데이터: ${newNotification.content}`);
+        // console.log(`event.data 데이터: ${event.data}`);
+        // console.log(`소켓 데이터: ${newNotification.content}`);
 
         // 브라우저 알림 표시
         showNotification(newNotification);
       };
 
       socket.onerror = (err) => {
-        console.error('WebSocket 에러:', err);
-        socket.close(); // 오류 발생 시 연결을 닫습니다.
+        console.error(
+          '위 에러(ERR_HTTP2_PROTOCOL_ERROR)는 1분이 지나 알림이 꺼졌다는 내용이니 신경쓰지 않으셔도 됩니다.:',
+          err,
+        );
+        socket.close();
+
+        // 일정 시간 후에 다시 연결 시도
+        if (retryTimeout) clearTimeout(retryTimeout);
+        setRetryTimeout(setTimeout(fetchNotifications, 5000));
       };
 
       socket.onclose = () => {
-        console.log('WebSocket connection closed');
+        console.log('알림 connection closed');
+
+        // 일정 시간 후에 다시 연결 시도
+        if (retryTimeout) clearTimeout(retryTimeout);
+        setRetryTimeout(setTimeout(fetchNotifications, 5000));
       };
 
-      // 컴포넌트 언마운트 시 WebSocket 연결 종료
       return () => {
         socket.close();
+        if (retryTimeout) clearTimeout(retryTimeout);
       };
     };
 
     fetchNotifications();
-  }, [authToken]);
-  // console.log(notifications);
-
-  // notifications.forEach((notification) => {
-  //   console.log('여기 notification 데이터 내용');
-  //   console.log(`id: ${notification.id}`);
-  //   console.log(`receiver: ${notification.receiver}`);
-  //   console.log(`sender: ${notification.sender}`);
-  //   console.log(`content: ${notification.content}`);
-  //   console.log(`lectureId: ${notification.lectureId}`);
-  //   console.log(`createdAt: ${notification.createdAt}`);
-  // });
+  }, [authToken, retryTimeout]);
 
   // 네비게이션 수정 예정
   const handleMoveToHome = () => {

@@ -7,22 +7,83 @@ import Footer from '../../components/common/footer';
 import RectangleProfile from '../../components/users/RectangleProfile';
 // import ProfileWriteButton from '../../components/users/ProfileWriteButton';
 import ProfileTitle from '../../components/users/ProfileTitle';
+import DateInput from '../../components/users/DateInput';
+import AddButton from '../../components/users/AddButton';
+import RegisterButton from '../../components/users/RegisterButton';
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
+
+  .date{
+
+  }
+  .cansav{
+    // margin-left: auto;
+    justify-content: end;
+  }
 `;
 
 const ProfileContainer = styled.div`
-  // display: flex;
-  margin: 29.7rem 19.8rem 0 8.4rem;
+  // margin: 29.7rem 19.8rem 0 8.4rem;
   // margin-right(8.4): 임의
+  padding: 16.2rem 25.7rem; //bottom, right: 임의
 
 `;
 
 const Subhead = styled.p`
   font: ${() => font.semibold_24};
   color: ${() => color.black};
+  width: 14.9rem;
+  margin: 4.8rem 6.3rem 3.3rem 5.3rem;
+  white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 */
+
+  .tilde {
+    margin: 0 0.5rem 0 2.1rem; //0: 임시, 0.5: 맞나?...
+  }
+`;
+
+const BigInput = styled.input`
+  width: 105.5rem;
+  padding: 2rem 2.7rem;
+  font: ${() => font.regular_20};
+  color: ${() => color.black};
+  border: 0.1rem solid ${() => color.grayscale_9d};
+  border-radius: 1.5rem;
+
+  .onelineintro{
+    height: 11.2rem; 
+  }
+  .introduce{
+    height: 19.6rem; 
+  }
+`;
+
+// 수정하기
+const BasicInput = styled.input`
+  height: 6.6rem;
+  padding: 2.5rem 4.4rem;
+  font: ${() => font.regular_20};
+  color: ${() => color.black};
+  border: 0.1rem solid ${() => color.grayscale_9d};
+  border-radius: 1.5rem;
+  // 높이: 정중앙에 정렬하는 거 뭐더라
+
+  .short{
+    width: 56.5rem;
+  }
+  .long{
+    width: 65.6rem;
+  }
+  .checkbox{
+    margin-left: 4.6rem;
+  }
+`;
+
+const Label = styled.label`
+  font: ${() => font.regular_20};
+  color: ${() => color.black};
+  white-space: nowrap;
 `;
 
 const CharacterCount = styled.p`
@@ -89,71 +150,97 @@ function ProfileCardMake() {
             <RectangleProfile />
 
             <Subhead>한 줄 소개</Subhead>
-            {/* 한 줄 소개를 입력해주세요 */}
-
-
+            <BigInput className='onelineintro' placeholder='한 줄 소개를 입력해주세요' />
+            <CharacterCount>0/100</CharacterCount>
 
             <ProfileTitle title='자기소개'/>
             <Subhead>자기소개</Subhead>
-            {/* 직무 경험, 핵심 역량, 강점 등 구체적인 내용을 작성해보세요. */}
+            <BigInput className='introduce' placeholder='직무 경험, 핵심 역량, 강점 등 구체적인 내용을 작성해보세요.' />
             <CharacterCount>0/1000</CharacterCount>
 
             <ProfileTitle title='학력 및 교육' />
             <Container>
               <Subhead>교육기관</Subhead>
-              {/* 학교명이나 교육기관 명을 입력해주세요 */}
+              <BasicInput className='short' placeholder='학교명이나 교육기관 명을 입력해주세요' />
             </Container>
             <Container>
               <Subhead>전공/과정</Subhead>
-              {/* 전공 혹은 과정 명을 입력해주세요. 예) 컴퓨터학과/웹 개발 과정 */}
+              <BasicInput className='long' placeholder='전공 혹은 과정 명을 입력해주세요. 예) 컴퓨터학과/웹 개발 과정' />
             </Container>
-            <Container> {/* className 다르게 줘서 flex 별도 설정 */}
+            <Container className='date'> {/* 수정 - flex 별도 설정? */}
               <Subhead>교육 기간</Subhead>
-              {/* 심란하다...기간 컴포넌트 만들어서 추후 수정 */}
+              <DateInput content='시작일' placeholder='예) 2024-03-04' />
+              <Subhead className='tilde'>~</Subhead>
+              <DateInput content='종료일' placeholder='예) 2024-06-25' />
+              <BasicInput type='checkbox' className='checkbox' id='ongoing1' name='ongoing1' />
+              <Label htmlFor='ongoing1'>진행중</Label>
             </Container>
-            {/* 추가하기 버튼 컴포넌트? */}
+            <AddButton content='추가하기' />
+            {/* 버튼 추가 */}
+
 
             <ProfileTitle title='활동 프로젝트' />
             <Container>
               <Subhead>활동 구분</Subhead>
-              {/* 예) 인턴, 대외활동, 프로젝트, 동아리 등 */}
+              <BasicInput className='short' placeholder='예) 인턴, 대외활동, 프로젝트, 동아리 등' />
             </Container>
             <Container>
               <Subhead>기관/장소</Subhead>
-              {/* 기관/장소 명을 입력해주세요 */}
+              <BasicInput className='long' placeholder='기관/장소 명을 입력해주세요' />
             </Container>
             <Container>
-              <Subhead>활동 기간</Subhead>
-              {/* 심란하다...기간 컴포넌트 만들어서 추후 수정 */}
+              <Subhead className='date'>활동 기간</Subhead> {/* 수정 - flex 별도 설정? */}
+              <DateInput content='시작일' placeholder='예) 2024.01.01' />
+              <Subhead className='tilde'>~</Subhead>
+              <DateInput content='종료일' placeholder='예) 2024.01.01' />
+              <BasicInput type='checkbox' className='checkbox' id='ongoing2' name='ongoing2' />
+              <Label htmlFor='ongoing2'>진행중</Label>
             </Container>
             <Container>
               <Subhead>활동 내용</Subhead>
-              {/* 예) ios 모바일 어플 개발 프로젝트 진행 */}
+              <BasicInput className='long' placeholder='예) ios 모바일 어플 개발 프로젝트 진행' />
             </Container>
+            <AddButton content='추가하기' />
             {/* 추가하기 버튼 컴포넌트? */}
 
             <ProfileTitle title='보유 기술' />
             <Container>
               <Subhead>보유 기술</Subhead>
-              {/* 키워드 입력 후 Enter */}
-              {/* 등록 버튼 컴포넌트? */}
-              <Text>예시: Google Ananlytics, Photoshop, Figma, Notion, Python, Javascript, Confluence 등</Text>
-              <TagContainer>
-                <Tag>Figma</Tag>
-              </TagContainer>
+
+
+
+
+              <Container>
+                <Container>
+                  <BasicInput className='long' placeholder='키워드 입력 후 Enter' />
+                  {/* 수정 - Enter 또는 버튼 클릭 시 기능 추가하기 */}
+                  <RegisterButton variant='normal' content='등록' />
+                  {/* 등록 버튼 컴포넌트? */}
+                </Container>
+                <Text>예시: Google Ananlytics, Photoshop, Figma, Notion, Python, Javascript, Confluence 등</Text>
+                <TagContainer>
+                  <Tag>Figma</Tag>
+                  <Tag>React native</Tag>
+                  <Tag>Notion</Tag>
+                </TagContainer>
+              </Container>
             </Container>
 
 
             <ProfileTitle title='포트폴리오' />
             <Container>
               <Subhead>첨부파일</Subhead>
+              <BasicInput type='file' className='long' placeholder='첨부할 파일을 찾아주세요'/>
               {/* 첨부할 파일을 찾아주세요 */}
+              <RegisterButton variant='normal' content='파일 첨부' />
               {/* 파일 첨부 버튼 컴포넌트 */}
             </Container>
 
             <Container>
               <Subhead>URL</Subhead>
+              <BasicInput type='url' className='long' placeholder='URL 링크를 입력하세요' />
               {/* URL 링크를 입력하세요 */}
+              <RegisterButton variant='normal' content='등록' />
               {/* 등록 버튼 컴포넌트 */}
               <UrlContainer>
                 <Url>https:임시.com</Url>
@@ -163,10 +250,17 @@ function ProfileCardMake() {
 
           </ProfileContainer>
 
+          {/* 수정하기!!! 배치... */}
           <Container>
-              {/* 취소 버튼 컴포넌트 */}
-              {/* 저장하기 버튼 컴포넌트 */}
+            <Container />
+
+            <Container className='cansav'>
+              <RegisterButton variant='cancle' content='취소' />
+                {/* 취소 버튼 컴포넌트 */}
+              <RegisterButton variant='save' content='저장하기' />
+                {/* 저장하기 버튼 컴포넌트 */}
             </Container>
+          </Container>
 
         
         <Footer />

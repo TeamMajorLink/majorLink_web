@@ -23,9 +23,9 @@ import EnterBasicInfo from './pages/CreateAccount/EnterBasicInfo';
 import EnterRequiredInfo from './pages/CreateAccount/EnterRequiredInfo';
 import ProfileCard from './pages/users/ProfileCard';
 import ProfileCardMake from './pages/users/ProfileCardMake';
-import OfferClass from './pages/users/OfferClass';
 import OfferedClassList from './pages/users/OfferedClassList';
-import OfferedClassModify from './pages/users/OfferedClassModify';
+import LectureCreate from './pages/users/LectureCreate';
+import LectureModify from './pages/users/LectureModify';
 import { ClassApplicationPage } from './pages/class/ClassApplicationPage';
 import { ClassApplicationCompletedPage } from './pages/class/ClassApplicationCompletedPage';
 import { ApiTestReadPage } from './pages/apiTest/ApiTestReadPage';
@@ -55,7 +55,7 @@ import { HeaderComponent } from './components/common/header/HeaderComponent';
 export default function Router() {
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes>3
         {/* api 연동 테스트 - 삭제 예정!! */}
         <Route path="/api-test/create" element={<ApiTestCreatePage />} />
         <Route path="/api-test/read" element={<ApiTestReadPage />} />
@@ -119,12 +119,9 @@ export default function Router() {
         <Route path="/users/profile-card/nickname" element={<ProfileCard />} />
         <Route path="/users/profile-card" element={<ProfileCardMake />} />
 
-        <Route path="/offerclass" element={<OfferClass />} />
         <Route path="/offeredclasslist" element={<OfferedClassList />} />
-        <Route
-          path="/offeredclassmodify/:class"
-          element={<OfferedClassModify />}
-        />
+        <Route path="/lecture/create" element={<LectureCreate />} />
+        <Route path="/lecture/lectureid" element={<LectureModify />} />
 
         {/* 내 강의실 */}
         {/* 내 강의실 */}

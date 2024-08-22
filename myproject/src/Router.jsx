@@ -46,6 +46,7 @@ import TutorCancelClass from './pages/myClass/tutor/TutorCancelClass';
 import TutorDoingClass from  './pages/myClass/tutor/TutorDoingClass';
 import TutorDoingDetailClass from  './pages/myClass/tutor/TutorDoingDetailClass';
 import TutorDoneClass from './pages/myClass/tutor/TutorDoneClass';
+import NotFound from './components/common/NotFound';
 
 
 export default function Router() {
@@ -133,11 +134,15 @@ export default function Router() {
         <Route path='/myclass-tutor/done' element={<TutorDoneClass/>} />
         <Route path='/myclass-tutor/done/:id' element={<TutorDoingDetailClass/>} />
 
-        <Route path='/myclass/review-list' element={<ReviewList/>} />
-        <Route path='/myclass/review-list/:id' element={<ReviewDetail/>} />
-        <Route path='/myclass/review-form' element={<ReviewForm/>} />
+        <Route path='/reviews/list' element={<ReviewList/>} />
+        {/* <Route path='/myclass/review-list/:id' element={<ReviewDetail/>} /> */}
+        <Route path='/reviews/:id/details' element={<ReviewDetail/>} />
+        {/* <Route path='/myclass/review-form' element={<ReviewForm/>} /> */}
+        <Route path='reviews/:id' element={<ReviewForm/>} />
         
         <Route path='/myclass/movetoonlineclass' element={<MoveToOnlineClass/>}/>
+
+        <Route path='/*' element={<NotFound/>} />
       </Routes>
     </BrowserRouter>
   );

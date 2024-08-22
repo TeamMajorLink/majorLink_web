@@ -1,7 +1,10 @@
-import styled from "styled-components";
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+// import { useParams, useLocation } from "react-router-dom";
+import styled from "styled-components";
+import { useEffect, useState  } from "react";
 import axios from "axios";
+import font from "../../../styles/font";
+import color from "../../../styles/color";
 import { HeaderComponent } from "../../../components/common/header/HeaderComponent";
 import Sidebar from "../Sidebar";
 
@@ -14,7 +17,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
 `;
 
 const Title = styled.p`
@@ -49,28 +52,34 @@ const Table = styled.table`
 
 function ReviewDetail() {
 
-  const location = useLocation();
-  const { review } = location.state;
-
+  // const { reviewId } = useParams();
   const [reviews, setReviews] = useState([]);
+
+  const reviewId = 1;
+
+  const location = useLocation();
 
   useEffect(() => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(`https://dev.majorlink.store/reviews/${reviewId}/details`);
-        setReviews(response.data);
+        setReviews([response.data]);
+        console.log([response.data]);
       } catch (error) {
         console.error('error: ', error);
       }
     };
     fetchReviews();
-  }, []);
+    if (location.state && location.state.newReview) {
+      setReviews((prevReviews) => [location.state.newReview, ...prevReviews]);
+    }
+  }, [location.state]);
 
   const headers = [
     { text: '작성자', value: 'ownerNickname' },
     { text: '내용', value: 'content' },
-    { text: '작성일자', value: 'rate' },
-    { text: '평가', value: 'createdAt' },
+    { text: '작성일자', value: 'createdAt' },
+    { text: '평가', value: 'rate' },
   ];
 
   return(
@@ -79,7 +88,13 @@ function ReviewDetail() {
       <Wrapper>
       <Sidebar />
         <Container>
-          <Title>{review.title}</Title>
+          {/* <Title>{review.title}</Title> */}
+          {/* <Title>과목명</Title> */}
+          <Title>
+            {reviews.map((review) => (
+              review.lecture
+            ))}
+          </Title>
           <DetailContainer>
             <Table>
               <thead>
@@ -90,14 +105,15 @@ function ReviewDetail() {
                 </tr>
               </thead>
               <tbody>
-                {reviews.map((detail) => (
-                  <tr key={detail.id}>
-                    <td>{detail.ownerNickname}</td>
-                    <td>{detail.content}</td>
-                    <td>{detail.rate}</td>
-                    <td>{detail.createdAt}</td>
-                  </tr>
-                ))}
+                {
+                  reviews.map((review) => (
+                    <tr key={review.reviewId}>
+                      <td>{review.ownerNickname}</td>
+                      <td>{review.content}</td>
+                      <td>{review.createdAt}</td>
+                      <td>⭐ {review.rate}</td>
+                    </tr>
+                  ))}
               </tbody>
             </Table>
           </DetailContainer>

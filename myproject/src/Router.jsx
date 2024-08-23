@@ -51,6 +51,11 @@ import NotificationSubscribe from './apis/getNotificationSubscribe';
 import PostNotification from './pages/apiTest/DDPostNotification';
 import { HeaderComponentNNN } from './components/common/header/HeaderComponentNNN';
 import { HeaderComponent } from './components/common/header/HeaderComponent';
+import Payment from './pages/payment/Payment';
+import DonePayment from './pages/payment/DonePayment';
+import ChatLog from './pages/chat/ChatLog';
+import ChatPage from './pages/chat/ChatPage';
+import FaceChat from './pages/FaceChat/FaceChat';
 
 export default function Router() {
   return (
@@ -167,7 +172,15 @@ export default function Router() {
           path="/myclass/movetoonlineclass"
           element={<MoveToOnlineClass />}
         />
+        <Route path="/lecture" element={<FaceChat />} />
+        {/* 내 강의실 - 결제 */}
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment/done" element={<DonePayment />} />
+        {/* 내 강의실 - 채팅 */}
+        <Route path="/chat/:id" element={<ChatLog />} />
+        <Route path="/chat" element={<ChatPage />} />
 
+        {/* 내 강의실 - 에러 */}
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

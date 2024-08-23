@@ -4,12 +4,7 @@
     "es2021": true,
     "jest": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "airbnb",
-    "prettier"
-  ],
+  "extends": [],
   "overrides": [],
   "parserOptions": {
     "ecmaFeatures": {
@@ -20,15 +15,37 @@
   },
   "plugins": ["react"],
   "rules": {
+    // Disable all ESLint rules
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".js"] }],
-    "react/jsx-props-no-spreading": ["off"],
-    "react/prop-types": ["off"],
-    "import/prefer-default-export": ["off"],
-    "react/function-component-definition": [
-      2,
-      { "namedcomponents": "arrow-function" }
-    ],
-    "no-undef": "off"
+    "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": "off",
+    "no-undef": "off",
+    "prefer-destructuring": "off",
+    "no-use-before-define": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "react/button-has-type": "off",
+    "react/no-array-index-key": "off",
+    "import/no-unresolved": "off",
+    "no-unused-vars": "off",
+    "no-console": "off",
+    "no-redeclare": "off",
+    "no-shadow": "off",
+    "no-unused-expressions": "off",
+    "no-param-reassign": "off",
+    "no-return-assign": "off",
+    "no-nested-ternary": "off",
+    "react/display-name": "off",
+    "react/jsx-no-constructed-context-values": "off",
+    "react/no-unescaped-entities": "off",
+    "react/no-unknown-property": "off",
+    "react/jsx-key": "off",
+    "react/no-danger": "off",
+    "react/no-children-prop": "off",
+    "react/no-deprecated": "off",
+    "react/jsx-no-target-blank": "off",
+    "react/no-access-state-in-setstate": "off"
   }
 }

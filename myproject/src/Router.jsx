@@ -119,6 +119,8 @@ export default function Router() {
         {/* 내 강의실 */}
         {/* 내 강의실 */}
         {/* 내 강의실 */}
+        {/* 내 강의실 */}
+        {/* 내 강의실 */}
         <Route path="/myclass/recruiting" element={<RecruitClass />} />
         <Route
           path="/myclass/recruiting/:id"
@@ -130,6 +132,7 @@ export default function Router() {
         <Route path="/myclass/doing/:id" element={<DoingDetailClass />} />
         <Route path="/myclass/done" element={<DoneClass />} />
         <Route path="/myclass/done/:id" element={<DoingDetailClass />} />
+        {/* 내 강의실 - 튜터 */}
         <Route
           path="/myclass-tutor/recruiting"
           element={<TutorRecruitClass />}
@@ -153,12 +156,13 @@ export default function Router() {
           path="/myclass-tutor/done/:id"
           element={<TutorDoingDetailClass />}
         />
+        {/* 내 강의실 - 후기 */}
         <Route path="/reviews/list" element={<ReviewList />} />
         {/* <Route path='/myclass/review-list/:id' element={<ReviewDetail/>} /> */}
         <Route path="/reviews/:id/details" element={<ReviewDetail />} />
         {/* <Route path='/myclass/review-form' element={<ReviewForm/>} /> */}
         <Route path="reviews/:id" element={<ReviewForm />} />
-
+        {/* 내 강의실 - 화상 통화 */}
         <Route
           path="/myclass/movetoonlineclass"
           element={<MoveToOnlineClass />}

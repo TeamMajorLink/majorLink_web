@@ -7,7 +7,6 @@ import font from '../../../../styles/font';
 import { DropdownComponent } from './DropdownComponent';
 import ResetIconPng from '../../../../assets/class/class_icon_reset_24x24.png';
 import { DropdownComponent2 } from './DropdownComponent2';
-import { DropdownComponent3 } from './DropdownComponent3';
 
 const SectionContainer = styled.div`
   margin: 0;
@@ -117,10 +116,6 @@ export function FilterArray({ setCategoryIdChanged }) {
             setCategoryIdChanged={setCategoryIdChanged}
           />
           <DropdownComponent2
-            resetCategory={resetCategory}
-            setCategoryIdChanged={setCategoryIdChanged}
-          />
-          <DropdownComponent3
             resetCategory={resetCategory}
             setCategoryIdChanged={setCategoryIdChanged}
           />

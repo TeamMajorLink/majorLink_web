@@ -36,7 +36,7 @@ const ChatContainer = styled.li`
 
   width: 100%;
   height: 8.8rem;
-  textAlign: center;
+  textalign: center;
 
   cursor: pointer;
 `;
@@ -44,41 +44,85 @@ const ChatContent = styled.p`
   margin: 0;
   padding: 1.2rem;
   ${() => font.bold_20};
-  
 `;
+
+const modalStyles = {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  zIndex: 1000,
+};
+
+const modalContentStyles = {
+  backgroundColor: '#fff',
+  padding: '20px',
+  borderRadius: '8px',
+  width: '300px',
+  textAlign: 'center',
+};
+
+const inputStyles = {
+  width: '100%',
+  padding: '10px',
+  marginBottom: '10px',
+  borderRadius: '4px',
+  border: '1px solid #ccc',
+};
 // const ListContainer = styled.div`
 //   margin-top: 30px;
-// `;
-
-// 
-// 
-// 
-// 
-// daivit
-
-
-
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
+//
+//
 function ChatPage() {
   // 채팅 목록을 저장할 상태 변수
   const [chatList, setChatList] = useState([]);
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [roomName, setRoomName] = useState('');
 
-  // 서버에서 채팅 목록을 가져오는 함수
+  const token = localStorage.getItem('authToken');
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const handleInputChange = (event) => {
+    setRoomName(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    // 서버에 POST 요청
+    axios
+      .post(
+        'https://dev.majorlink.store/chatrooms',
+        { name: roomName },
+        {
+          headers: {
+            'X-Auth-Token': `${token}`,
+          },
+        },
+      )
+      .then((response) => {
+        console.log('채팅방이 추가되었습니다:', response.data);
+        closeModal();
+      })
+      .catch((error) => {
+        console.error('채팅방 추가 중 오류가 발생했습니다:', error);
+      });
+  };
+
   const fetchChatList = async () => {
     try {
       const response = await axios.get('https://dev.majorlink.store/chatrooms');
-      setChatList(response.data); // 응답 데이터를 상태에 저장
+      setChatList(response.data);
     } catch (error) {
       console.error('채팅 목록을 가져오는데 실패했습니다:', error);
     }
@@ -87,46 +131,60 @@ function ChatPage() {
   useEffect(() => {
     fetchChatList();
 
-    const intervalId = setInterval(fetchChatList, 10000); // 10000ms = 10초
+    const intervalId = setInterval(fetchChatList, 10000);
 
-    // 컴포넌트가 언마운트될 때 인터벌을 정리(cleanup)함
     return () => clearInterval(intervalId);
-  }, []); // 빈 배열로 의존성을 설정해, 컴포넌트가 처음 렌더링될 때만 실행
+  }, []);
 
   const handleChatClick = (id) => {
     navigate(`/chat/${id}`);
   };
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-  // 
-
+  //
+  //
+  //
   return (
-    
     <div>
       <HeaderComponent />
       <Wrapper>
         <Sidebar />
         <Container>
+          <div>
+            <button onClick={openModal}>채팅방 추가</button>
+
+            {isModalOpen && (
+              <div style={modalStyles}>
+                <div style={modalContentStyles}>
+                  <h2>채팅방 추가</h2>
+                  <input
+                    type="text"
+                    value={roomName}
+                    onChange={handleInputChange}
+                    placeholder="채팅방 이름을 입력하세요"
+                    style={inputStyles}
+                  />
+                  <div style={{ marginTop: '10px' }}>
+                    <button onClick={handleSubmit}>입력</button>
+                    <button onClick={closeModal} style={{ marginLeft: '10px' }}>
+                      닫기
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
           <Title>채팅 목록</Title>
           <ListContainer>
-        {chatList.map((chat) => (
-          <ChatContainer key={chat.id} onClick={() => handleChatClick(chat.id)} >
-            
-              <ChatContent >{chat.name}</ChatContent>
-          </ChatContainer>
-        ))}
+            {chatList.map((chat) => (
+              <ChatContainer
+                key={chat.id}
+                onClick={() => handleChatClick(chat.id)}
+              >
+                <ChatContent>{chat.name}</ChatContent>
+              </ChatContainer>
+            ))}
           </ListContainer>
         </Container>
       </Wrapper>
-      
     </div>
   );
 }

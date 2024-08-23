@@ -397,7 +397,7 @@ function HomePage() {
               >
                 <ClassImage src={examplepng} alt="Marketing Image" />
                 <ClassContent>
-                  <h3>(임시) lectureId: {lecture.lectureId}</h3>
+                  {/* <h3>(임시) lectureId: {lecture.lectureId}</h3> */}
                   <ClassTitleText>{lecture.name}</ClassTitleText>
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}
@@ -445,7 +445,7 @@ function HomePage() {
               >
                 <ClassImage src={examplepng} alt="Marketing Image" />
                 <ClassContent>
-                  <h3>(임시) lectureId: {lecture.lectureId}</h3>
+                  {/* <h3>(임시) lectureId: {lecture.lectureId}</h3> */}
                   <ClassTitleText>{lecture.name}</ClassTitleText>
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}
@@ -476,7 +476,7 @@ function HomePage() {
               >
                 <ClassImage src={examplepng} alt="Marketing Image" />
                 <ClassContent>
-                  <h3>(임시) lectureId: {lecture.lectureId}</h3>
+                  {/* <h3>(임시) lectureId: {lecture.lectureId}</h3> */}
                   <ClassTitleText>{lecture.name}</ClassTitleText>
                   <ClassInstruction>
                     {lecture.mainCategory} {'>'} {lecture.subCategory}

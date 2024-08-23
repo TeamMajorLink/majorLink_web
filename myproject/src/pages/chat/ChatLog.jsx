@@ -1,22 +1,43 @@
 import axios from 'axios';
+// import styled from 'styled-components';
 import { Stomp } from '@stomp/stompjs';
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import font from '../../styles/font';
+import color from '../../styles/color';
+
+const ChatNameText = styled.p`
+  ${() => font.bold_16};
+  margin: 0;
+  padding: 0.8rem;
+
+  color: ${() => color.grayscale_9d};
+`;
+const ChatContentText = styled.p`
+  ${() => font.regular_16};
+  margin: 0;
+  padding: 0.8rem;
+
+  // color: ${() => color.grayscale_80};
+`;
 
 const chatContainerStyle = {
   backgroundColor: '#f0f0f0',
   padding: '10px',
   borderRadius: '5px',
-  maxHeight: '400px',
+  maxHeight: '92vh',
   overflowY: 'auto',
   marginBottom: '20px',
 };
 
 const messageStyle = {
   marginBottom: '10px',
-  padding: '5px 10px',
+  padding: '1.2rem',
   backgroundColor: '#fff',
   borderRadius: '5px',
+  
+  display: 'flex',
 };
 
 const inputContainerStyle = {
@@ -50,6 +71,16 @@ const buttonStyle = {
   border: 'none',
 };
 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
 const ChatLog = () => {
   const [messages, setMessages] = useState([]);
   const [stompClient, setStompClient] = useState(null);
@@ -71,7 +102,7 @@ const ChatLog = () => {
 
   useEffect(() => {
     // ws://43.202.8.75:8080 ip주소
-    const socket = new WebSocket('https://dev.majorlink.store/ws');
+    const socket = new WebSocket('ws://dev.majorlink.store/ws');
     const client = Stomp.over(socket);
 
     client.connect(
@@ -132,7 +163,7 @@ const ChatLog = () => {
           },
         );
 
-        const uuid = response.data.uuid;
+        const uuid = response.data;
 
         const chatMessage = JSON.stringify({
           sender: uuid,
@@ -163,12 +194,23 @@ const ChatLog = () => {
     sendMessage();
   };
 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
   return (
     <div className="container">
       <div id="chat" className="mt-4" style={chatContainerStyle}>
         {messages.map((msg, index) => (
           <div key={index} style={messageStyle}>
-            <strong>{msg.name}: </strong> {msg.content}
+            <ChatNameText>{msg.name}</ChatNameText> 
+            <ChatContentText>{msg.content}</ChatContentText> 
           </div>
         ))}
         <div ref={chatEndRef} />

@@ -14,6 +14,8 @@ export function HeaderAfterLoginNNN({ authToken }) {
   // 연동_24.08.22추가 - 실시간 알림
   // 연동_24.08.22추가 - 실시간 알림
   const showNotification = (notification) => {
+    console.log("NNN");
+    
     if (!notification) return;
 
     const browserNotification = new Notification(
@@ -47,8 +49,8 @@ export function HeaderAfterLoginNNN({ authToken }) {
         ) {
           return;
         }
-        // console.log(`event.data 데이터: ${event.data}`);
-        // console.log(`소켓 데이터: ${newNotification.content}`);
+        console.log(`event.data 데이터: ${event.data}`);
+        console.log(`소켓 데이터: ${newNotification.content}`);
 
         // 브라우저 알림 표시
         showNotification(newNotification);

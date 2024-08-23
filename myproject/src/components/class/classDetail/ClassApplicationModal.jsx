@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { css, styled } from 'styled-components';
 import color from '../../../styles/color';
@@ -92,7 +92,7 @@ const ConfirmButton = styled.button`
 `;
 
 export function ClassApplicationModal({ closeModal, lectureId = 1 }) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [authToken, setAuthToken] = useState(null);
 
   useEffect(() => {

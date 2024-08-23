@@ -122,7 +122,7 @@ export function ClassApplicationModal({ closeModal, lectureId = 1 }) {
       );
 
       console.log('수강신청 요청 성공:', response.data);
-      // navigate(`/class/application-completed`);
+      navigate(`/class/application-completed`);
     } catch (error) {
       if (error.response) {
         console.error(

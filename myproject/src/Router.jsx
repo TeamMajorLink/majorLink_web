@@ -67,6 +67,7 @@ export default function Router() {
         {/* 알림 연동 - 구독, 수강신청, 알림 받기 */}
         <Route path="/headerNNN" element={<HeaderComponentNNN />} />
         <Route path="/notc" element={<PostNotification />} />
+        <Route path="/nn" element={<PostNotification />} />
         <Route
           path="/notification-subscribe"
           element={<NotificationSubscribe />}

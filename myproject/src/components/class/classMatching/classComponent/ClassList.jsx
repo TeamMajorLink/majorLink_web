@@ -60,7 +60,7 @@ export function ClassList({ categoryIdChanged }) {
       fetchLectureList('/lecture/mostRecruited');
       // console.log('임박순');
     } else if (categoryId) {
-      fetchLectureList(`/lecture/${categoryId}`);
+      fetchLectureList(`/lecture/${categoryId}/category`);
       // console.log(`카테고리: ${categoryId}`);
     } else {
       fetchLectureList('/lecture/list');

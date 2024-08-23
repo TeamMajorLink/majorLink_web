@@ -1,19 +1,74 @@
-import React, { useState, useEffect } from 'react';
+// 채팅 목록
+import styled from 'styled-components';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { HeaderComponent } from '../../components/common/header/HeaderComponent';
+import Sidebar from '../myClass/Sidebar';
+import font from '../../styles/font';
+import color from '../../styles/color';
 
-const chatroomStyle = {
-  border: '1px solid black',
-  width: '80%',
-  height: '40px',
-  textAlign: 'center',
-  marginBottom: '20px',
-};
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin: 100px 100px;
+`;
 
-const chatnameStyle = {
-  fontSize: '20px',
-};
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+`;
 
+const Title = styled.p`
+  ${() => font.title};
+  margin: 20px 0;
+`;
+
+const ListContainer = styled.ul`
+  margin: 3rem 0 0 -3.2rem;
+`;
+const ChatContainer = styled.li`
+  margin: 0 0 2rem 0;
+  padding: 2rem;
+  border: 0.1rem solid ${() => color.grayscale_84};
+  border-radius: 1.2rem;
+
+  width: 100%;
+  height: 8.8rem;
+  textAlign: center;
+
+  cursor: pointer;
+`;
+const ChatContent = styled.p`
+  margin: 0;
+  padding: 1.2rem;
+  ${() => font.bold_20};
+  
+`;
+// const ListContainer = styled.div`
+//   margin-top: 30px;
+// `;
+
+// 
+// 
+// 
+// 
+// daivit
+
+
+
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
 function ChatPage() {
   // 채팅 목록을 저장할 상태 변수
   const [chatList, setChatList] = useState([]);
@@ -41,29 +96,37 @@ function ChatPage() {
   const handleChatClick = (id) => {
     navigate(`/chat/${id}`);
   };
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
+  // 
 
   return (
+    
     <div>
-      <h1>채팅 목록</h1>
-      <ul>
+      <HeaderComponent />
+      <Wrapper>
+        <Sidebar />
+        <Container>
+          <Title>채팅 목록</Title>
+          <ListContainer>
         {chatList.map((chat) => (
-          <li key={chat.id} style={chatroomStyle}>
-            <button
-              onClick={() => handleChatClick(chat.id)}
-              style={{
-                cursor: 'pointer',
-                background: 'none',
-                border: 'none',
-                padding: 0,
-              }}
-            >
-              <strong style={chatnameStyle}>{chat.name}</strong>
-              <br />
-              입장하기
-            </button>
-          </li>
+          <ChatContainer key={chat.id} onClick={() => handleChatClick(chat.id)} >
+            
+              <ChatContent >{chat.name}</ChatContent>
+          </ChatContainer>
         ))}
-      </ul>
+          </ListContainer>
+        </Container>
+      </Wrapper>
+      
     </div>
   );
 }

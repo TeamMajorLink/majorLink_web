@@ -77,13 +77,13 @@ function Sidebar() {
           className={({ isActive }) => 
           isActive ? "active" : undefined}>
             클래스 신청</NavLink></li>
-        <li><NavLink 
+        <li><NavLink
           to="/savedclass"
           className={({ isActive }) => 
           isActive ? "active" : undefined}>
             저장한 클래스</NavLink></li>
         <li><NavLink 
-          to="/classchat"
+          to="/chat"
           className={({ isActive }) => 
           isActive ? "active" : undefined}>
             클래스 채팅</NavLink></li>

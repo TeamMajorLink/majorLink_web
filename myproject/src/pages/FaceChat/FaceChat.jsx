@@ -126,7 +126,7 @@ function FaceChat() {
       <video ref={localVideoRef} autoPlay muted style={{ width: '300px' }} />
       <video ref={remoteVideoRef} autoPlay style={{ width: '300px' }} />
       <button onClick={startCall} disabled={isCallStarted}>
-        Start Call
+        강의 참여하기
       </button>
     </div>
   );

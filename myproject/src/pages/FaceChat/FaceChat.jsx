@@ -123,7 +123,7 @@ function FaceChat() {
 
   return (
     <div style={lay}>
-      내 화면
+      <div>내 화면</div>
       <div style={myCam}>
         <video ref={localVideoRef} autoPlay muted style={{ width: '500px' }} />
       </div>

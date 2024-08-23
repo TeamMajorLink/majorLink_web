@@ -52,22 +52,22 @@ function Sidebar() {
     <Wrapper>
       <div className="sidebar">
         <li>
-        <Link to="/myclass" className="title">
+        <Link to="/myclass/recruiting" className="title">
           내 강의실</Link></li>
         <div className="navlink">
           <li><NavLink 
-            to="/myclass"
+            to="/myclass/recruiting"
             className={({ isActive }) => 
             isActive ? "active" : "normal"}>
               클래스 관리</NavLink></li>
         <SelectUserContainer>
           <li><NavLink 
-            to="/myclass"
+            to="/myclass/recruiting"
             className={({ isActive }) => 
             isActive ? "active" : "normal"}>
               • 튜티</NavLink></li>
           <li><NavLink 
-          to="/myclass-tutor"
+          to="/myclass-tutor/recruiting"
           className={({ isActive }) => 
           isActive ? "active" : "normal"}>
             • 튜터</NavLink></li>

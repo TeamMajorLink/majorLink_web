@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { HeaderComponent } from '../../../components/common/header/HeaderComponent';
-import font from '../../../styles/font';
-import color from '../../../styles/color';
-import Sidebar from '../Sidebar';
-import ThumbImg from '../../../assets/common/thumbnail_myclass_172x95.png';
-import RecruitingSelectMenu from './RecruitingSelectMenu';
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import styled from "styled-components";
+import { HeaderComponent } from "../../../components/common/header/HeaderComponent";
+import font from "../../../styles/font";
+import color from "../../../styles/color";
+import Sidebar from "../Sidebar";
+import ThumbImg from "../../../assets/common/thumbnail_myclass_172x95.png";
+import RecruitingSelectMenu from "./RecruitingSelectMenu";
 
 const Wrapper = styled.div`
   display: flex;
@@ -87,18 +89,33 @@ function RecruitClass() {
     },
   ];
 
-  const items = [
-    {
-      id: '1',
-      num: '1',
-      img: 'img',
-      class: '백엔드 웹 개발 기초',
-      count: '1',
-      state: '수업 시작하기',
-    },
-  ];
+  // const items = [
+  //   {
+  //     id: '1',
+  //     num: '1',
+  //     img: 'img',
+  //     class: '백엔드 웹 개발 기초',
+  //     count: '1',
+  //     state: '수업 시작하기'
+  //   },
+  // ];
+  
+  const [reviews, setReviews] = useState([]);
 
-  const headerKey = headers.map((header) => header.value);
+  useEffect(() => {
+    const fetchClass = async () => {
+      try {
+        const response = await axios.get(`https://dev.majorlink.store/lecture/list`);
+        setReviews(response.data.lectureList);
+        console.log(response.data.lectureList);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchClass();
+  }, []);
+
+  // const headerKey = headers.map((header) => header.value);
 
   return (
     <div>
@@ -109,50 +126,62 @@ function RecruitClass() {
           <Title>모집 중인 클래스</Title>
           <RecruitingSelectMenu />
           <ListContainer>
-            <Table>
-              <colgroup>
-                <col width="10%" />
-                <col width="20%" />
-                <col width="30%" />
-                <col width="15%" />
-                <col width="25%" />
-              </colgroup>
-              <thead>
-                <tr>
-                  {headers.map((header) => (
-                    <th key={header.text}>{header.text}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((item) => (
-                  <tr key={item.id}>
-                    {headerKey.map((key) => {
-                      let content;
-
-                      if (key === 'state') {
-                        content = (
-                          <Link to="/myclass/movetoonlineclass">
-                            <button type="button">{item[key]}</button>
-                          </Link>
-                        );
-                      } else if (key === 'img') {
-                        content = <img src={ThumbImg} alt="썸네일" />;
-                      } else if (key === 'class') {
-                        content = (
-                          <Link to={`/myclass/recruiting/${item.id}`}>
-                            {item[key]}
-                          </Link>
-                        );
-                      } else {
-                        content = item[key];
-                      }
-                      return <td key={key + item.id}>{content}</td>;
-                    })}
+              <Table>
+                <colgroup>
+                  <col width="10%" />
+                  <col width="20%" />
+                  <col width="30%" />
+                  <col width="15%" />
+                  <col width="25%" />
+                </colgroup>
+                <thead>
+                  <tr>
+                    {headers.map((header) => 
+                    <th key={header.text}>
+                      {header.text}
+                    </th>)}
                   </tr>
-                ))}
-              </tbody>
-            </Table>
+                </thead>
+
+                <tbody>
+                  {reviews.map((item) => (
+                    <tr key={item.id}>
+                      <td>{item.lectureId}</td>
+                      <td><img src={ThumbImg} alt="Thumbnail" /></td>
+                      <td><Link 
+                        to={`/myclass/recruiting/${item.lectureId}`}
+                        state={item}>
+                          {item.name}</Link></td>
+                      <td>{item.cnum}</td>
+                      <td>{item.level}</td>
+                    </tr>
+                  ))}
+                </tbody>
+                {/* <tbody>
+                  {items.map((item) => (
+                    <tr key={item.id}>
+                      {headerKey.map((key) => {
+                        let content;
+
+                        if (key === 'state') {
+                          content = <Link to='/myclass/movetoonlineclass'><button type="button">{item[key]}</button></Link>;
+                        } else if (key === 'img') {
+                          content = <img src={ThumbImg} alt="썸네일" />;
+                        } else if (key === 'class') {
+                          content = (
+                            <Link to={`/myclass/recruiting/${item.id}`}>
+                              {item[key]}
+                            </Link>
+                          )
+                        } else {
+                          content = item[key];
+                        }
+                        return <td key={key + item.id}>{content}</td>;
+                      })}
+                    </tr>
+                  ))}
+                </tbody> */}
+              </Table>
           </ListContainer>
         </Container>
       </Wrapper>

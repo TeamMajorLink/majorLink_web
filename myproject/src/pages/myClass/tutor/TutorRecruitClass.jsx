@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { HeaderComponent } from "../../../components/common/header/HeaderComponent";
 import font from "../../../styles/font";
@@ -87,18 +89,33 @@ function TutorRecruitClass() {
     },
   ];
 
-  const items = [
-    {
-      id: '1',
-      num: '1',
-      img: 'img',
-      class: '백엔드 웹 개발 기초',
-      count: '1',
-      state: '수업 시작하기'
-    },
-  ];
+  // const items = [
+  //   {
+  //     id: '1',
+  //     num: '1',
+  //     img: 'img',
+  //     class: '백엔드 웹 개발 기초',
+  //     count: '1',
+  //     state: '수업 시작하기'
+  //   },
+  // ];
 
-  const headerKey = headers.map((header) => header.value);
+  // const headerKey = headers.map((header) => header.value);
+
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    const fetchClass = async () => {
+      try {
+        const response = await axios.get(`https://dev.majorlink.store/lecture/list`);
+        setReviews(response.data.lectureList);
+        console.log(response.data.lectureList);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchClass();
+  }, []);
 
   return(
     <div>
@@ -125,7 +142,21 @@ function TutorRecruitClass() {
                     </th>)}
                   </tr>
                 </thead>
+
                 <tbody>
+                  {reviews.map((item) => (
+                    <tr key={item.id}>
+                      <td>{item.lectureId}</td>
+                      <td><img src={ThumbImg} alt="Thumbnail" /></td>
+                      <td>{item.name}</td>
+                      <td>{item.cnum}</td>
+                      <td>{item.level}</td>
+                    </tr>
+                  ))}
+                </tbody>
+
+
+                {/* <tbody>
                   {items.map((item) => (
                     <tr key={item.id}>
                       {headerKey.map((key) => {
@@ -148,7 +179,7 @@ function TutorRecruitClass() {
                       })}
                     </tr>
                   ))}
-                </tbody>
+                </tbody> */}
               </Table>
           </ListContainer>
         </Container>

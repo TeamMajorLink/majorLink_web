@@ -227,7 +227,7 @@ function HomePage() {
     }
   }, []);
   console.log(`authToken: ${authToken}`);
-  localStorage.setItem('authToken', authToken);
+  // localStorage.setItem('authToken', authToken);
 
   // 연동_24.08.20추가 - 클래스 정보
   const [lectureListMostLiked, setLectureListMostLiked] = useState([]);

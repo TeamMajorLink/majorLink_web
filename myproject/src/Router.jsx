@@ -51,6 +51,11 @@ import NotificationSubscribe from './apis/getNotificationSubscribe';
 import PostNotification from './pages/apiTest/DDPostNotification';
 import { HeaderComponentNNN } from './components/common/header/HeaderComponentNNN';
 import { HeaderComponent } from './components/common/header/HeaderComponent';
+import Payment from './pages/payment/Payment';
+import DonePayment from './pages/payment/DonePayment';
+import ChatLog from './pages/chat/ChatLog';
+import ChatPage from './pages/chat/ChatPage';
+import FaceChat from './pages/FaceChat/FaceChat';
 
 export default function Router() {
   return (
@@ -158,6 +163,14 @@ export default function Router() {
         <Route path="/reviews/:id/details" element={<ReviewDetail />} />
         {/* <Route path='/myclass/review-form' element={<ReviewForm/>} /> */}
         <Route path="reviews/:id" element={<ReviewForm />} />
+
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment/done" element={<DonePayment />} />
+
+        <Route path="/chat/:id" element={<ChatLog />} />
+        <Route path="/chat" element={<ChatPage />} />
+
+        <Route path="/lecture" element={<FaceChat />} />
 
         <Route
           path="/myclass/movetoonlineclass"

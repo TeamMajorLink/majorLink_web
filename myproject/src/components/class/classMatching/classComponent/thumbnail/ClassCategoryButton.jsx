@@ -17,6 +17,6 @@ const CategoryButton = styled.button`
   color: ${() => color.white};
 `;
 
-export function ClassCategoryButton() {
-  return <CategoryButton>프로그래밍</CategoryButton>;
+export function ClassCategoryButton({ mainCategory }) {
+  return <CategoryButton>{mainCategory}</CategoryButton>;
 }

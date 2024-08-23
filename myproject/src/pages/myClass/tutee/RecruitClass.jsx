@@ -35,7 +35,7 @@ const Table = styled.table`
   border-collapse: collapse;
   text-align: center;
   width: 100%;
-  th{
+  th {
     border-top: 7px solid ${() => color.primary_normal};
     border-bottom: 1px solid ${() => color.grayscale_80};
     ${() => font.semibold_20};
@@ -46,7 +46,8 @@ const Table = styled.table`
     ${() => font.regular_18};
     padding: 20px;
   }
-  th:first-child, td:first-child {
+  th:first-child,
+  td:first-child {
     border-left: none;
   }
   img {
@@ -60,32 +61,31 @@ const Table = styled.table`
     color: ${() => color.primary_normal};
     background-color: transparent;
     padding: 10px;
-    width: 60%
+    width: 60%;
   }
 `;
 
 function RecruitClass() {
-
   const headers = [
     {
       text: '번호',
-      value: 'num'
+      value: 'num',
     },
     {
       text: '썸네일',
-      value: 'img'
+      value: 'img',
     },
     {
       text: '클래스 명',
-      value: 'class'
+      value: 'class',
     },
     {
       text: '모집된 인원',
-      value: 'count'
+      value: 'count',
     },
     {
       text: '수업 상태',
-      value: 'state'
+      value: 'state',
     },
   ];
 
@@ -117,11 +117,11 @@ function RecruitClass() {
 
   // const headerKey = headers.map((header) => header.value);
 
-  return(
+  return (
     <div>
       <HeaderComponent />
       <Wrapper>
-      <Sidebar />
+        <Sidebar />
         <Container>
           <Title>모집 중인 클래스</Title>
           <RecruitingSelectMenu />

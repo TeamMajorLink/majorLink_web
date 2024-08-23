@@ -1,9 +1,10 @@
-import styled from "styled-components";
-import { HeaderComponent } from "../../../components/common/header/HeaderComponent";
-import font from "../../../styles/font";
-import Sidebar from "../Sidebar";
-import color from "../../../styles/color";
-import ThumbImg from "../../../assets/common/thumbnail_myclass_172x95.png";
+import styled from 'styled-components';
+import { HeaderComponent } from '../../../components/common/header/HeaderComponent';
+import font from '../../../styles/font';
+import Sidebar from '../Sidebar';
+import color from '../../../styles/color';
+import ThumbImg from '../../../assets/common/thumbnail_myclass_172x95.png';
+import { Link } from 'react-router-dom';
 // import { useEffect, useState } from "react";
 // import axios from "axios";
 
@@ -100,7 +101,6 @@ const SmallTitle = styled.p`
 `;
 
 function RecruitDetailClass() {
-
   // const [reviews, setReviews] = useState([]);
 
   // useEffect(() => {
@@ -110,12 +110,11 @@ function RecruitDetailClass() {
   //   }
   // })
 
-
-  return(
+  return (
     <div>
       <HeaderComponent />
       <Wrapper>
-      <Sidebar />
+        <Sidebar />
         <Container>
           <Title>모집 중인 클래스</Title>
           <hr />
@@ -136,7 +135,9 @@ function RecruitDetailClass() {
                 </SmallContainer>
                 <SmallContainer>
                   <SmallTitle>수업 상태</SmallTitle>
-                  <button type="button">수업 취소하기</button>
+                  <Link to="/myclass/movetoonlineclass">
+                    <button type="button">수업 입장하기</button>
+                  </Link>
                 </SmallContainer>
               </RightContainer>
             </ContentContainer>

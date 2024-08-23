@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { HeaderComponent } from "../../../components/common/header/HeaderComponent";
-import Sidebar from "../Sidebar";
-import font from "../../../styles/font";
-import color from "../../../styles/color";
-import ThumbImg from "../../../assets/common/thumbnail_myclass_172x95.png";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { HeaderComponent } from '../../../components/common/header/HeaderComponent';
+import Sidebar from '../Sidebar';
+import font from '../../../styles/font';
+import color from '../../../styles/color';
+import ThumbImg from '../../../assets/common/thumbnail_myclass_172x95.png';
 
 const Wrapper = styled.div`
   display: flex;
@@ -99,11 +99,11 @@ const SmallTitle = styled.p`
 `;
 
 function DoingDetailClass() {
-  return(
+  return (
     <div>
       <HeaderComponent />
       <Wrapper>
-      <Sidebar />
+        <Sidebar />
         <Container>
           <Title>모집 중인 클래스</Title>
           <hr />
@@ -124,7 +124,6 @@ function DoingDetailClass() {
                 </SmallContainer>
                 <SmallContainer>
                   <SmallTitle>수업 입장</SmallTitle>
-                  <Link to='/myclass/movetoonlineclass'><button type="button">수업 입장하기</button></Link>
                 </SmallContainer>
               </RightContainer>
             </ContentContainer>

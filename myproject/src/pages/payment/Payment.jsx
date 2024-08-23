@@ -4,9 +4,9 @@ import styled, { keyframes } from 'styled-components';
 
 export default function Payment() {
   const BACK_SERVER = 'https://dev.majorlink.store';
-  //   const token = localStorage.getItem('authToken');
-  const token =
-    'eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjY4ODYxOTQsInN1YiI6ImFjY2Vzcy10b2tlbiIsInV1aWQiOiIzMTU5ZjMxYy1kZjI4LTRkNzktYjA1Mi0zN2IyNGY2ZmUzZjkiLCJpYXQiOjE3MjQyOTQxOTR9.SCB1sksvzLVM_LePSQ40J2yay3y0PDncOxvO43acsz4';
+  const token = localStorage.getItem('authToken');
+  // const token =
+  //   'eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjY4ODYxOTQsInN1YiI6ImFjY2Vzcy10b2tlbiIsInV1aWQiOiIzMTU5ZjMxYy1kZjI4LTRkNzktYjA1Mi0zN2IyNGY2ZmUzZjkiLCJpYXQiOjE3MjQyOTQxOTR9.SCB1sksvzLVM_LePSQ40J2yay3y0PDncOxvO43acsz4';
 
   const [isLoading, setIsLoading] = useState(false);
 

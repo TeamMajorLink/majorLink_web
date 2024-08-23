@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import font from "../../styles/font";
-import { HeaderComponent } from "../../components/common/header/HeaderComponent";
-import CharacterImg from "../../assets/pages/page_character.png";
-import BlueImg from "../../assets/pages/page_blue.png";
-import PurpleImg from "../../assets/pages/page_purple.png";
-import QuestionImg from "../../assets/pages/page_question.png";
-import color from "../../styles/color";
+import styled from 'styled-components';
+import font from '../../styles/font';
+import { HeaderComponent } from '../../components/common/header/HeaderComponent';
+import CharacterImg from '../../assets/pages/page_character.png';
+import BlueImg from '../../assets/pages/page_blue.png';
+import PurpleImg from '../../assets/pages/page_purple.png';
+import QuestionImg from '../../assets/pages/page_question.png';
+import color from '../../styles/color';
 
 const Wrapper = styled.div`
   position: relative;
@@ -33,12 +33,12 @@ const BackgroundContainer = styled.div`
   }
 `;
 
-const Blue = styled.img`  
+const Blue = styled.img`
   position: absolute;
   left: 42%;
   top: 55%;
   transform: translate(-50%, -50%);
-  width: 40%
+  width: 40%;
 `;
 
 const Purple = styled.img`
@@ -83,9 +83,12 @@ const ZoomBtn = styled.button`
   padding: 15px 0;
 `;
 
-
 function MoveToOnlineClass() {
-  return(
+  const handleMovePage = () => {
+    window.location.href = '/facechat';
+    console.log('클릭');
+  };
+  return (
     <div>
       <HeaderComponent />
       <Wrapper>
@@ -98,7 +101,9 @@ function MoveToOnlineClass() {
           <MainImg src={CharacterImg} alt="링키 이미지" />
           <Question src={QuestionImg} alt="물음표 이미지" />
         </MainContainer>
-        <ZoomBtn type="button">Zoom으로 연결</ZoomBtn>
+        <button onClick={handleMovePage}>
+          <ZoomBtn type="button">Zoom으로 연결</ZoomBtn>
+        </button>
       </Wrapper>
     </div>
   );

@@ -164,12 +164,14 @@ const ChatLog = () => {
         );
 
         const uuid = response.data;
+        console.log(response);
 
         const chatMessage = JSON.stringify({
           sender: uuid,
           content: message,
           chatroom: parseInt(id, 10),
         });
+        console.log(chatMessage.sender);
 
         console.log(chatMessage);
 

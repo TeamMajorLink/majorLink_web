@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { HeaderComponent } from "../../../components/common/header/HeaderComponent";
-import font from "../../../styles/font";
-import color from "../../../styles/color";
-import Sidebar from "../Sidebar";
-import ThumbImg from "../../../assets/common/thumbnail_myclass_172x95.png";
-import RecruitingSelectMenu from "./RecruitingSelectMenu";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { HeaderComponent } from '../../../components/common/header/HeaderComponent';
+import font from '../../../styles/font';
+import color from '../../../styles/color';
+import Sidebar from '../Sidebar';
+import ThumbImg from '../../../assets/common/thumbnail_myclass_172x95.png';
+import RecruitingSelectMenu from './RecruitingSelectMenu';
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ const Table = styled.table`
   border-collapse: collapse;
   text-align: center;
   width: 100%;
-  th{
+  th {
     border-top: 7px solid ${() => color.primary_normal};
     border-bottom: 1px solid ${() => color.grayscale_80};
     ${() => font.semibold_20};
@@ -44,7 +44,8 @@ const Table = styled.table`
     ${() => font.regular_18};
     padding: 20px;
   }
-  th:first-child, td:first-child {
+  th:first-child,
+  td:first-child {
     border-left: none;
   }
   img {
@@ -58,32 +59,31 @@ const Table = styled.table`
     color: ${() => color.primary_normal};
     background-color: transparent;
     padding: 10px;
-    width: 60%
+    width: 60%;
   }
 `;
 
 function RecruitClass() {
-
   const headers = [
     {
       text: '번호',
-      value: 'num'
+      value: 'num',
     },
     {
       text: '썸네일',
-      value: 'img'
+      value: 'img',
     },
     {
       text: '클래스 명',
-      value: 'class'
+      value: 'class',
     },
     {
       text: '모집된 인원',
-      value: 'count'
+      value: 'count',
     },
     {
       text: '수업 상태',
-      value: 'state'
+      value: 'state',
     },
   ];
 
@@ -94,62 +94,65 @@ function RecruitClass() {
       img: 'img',
       class: '백엔드 웹 개발 기초',
       count: '1',
-      state: '수업 시작하기'
+      state: '수업 시작하기',
     },
   ];
 
   const headerKey = headers.map((header) => header.value);
 
-  return(
+  return (
     <div>
       <HeaderComponent />
       <Wrapper>
-      <Sidebar />
+        <Sidebar />
         <Container>
           <Title>모집 중인 클래스</Title>
           <RecruitingSelectMenu />
           <ListContainer>
-              <Table>
-                <colgroup>
-                  <col width="10%" />
-                  <col width="20%" />
-                  <col width="30%" />
-                  <col width="15%" />
-                  <col width="25%" />
-                </colgroup>
-                <thead>
-                  <tr>
-                    {headers.map((header) => 
-                    <th key={header.text}>
-                      {header.text}
-                    </th>)}
-                  </tr>
-                </thead>
-                <tbody>
-                  {items.map((item) => (
-                    <tr key={item.id}>
-                      {headerKey.map((key) => {
-                        let content;
-
-                        if (key === 'state') {
-                          content = <Link to='/myclass/movetoonlineclass'><button type="button">{item[key]}</button></Link>;
-                        } else if (key === 'img') {
-                          content = <img src={ThumbImg} alt="썸네일" />;
-                        } else if (key === 'class') {
-                          content = (
-                            <Link to={`/myclass/recruiting/${item.id}`}>
-                              {item[key]}
-                            </Link>
-                          )
-                        } else {
-                          content = item[key];
-                        }
-                        return <td key={key + item.id}>{content}</td>;
-                      })}
-                    </tr>
+            <Table>
+              <colgroup>
+                <col width="10%" />
+                <col width="20%" />
+                <col width="30%" />
+                <col width="15%" />
+                <col width="25%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  {headers.map((header) => (
+                    <th key={header.text}>{header.text}</th>
                   ))}
-                </tbody>
-              </Table>
+                </tr>
+              </thead>
+              <tbody>
+                {items.map((item) => (
+                  <tr key={item.id}>
+                    {headerKey.map((key) => {
+                      let content;
+
+                      if (key === 'state') {
+                        content = (
+                          <Link to="/myclass/movetoonlineclass">
+                            <button type="button">{item[key]}</button>
+                          </Link>
+                        );
+                      } else if (key === 'img') {
+                        content = <img src={ThumbImg} alt="썸네일" />;
+                      } else if (key === 'class') {
+                        content = (
+                          <Link to={`/myclass/recruiting/${item.id}`}>
+                            {item[key]}
+                          </Link>
+                        );
+                      } else {
+                        content = item[key];
+                      }
+                      return <td key={key + item.id}>{content}</td>;
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
           </ListContainer>
         </Container>
       </Wrapper>

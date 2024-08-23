@@ -68,7 +68,7 @@ export function ClassDetailReview() {
 
       <ReviewContainer>
         <ReviewUserContainer>
-          <ReviewUserText>노브</ReviewUserText>
+          <ReviewUserText>닉닉</ReviewUserText>
           <ReviewDateText>2024-07-31</ReviewDateText>
         </ReviewUserContainer>
         <ReviewStarRatingText>⭐⭐⭐⭐⭐ 5.0</ReviewStarRatingText>
@@ -82,7 +82,7 @@ export function ClassDetailReview() {
 
       <ReviewContainer>
         <ReviewUserContainer>
-          <ReviewUserText>노브</ReviewUserText>
+          <ReviewUserText>유저</ReviewUserText>
           <ReviewDateText>2024-07-31</ReviewDateText>
         </ReviewUserContainer>
         <ReviewStarRatingText>⭐⭐⭐⭐⭐ 5.0</ReviewStarRatingText>

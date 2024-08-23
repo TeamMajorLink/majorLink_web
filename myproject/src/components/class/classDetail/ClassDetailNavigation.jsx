@@ -75,10 +75,20 @@ const SectionContainer = styled.div`
   align-items: flex-start;
 `;
 const SectionTitleText = styled.p`
-  margin: 0 0 3.6rem 0;
+  margin: 3rem 0 4rem 0;
 
   color: ${() => color.primary_dark};
   ${() => font.semibold_36};
+`;
+const SectionContentTitleText = styled.p`
+  margin: 0 0 2rem 0;
+
+  ${() => font.semibold_28};
+`;
+const SectionContentInfoText = styled.p`
+  margin: 0 0 8rem 0;
+
+  ${() => font.regular_24};
 `;
 
 export function ClassDetailNavigation({ openModal, lectureInfo }) {
@@ -121,20 +131,43 @@ export function ClassDetailNavigation({ openModal, lectureInfo }) {
           {/* section1Ref */}
           <SectionContainer ref={section1Ref}>
             <SectionTitleText>클래스 소개</SectionTitleText>
-            <h4>{lectureInfo.info}</h4>
-            <h4>시작 날짜: {lectureInfo.startDate}</h4>
+
+            <SectionContentTitleText>클래스 상세 소개</SectionContentTitleText>
+            <SectionContentInfoText>{lectureInfo.info}</SectionContentInfoText>
+            <SectionContentTitleText>참여 인원</SectionContentTitleText>
+            <SectionContentInfoText>
+              {lectureInfo.pnum}명
+            </SectionContentInfoText>
+            <SectionContentTitleText>희망 시작일</SectionContentTitleText>
+            <SectionContentInfoText>
+              {lectureInfo.startDate}
+            </SectionContentInfoText>
+            <SectionContentTitleText>희망 시간 및 요일</SectionContentTitleText>
+            <SectionContentInfoText>
+              요일: {lectureInfo.day}
+              <br />
+              시간: {lectureInfo.time}
+            </SectionContentInfoText>
           </SectionContainer>
 
           {/* section2Ref */}
           <SectionContainer ref={section2Ref}>
             <SectionTitleText>커리큘럼</SectionTitleText>
-            <h4>{lectureInfo.info}</h4>
+
+            <SectionContentTitleText>회차</SectionContentTitleText>
+            <SectionContentInfoText>
+              {lectureInfo.curri}회차
+            </SectionContentInfoText>
+            <SectionContentTitleText>커리큘럼</SectionContentTitleText>
+            <SectionContentInfoText>{lectureInfo.info}</SectionContentInfoText>
           </SectionContainer>
 
           {/* section3Ref */}
           <SectionContainer ref={section3Ref}>
             <SectionTitleText>튜터 소개</SectionTitleText>
-            <h4>{lectureInfo.tutor}</h4>
+
+            <SectionContentTitleText>튜터</SectionContentTitleText>
+            <SectionContentInfoText>{lectureInfo.tutor}</SectionContentInfoText>
           </SectionContainer>
 
           {/* section4Ref */}

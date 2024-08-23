@@ -180,6 +180,8 @@ export default function Router() {
         <Route path="/chat/:id" element={<ChatLog />} />
         <Route path="/chat" element={<ChatPage />} />
 
+        <Route path="/facechat" element={<FaceChat />} />
+
         {/* 내 강의실 - 에러 */}
         <Route path="/*" element={<NotFound />} />
       </Routes>

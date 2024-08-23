@@ -122,14 +122,37 @@ function FaceChat() {
   };
 
   return (
-    <div>
-      <video ref={localVideoRef} autoPlay muted style={{ width: '300px' }} />
-      <video ref={remoteVideoRef} autoPlay style={{ width: '300px' }} />
+    <div style={lay}>
+      내 화면
+      <div style={myCam}>
+        <video ref={localVideoRef} autoPlay muted style={{ width: '500px' }} />
+      </div>
+      상대방 화면
+      <div style={youCam}>
+        <video ref={remoteVideoRef} autoPlay style={{ width: '500px' }} />
+      </div>
       <button onClick={startCall} disabled={isCallStarted}>
-        Start Call
+        강의 참여하기
       </button>
     </div>
   );
 }
 
 export default FaceChat;
+
+const myCam = {
+  border: 'solid 1px black',
+  textAlign: 'center',
+  marginTop: '100px',
+};
+
+const youCam = {
+  border: 'solid 1px black',
+  textAlign: 'center',
+  marginTop: '200px',
+};
+
+const lay = {
+  textAlign: 'center',
+  fontSize: '50px',
+};

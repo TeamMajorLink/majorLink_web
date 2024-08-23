@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function PostNotification({ lectureId = 8 }) {
+function PostNotification({ lectureId = 16 }) {
   const [authToken, setAuthToken] = useState(null);
 
   useEffect(() => {

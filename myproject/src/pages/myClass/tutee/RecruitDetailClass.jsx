@@ -4,6 +4,8 @@ import font from "../../../styles/font";
 import Sidebar from "../Sidebar";
 import color from "../../../styles/color";
 import ThumbImg from "../../../assets/common/thumbnail_myclass_172x95.png";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 
 const Wrapper = styled.div`
   display: flex;
@@ -98,6 +100,17 @@ const SmallTitle = styled.p`
 `;
 
 function RecruitDetailClass() {
+
+  // const [reviews, setReviews] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchDetail = async () => {
+  //     const response = await axios.get(`https://dev.majorlink.store//lecture/${lectureId}/details`);
+  //     setReviews(response.data);
+  //   }
+  // })
+
+
   return(
     <div>
       <HeaderComponent />
